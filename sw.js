@@ -2,8 +2,8 @@
    Cache shell lokal + aset CDN (Tailwind & font) agar bisa dibuka offline
    setelah sekali dipakai dengan koneksi. */
 
-const CACHE = 'duolexia-v5';
-const RUNTIME = 'duolexia-runtime-v4';
+const CACHE = 'duolexia-v8';
+const RUNTIME = 'duolexia-runtime-v8';
 
 const ASSETS = [
   './',
@@ -20,7 +20,15 @@ const ASSETS = [
   './img/mascot.png',
   './img/mascot-owl.png',
   './icons/icon-192.png',
-  './icons/icon-512.png'
+  './icons/icon-512.png',
+  './img/kit/dee-lambai.png',
+  './img/kit/dee-baca.png',
+  './img/kit/dee-kaget.png',
+  './img/kit/dee-senang.png',
+  './img/kit/star.png',
+  './img/kit/cloud.png',
+  './img/kit/tree.png',
+  './img/kit/grass.png'
 ];
 
 const CDN_HOSTS = ['cdn.tailwindcss.com', 'fonts.googleapis.com', 'fonts.gstatic.com'];

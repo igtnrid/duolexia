@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#FFF7EC" />
-  <meta name="description" content="Duolexia — aplikasi belajar membaca untuk anak usia 6–8 tahun. Enam level singkat dengan audio dan latihan interaktif." />
+  <meta name="theme-color" content="#DCF9F1" />
+  <meta name="description" content="Duolexia — belajar membaca untuk anak usia 6–8 tahun lewat 6 pulau latihan yang singkat dan menyenangkan." />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Duolexia" />
@@ -25,18 +25,13 @@
       theme: {
         extend: {
           colors: {
-            primary: '#2563EB',
-            'primary-dark': '#1D4ED8',
-            'primary-fixed': '#DBE1FF',
-            cream: '#FFF7EC',
-            ink: '#1B2430',
-            muted: '#5A6675',
-            border: '#EADFCF',
-            gold: '#FFC53D',
-            amber: '#F2A33C',
-            'amber-ink': '#7A4A00',
-            success: '#2FA84F',
-            'success-ink': '#1B7F3B'
+            primary: '#4CA622',
+            'primary-dark': '#3B851A',
+            ink: '#143B36',
+            muted: '#5D7F79',
+            border: '#DFF1EA',
+            gold: '#FFD24A',
+            sky: '#38BDF8'
           },
           fontFamily: {
             head: ['"Baloo 2"', 'Nunito', 'system-ui', 'sans-serif'],
@@ -49,601 +44,380 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body class="bg-cream text-ink font-body">
-
-  <a href="#main" class="sr-only">Lewati ke konten utama</a>
+<body class="font-body">
+  <a href="#main" class="sr-only">Lewati ke konten</a>
 
   <main id="main">
 
-    <!-- =====================================================
-         LOGIN / ONBOARDING — SATU LAYAR
-         ===================================================== -->
+    <!-- ============ LOGIN ============ -->
     <section id="screen-login" class="screen">
-      <div class="mx-auto w-full max-w-[430px] min-h-dvh px-6 pt-safe pb-safe flex flex-col">
-
-        <header class="flex items-center justify-between gap-3 mb-5">
-          <div class="flex items-center gap-2 min-w-0">
-            <img src="img/mascot.png" alt="" width="44" height="44" class="w-11 h-11 rounded-full object-cover shrink-0" id="brand-mark" />
-            <span class="font-head font-extrabold text-[22px] text-primary leading-none">Duolexia</span>
-          </div>
-          <button type="button" class="btn-soft !min-h-[44px] !px-4 !text-[15px]" data-action="speak-screen"
-            data-say="Halo! Siapa namamu? Berapa umurmu? Lalu pilih avatar kesukaanmu.">
-            <span class="material-symbols-outlined text-[20px]" aria-hidden="true" style="font-variation-settings:'FILL' 1;">volume_up</span>
-            <span>Dengarkan</span>
+      <div class="mx-auto w-full max-w-[430px] min-h-dvh px-5 pt-safe pb-safe flex flex-col justify-center relative">
+        <div class="absolute right-4 top-4">
+          <button type="button" class="btn-icon" data-action="speak-screen" data-say="Hai! Tulis namamu, pilih usia, lalu pilih avatar." aria-label="Dengarkan">
+            <span class="material-symbols-outlined" aria-hidden="true">volume_up</span>
           </button>
-        </header>
-
-        <h1 id="login-title" class="font-head font-bold text-[28px] leading-tight text-ink mb-4">
-          Halo! Siapa namamu?
-        </h1>
-
-        <div class="mb-4">
-          <label for="name-input" class="sr-only">Nama anak</label>
-          <div class="relative flex items-center bg-white rounded-[20px] border border-border shadow-[0_4px_14px_rgba(27,36,48,0.06)] px-4 h-16 focus-within:border-primary">
-            <input id="name-input" type="text" inputmode="text" autocomplete="off" autocapitalize="words" spellcheck="false"
-              maxlength="20" placeholder="Tulis namamu di sini"
-              class="w-full h-full bg-transparent font-head font-bold text-[24px] text-ink placeholder:text-muted/60 focus:outline-none pr-9" />
-            <span class="material-symbols-outlined text-[22px] text-muted absolute right-4 pointer-events-none" aria-hidden="true">edit</span>
-          </div>
-          <p class="text-[13px] text-muted mt-1.5 px-1">Boleh dibantu Ayah atau Ibu.</p>
         </div>
 
-        <div class="mb-4">
-          <div class="flex items-center justify-between gap-3 mb-2">
-            <h2 class="font-head font-bold text-[18px] text-ink">Berapa umurmu?</h2>
-            <div class="flex bg-[#EFE7DA] p-1 rounded-full h-11 w-[148px] shrink-0" role="tablist" aria-label="Pilih usia atau kelas">
-              <button type="button" role="tab" aria-selected="true" data-action="login-mode" data-mode="usia"
-                class="flex-1 rounded-full font-head font-bold text-[14px] transition-all bg-primary text-white">
-                Usia
-              </button>
-              <button type="button" role="tab" aria-selected="false" data-action="login-mode" data-mode="kelas"
-                class="flex-1 rounded-full font-head font-bold text-[14px] transition-all text-muted">
-                Kelas
-              </button>
+        <div class="flex flex-col items-center mt-1">
+          <img src="img/kit/dee-lambai.png" alt="" class="dee-img w-[132px]" />
+          <h1 class="font-head font-extrabold text-[36px] leading-none mt-1">Halo!</h1>
+          <p id="login-title" class="text-[15px] font-bold text-muted mt-1">Selamat datang!</p>
+        </div>
+
+        <div class="card p-4 mt-4 flex flex-col gap-3">
+          <div class="relative">
+            <label for="name-input" class="sr-only">Nama</label>
+            <input id="name-input" class="input-big" type="text" inputmode="text" autocomplete="off" autocapitalize="words" spellcheck="false" maxlength="20" placeholder="Tulis namamu..." />
+            <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-[22px] text-muted" aria-hidden="true">edit</span>
+          </div>
+
+          <div class="flex items-center justify-center">
+            <div class="seg" role="tablist" aria-label="Pilih usia atau kelas">
+              <button type="button" role="tab" aria-selected="true" data-action="login-mode" data-mode="usia">Usia</button>
+              <button type="button" role="tab" aria-selected="false" data-action="login-mode" data-mode="kelas">Kelas</button>
             </div>
           </div>
 
-          <div id="age-options" class="grid grid-cols-3 gap-2.5" role="radiogroup" aria-label="Pilih usia"></div>
-          <p class="text-[12px] text-muted mt-1.5 px-1">Level menyesuaikan kemampuanmu, bukan usiamu.</p>
+          <div id="age-options" class="grid grid-cols-3 gap-2" role="radiogroup" aria-label="Pilih usia"></div>
+
+          <div id="avatar-grid" class="flex items-center justify-between gap-1 pt-1" role="radiogroup" aria-label="Pilih avatar"></div>
         </div>
 
-        <div class="mb-3">
-          <h2 class="font-head font-bold text-[18px] text-ink mb-2">Pilih avatar kesukaanmu</h2>
-          <div id="avatar-grid" class="grid grid-cols-3 gap-2.5" role="radiogroup" aria-label="Pilih avatar"></div>
-        </div>
-
-        <div class="mt-auto pt-3">
-          <p id="login-note" class="text-[12px] text-muted text-center mb-2">Bisa diganti nanti di Profil.</p>
-          <button type="button" id="btn-login" class="btn-primary" data-action="submit-login" disabled>
-            <span data-label>Siap, mulai!</span>
-            <span class="material-symbols-outlined text-[22px]" aria-hidden="true">arrow_forward</span>
-          </button>
-          <button type="button" id="btn-login-cancel" class="btn-soft w-full mt-2 hidden" data-action="cancel-edit">
-            Batal
-          </button>
-        </div>
+        <button type="button" id="btn-login" class="btn-primary mt-4" data-action="submit-login" disabled>
+          <span data-label>Mulai</span>
+        </button>
+        <button type="button" id="btn-login-cancel" class="btn-link mt-3 hidden" data-action="cancel-edit">Batal</button>
       </div>
     </section>
 
-    <!-- =====================================================
-         PETA BELAJAR
-         ===================================================== -->
+    <!-- ============ PETA ============ -->
     <section id="screen-peta" class="screen">
-      <div class="mx-auto w-full max-w-[430px] px-4 pt-safe pb-32">
+      <div class="mx-auto w-full max-w-[430px] px-4 pt-safe pb-28">
+        <header class="flex items-center gap-2.5 mb-2">
+          <img data-avatar-img src="img/avatar-1.png" alt="Avatar" width="40" height="40" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-[0_3px_8px_rgba(20,59,54,0.18)] shrink-0" />
+          <p id="peta-greeting" class="flex-1 min-w-0 font-head font-extrabold text-[16px] leading-tight truncate">Halo, selamat datang!</p>
+          <span class="pill">
+            <img src="img/kit/star.png" alt="" width="16" height="16" class="w-4 h-4" />
+            <span data-stars>0</span>
+          </span>
+          <button type="button" class="btn-icon !w-10 !h-10" data-action="speak-screen" data-say="Hai! Pilih pulau untuk mulai belajar." aria-label="Dengarkan peta">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">volume_up</span>
+          </button>
 
-        <header class="flex items-center justify-between gap-3 mb-2.5">
-          <div class="flex items-center gap-2.5 min-w-0">
-            <img src="img/mascot.png" alt="" width="36" height="36" class="w-9 h-9 rounded-full object-cover shrink-0" />
-            <div class="min-w-0">
-              <p class="font-head font-extrabold text-[20px] leading-none text-primary">Duolexia</p>
-              <p class="text-[11px] font-bold text-muted leading-tight mt-0.5">Peta Petualangan</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-2 shrink-0">
-            <span class="inline-flex items-center gap-1 h-9 px-3 rounded-full bg-white border border-border">
-              <span class="material-symbols-outlined text-[18px] text-[#B47800]" aria-hidden="true" style="font-variation-settings:'FILL' 1;">star</span>
-              <span class="font-bold text-[13px] text-[#7A4A00]" data-stars>0</span>
-            </span>
-            <button type="button" class="h-9 px-3 rounded-full bg-primary text-white flex items-center gap-1.5 text-[12px] font-bold shadow-[0_2px_8px_rgba(37,99,235,0.25)] shrink-0"
-              data-action="speak-screen" data-say="Ini peta petualanganmu. Ketuk pulau untuk mulai belajar.">
-              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">volume_up</span>
-              <span>Dengar</span>
-            </button>
-          </div>
         </header>
 
-        <section class="card p-3 flex items-center justify-between gap-2 mb-3">
-          <div class="flex items-center gap-2.5 min-w-0">
-            <img data-avatar-img src="img/avatar-1.png" alt="Avatar pilihanmu" width="48" height="48"
-              class="w-12 h-12 rounded-full object-cover border-2 border-[#FFC53D] shrink-0" />
-            <div class="min-w-0">
-              <p class="flex items-center gap-1 font-head font-bold text-[16px] leading-tight text-ink truncate">
-                <span id="peta-greeting">Halo!</span>
-                <span class="material-symbols-outlined text-[18px] text-[#F2A33C]" aria-hidden="true">waving_hand</span>
-              </p>
-              <p class="text-[12px] text-muted truncate">Siap menjelajah pulau kata?</p>
-            </div>
-          </div>
-          <button type="button" id="btn-walk" data-action="walk"
-            class="px-3 py-2 rounded-xl bg-[#FFF3D6] border border-[#F2C14E] text-[#7A4A00] flex items-center gap-1.5 shrink-0 active:scale-95 transition-transform">
-            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">directions_walk</span>
-            <span class="flex flex-col items-start leading-tight">
-              <span class="text-[10px] font-extrabold">Ulangi Langkah</span>
-              <span id="walk-label" class="text-[9px] font-bold text-[#8A6A00]">Jalan ke Level 1</span>
-            </span>
-          </button>
-        </section>
-
-        <section class="adventure-map">
-          <div class="flex items-center justify-between gap-2 px-0.5 pb-2">
-            <span class="map-chip">
-              <span class="material-symbols-outlined text-[18px] text-primary" aria-hidden="true">explore</span>
-              <span>PETA PULAU MEMBACA</span>
-            </span>
-            <span class="map-chip">
-              <span class="material-symbols-outlined text-[14px] text-[#F2A33C]" aria-hidden="true">auto_awesome</span>
-              <span id="peta-progress">Level 1 / 6 Terbuka</span>
-            </span>
-          </div>
-
+        <div class="map-card">
           <div class="map-stage" id="map-stage">
-            <span class="cloud cloud-1 material-symbols-outlined" aria-hidden="true">cloud</span>
-            <span class="cloud cloud-2 material-symbols-outlined" aria-hidden="true">cloud</span>
-            <span class="map-deco" style="left:5%;top:46%" aria-hidden="true"><span class="material-symbols-outlined text-[24px] text-[#2E7D32]">forest</span></span>
-            <span class="map-deco" style="right:5%;top:52%" aria-hidden="true"><span class="material-symbols-outlined text-[22px] text-[#2E7D32]">park</span></span>
-            <span class="map-deco" style="left:7%;bottom:10%" aria-hidden="true"><span class="material-symbols-outlined text-[20px] text-[#1565C0]">sailing</span></span>
+            <img class="cloud cloud-1" src="img/kit/cloud.png" alt="" />
+            <img class="cloud cloud-2" src="img/kit/cloud.png" alt="" />
+            <img class="map-deco" style="left:3%;top:44%;width:44px" src="img/kit/tree.png" alt="" />
+            <img class="map-deco" style="right:4%;bottom:9%;width:52px" src="img/kit/grass.png" alt="" />
 
             <svg class="map-svg" viewBox="0 0 340 660" preserveAspectRatio="none" aria-hidden="true">
               <defs>
                 <filter id="trailShadow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.12"></feDropShadow>
+                  <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.12" />
                 </filter>
               </defs>
-              <path d="M 120 40 Q 170 10 220 40 Q 240 90 200 120 Q 140 120 120 40 Z" fill="#BBDEFB" opacity="0.55"></path>
-              <path d="M 20 280 Q 80 230 180 260 Q 240 280 200 370 Q 100 380 20 280 Z" fill="#C8E6C9" opacity="0.7"></path>
-              <path d="M 90 530 Q 200 490 320 530 Q 330 620 230 640 Q 100 630 90 530 Z" fill="#FFE0B2" opacity="0.75"></path>
+              <path d="M 120 40 Q 170 10 220 40 Q 240 90 200 120 Q 140 120 120 40 Z" fill="#BBDEFB" opacity="0.55" />
+              <path d="M 20 280 Q 80 230 180 260 Q 240 280 200 370 Q 100 380 20 280 Z" fill="#C8E6C9" opacity="0.7" />
+              <path d="M 90 530 Q 200 490 320 530 Q 330 620 230 640 Q 100 630 90 530 Z" fill="#FFE0B2" opacity="0.75" />
               <g id="trail"></g>
             </svg>
 
+            <div id="stones"></div>
             <div id="path"></div>
 
             <div class="walker" id="walker">
-              <div class="walker-bob" id="walker-bob">
-                <div class="walker-bubble" id="walker-bubble">Rani sampai di Pulau Bunyi! 🎉</div>
-                <img id="walker-img" src="img/avatar-1.png" alt="" width="52" height="52" />
+              <div class="walker-bob">
+                <div class="walker-bubble" id="walker-bubble">Ayo!</div>
+                <img id="walker-img" src="img/avatar-1.png" alt="" width="44" height="44" />
                 <span class="walker-shadow" aria-hidden="true"></span>
               </div>
             </div>
-
+            <img class="map-deco dee-img" style="left:6%;bottom:2%;width:58px" src="img/kit/dee-lambai.png" alt="" />
             <div class="sparkle-layer" id="sparkles" aria-hidden="true"></div>
           </div>
+        </div>
 
-          <div class="flex items-center justify-between px-1 pt-1.5 text-[11px] font-bold">
-            <span class="flex items-center gap-1 text-[#1B7F3B]">
-              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">check_circle</span>
-              <span id="peta-count">0 Pulau Terbuka</span>
-            </span>
-            <span class="flex items-center gap-1 text-primary">
-              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">touch_app</span>
-              <span>Ketuk pulau untuk info</span>
-            </span>
-          </div>
-        </section>
-
-        <div id="peta-current" class="card p-4 mt-3"></div>
-        <div id="review-card"></div>
+        <div id="peta-current"></div>
       </div>
     </section>
 
-    <!-- =====================================================
-         TAB LATIHAN
-         ===================================================== -->
+    <!-- ============ LATIHAN ============ -->
     <section id="screen-latihan" class="screen">
-      <div class="mx-auto w-full max-w-[430px] px-5 pt-safe pb-32">
-
-        <header class="flex items-center justify-between gap-3 mb-4">
-          <div>
-            <h1 class="font-head font-extrabold text-[26px] leading-tight text-ink">Latihan</h1>
-            <p class="text-[13px] text-muted">Pilih latihan yang kamu mau</p>
-          </div>
-          <span class="inline-flex items-center gap-1 h-10 px-3 rounded-full bg-[#FFF3D6] text-[#7A4A00] font-bold text-[15px]">
-            <span class="material-symbols-outlined text-[20px]" aria-hidden="true" style="font-variation-settings:'FILL' 1;">star</span>
+      <div class="mx-auto w-full max-w-[430px] px-4 pt-safe pb-28">
+        <header class="flex items-center justify-between mb-3">
+          <h1 class="font-head font-extrabold text-[26px] leading-none">Latihan</h1>
+          <span class="pill">
+            <img src="img/kit/star.png" alt="" width="16" height="16" class="w-4 h-4" />
             <span data-stars>0</span>
-            <span class="sr-only">bintang</span>
           </span>
         </header>
 
-        <div id="lat-continue" class="mb-5"></div>
+        <div id="lat-continue"></div>
 
-        <h2 class="font-head font-bold text-[18px] text-ink mb-2">Ulangi sebentar</h2>
-        <div id="lat-quick" class="grid grid-cols-3 gap-2.5 mb-5"></div>
+        <h2 class="font-head font-extrabold text-[16px] mt-4 mb-2">Ulangi</h2>
+        <div id="lat-quick" class="grid grid-cols-3 gap-2"></div>
 
-        <h2 class="font-head font-bold text-[18px] text-ink mb-2">Semua keterampilan</h2>
-        <div id="lat-skills" class="card px-4 divide-y divide-[#F1E8DA]"></div>
-
-        <div class="card p-4 mt-5 flex items-center gap-3">
-          <span class="w-11 h-11 rounded-full bg-[#EFF4FF] text-primary flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-[24px]" aria-hidden="true">lightbulb</span>
-          </span>
-          <p class="t-body text-ink">Cukup 5 soal sekali duduk. Kalau lelah, istirahat dulu, ya.</p>
-        </div>
+        <h2 class="font-head font-extrabold text-[16px] mt-4 mb-2">Semua level</h2>
+        <div id="lat-skills" class="card px-4 py-1 divide-y divide-[#EEF8F4]"></div>
       </div>
     </section>
 
-    <!-- =====================================================
-         TAB HADIAH
-         ===================================================== -->
+    <!-- ============ HADIAH ============ -->
     <section id="screen-hadiah" class="screen">
-      <div class="mx-auto w-full max-w-[430px] px-5 pt-safe pb-32">
-
-        <header class="mb-4">
-          <h1 class="font-head font-extrabold text-[26px] leading-tight text-ink">Hadiah</h1>
-          <p class="text-[13px] text-muted">Kumpulan bintang dan lencanamu</p>
+      <div class="mx-auto w-full max-w-[430px] px-4 pt-safe pb-28">
+        <header class="flex items-center justify-between mb-3">
+          <h1 class="font-head font-extrabold text-[26px] leading-none">Hadiah</h1>
+          <span class="pill">
+            <img src="img/kit/star.png" alt="" width="16" height="16" class="w-4 h-4" />
+            <span id="hadiah-total">0</span>
+          </span>
         </header>
 
-        <div class="card p-5 flex items-center gap-4 mb-5">
-          <div class="w-20 h-20 rounded-full bg-[#FFF3D6] flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-[44px] text-[#B47800]" aria-hidden="true" style="font-variation-settings:'FILL' 1;">star</span>
-          </div>
+        <div class="card p-4 mb-4 flex items-center gap-3">
+          <img src="img/kit/dee-senang.png" alt="" class="dee-img w-[74px] shrink-0" />
           <div class="min-w-0">
-            <p class="text-[14px] text-muted">Total bintangmu</p>
-            <p class="font-head font-extrabold text-[36px] leading-none text-ink"><span id="hadiah-total">0</span> <span class="text-[18px] text-muted font-bold">bintang</span></p>
-            <p class="text-[13px] text-muted mt-1">Kumpulkan untuk membuka lencana baru.</p>
+            <p class="font-head font-extrabold text-[34px] leading-none"><span id="hadiah-total-big">0</span> <span class="text-[15px] text-muted">bintang</span></p>
+            <p class="text-[13px] font-bold text-muted mt-1"><span id="hadiah-badges">0</span> lencana · Level <span id="hadiah-level">1</span></p>
           </div>
         </div>
 
-        <h2 class="font-head font-bold text-[18px] text-ink mb-2">Lencana</h2>
-        <div id="badges" class="grid grid-cols-2 gap-2.5 mb-5"></div>
+        <div id="badges" class="grid grid-cols-2 gap-2"></div>
 
-        <h2 class="font-head font-bold text-[18px] text-ink mb-2">Bintang minggu ini</h2>
-        <div class="card p-4">
+        <div class="card p-4 mt-4">
           <div id="week" class="flex items-center justify-between"></div>
         </div>
       </div>
     </section>
 
-    <!-- =====================================================
-         TAB PROFIL
-         ===================================================== -->
+    <!-- ============ PROFIL ============ -->
     <section id="screen-profil" class="screen">
-      <div class="mx-auto w-full max-w-[430px] px-5 pt-safe pb-32">
-
-        <header class="mb-4">
-          <h1 class="font-head font-extrabold text-[26px] leading-tight text-ink">Profil</h1>
+      <div class="mx-auto w-full max-w-[430px] px-4 pt-safe pb-28">
+        <header class="mb-3">
+          <h1 class="font-head font-extrabold text-[26px] leading-none">Profil</h1>
         </header>
 
-        <div class="card p-5 flex flex-col items-center text-center mb-4">
-          <img id="profil-avatar" src="img/avatar-1.png" alt="Avatar profil" width="96" height="96"
-            class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-[0_6px_18px_rgba(27,36,48,0.18)]" />
-          <p id="profil-name" class="font-head font-extrabold text-[26px] leading-tight text-ink mt-3">Nama</p>
-          <p id="profil-meta" class="text-[14px] text-muted">Usia 7 tahun</p>
+        <div class="card p-4 flex flex-col items-center text-center">
+          <img id="profil-avatar" src="img/avatar-1.png" alt="Avatar profil" width="88" height="88" class="w-[88px] h-[88px] rounded-full object-cover border-[3px] border-white shadow-[0_6px_16px_rgba(20,59,54,0.18)]" />
+          <p id="profil-name" class="font-head font-extrabold text-[24px] leading-tight mt-2">Nama</p>
+          <p id="profil-meta" class="text-[14px] font-bold text-muted">Usia 7 tahun</p>
 
-          <div class="grid grid-cols-3 gap-2 w-full mt-4">
-            <div class="rounded-2xl bg-[#FBF6EC] py-2">
-              <p class="font-head font-extrabold text-[20px] leading-none text-ink"><span id="profil-stars">0</span></p>
-              <p class="text-[12px] text-muted mt-1">Bintang</p>
+          <div class="grid grid-cols-3 gap-2 w-full mt-3">
+            <div class="stat-tile">
+              <p class="stat-num" id="profil-stars">0</p>
+              <p class="stat-label">Bintang</p>
             </div>
-            <div class="rounded-2xl bg-[#FBF6EC] py-2">
-              <p id="profil-level" class="font-head font-extrabold text-[16px] leading-none text-ink">Level 1</p>
-              <p class="text-[12px] text-muted mt-1">Sekarang</p>
+            <div class="stat-tile">
+              <p class="stat-num text-[15px]" id="profil-level">Level 1</p>
+              <p class="stat-label">Sekarang</p>
             </div>
-            <div class="rounded-2xl bg-[#FBF6EC] py-2">
-              <p class="font-head font-extrabold text-[20px] leading-none text-ink"><span id="profil-badges">0</span></p>
-              <p class="text-[12px] text-muted mt-1">Lencana</p>
+            <div class="stat-tile">
+              <p class="stat-num" id="profil-badges">0</p>
+              <p class="stat-label">Lencana</p>
             </div>
           </div>
         </div>
 
-        <div class="card px-4 divide-y divide-[#F1E8DA]">
-          <button type="button" class="w-full flex items-center gap-3 py-4 text-left" data-action="edit-profile">
-            <span class="w-10 h-10 rounded-full bg-[#EFF4FF] text-primary flex items-center justify-center shrink-0">
-              <span class="material-symbols-outlined text-[22px]" aria-hidden="true">badge</span>
-            </span>
-            <span class="min-w-0 flex-1">
-              <span class="block font-bold text-[15px] text-ink">Ubah nama, usia, atau kelas</span>
-              <span class="block text-[13px] text-muted">Dipakai untuk menyapa kamu</span>
-            </span>
+        <div class="card px-4 mt-3 divide-y divide-[#EEF8F4]">
+          <button type="button" class="row-item" data-action="edit-profile">
+            <span class="row-icon"><span class="material-symbols-outlined text-[22px]" aria-hidden="true">badge</span></span>
+            <span class="row-label">Ubah profil</span>
             <span class="material-symbols-outlined text-muted" aria-hidden="true">chevron_right</span>
           </button>
-
-          <button type="button" class="w-full flex items-center gap-3 py-4 text-left" data-action="change-avatar">
-            <span class="w-10 h-10 rounded-full bg-[#EFF4FF] text-primary flex items-center justify-center shrink-0">
-              <span class="material-symbols-outlined text-[22px]" aria-hidden="true">face</span>
-            </span>
-            <span class="min-w-0 flex-1">
-              <span class="block font-bold text-[15px] text-ink">Ganti avatar</span>
-              <span class="block text-[13px] text-muted">Pilih karakter kesukaanmu</span>
-            </span>
+          <button type="button" class="row-item" data-action="change-avatar">
+            <span class="row-icon"><span class="material-symbols-outlined text-[22px]" aria-hidden="true">face</span></span>
+            <span class="row-label">Ganti avatar</span>
             <span class="material-symbols-outlined text-muted" aria-hidden="true">chevron_right</span>
           </button>
-
-          <button type="button" class="w-full flex items-center gap-3 py-4 text-left" data-action="open-settings">
-            <span class="w-10 h-10 rounded-full bg-[#EFF4FF] text-primary flex items-center justify-center shrink-0">
-              <span class="material-symbols-outlined text-[22px]" aria-hidden="true">tune</span>
-            </span>
-            <span class="min-w-0 flex-1">
-              <span class="block font-bold text-[15px] text-ink">Pengaturan aksesibilitas</span>
-              <span class="block text-[13px] text-muted">Ukuran teks, audio, dan animasi</span>
-            </span>
+          <button type="button" class="row-item" data-action="open-settings">
+            <span class="row-icon"><span class="material-symbols-outlined text-[22px]" aria-hidden="true">tune</span></span>
+            <span class="row-label">Pengaturan</span>
             <span class="material-symbols-outlined text-muted" aria-hidden="true">chevron_right</span>
           </button>
-
-          <button type="button" class="w-full flex items-center gap-3 py-4 text-left" data-action="about">
-            <span class="w-10 h-10 rounded-full bg-[#EFF4FF] text-primary flex items-center justify-center shrink-0">
-              <span class="material-symbols-outlined text-[22px]" aria-hidden="true">info</span>
-            </span>
-            <span class="min-w-0 flex-1">
-              <span class="block font-bold text-[15px] text-ink">Tentang Duolexia</span>
-              <span class="block text-[13px] text-muted">Aplikasi belajar membaca usia 6–8 tahun</span>
-            </span>
+          <button type="button" class="row-item" data-action="about">
+            <span class="row-icon"><span class="material-symbols-outlined text-[22px]" aria-hidden="true">info</span></span>
+            <span class="row-label">Tentang</span>
             <span class="material-symbols-outlined text-muted" aria-hidden="true">chevron_right</span>
           </button>
         </div>
 
-        <button type="button" class="w-full mt-4 py-3 text-[14px] font-bold text-[#8A7F70] flex items-center justify-center gap-2" data-action="delete-profile">
-          <span class="material-symbols-outlined text-[20px]" aria-hidden="true">delete</span>
+        <button type="button" class="w-full mt-3 py-2 text-[13px] font-bold text-[#8FA8A2] flex items-center justify-center gap-1.5" data-action="delete-profile">
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">delete</span>
           <span>Hapus profil</span>
         </button>
-
-        <p class="text-center text-[12px] text-muted mt-4">Duolexia · <span id="app-year">2026</span> · Bahasa Indonesia</p>
+        <p class="text-center text-[11px] text-muted mt-1">Duolexia · <span id="app-year">2026</span></p>
       </div>
     </section>
 
-    <!-- =====================================================
-         SESI LATIHAN
-         ===================================================== -->
+    <!-- ============ SESI ============ -->
     <section id="screen-sesi" class="screen">
-      <div class="mx-auto w-full max-w-[430px] min-h-dvh px-5 pt-safe pb-safe flex flex-col">
-
-        <header class="flex items-center gap-3">
-          <button type="button" class="w-11 h-11 rounded-full bg-white border border-border flex items-center justify-center text-ink shrink-0"
-            data-action="close-session" aria-label="Tutup latihan">
+      <div class="mx-auto w-full max-w-[430px] min-h-dvh px-4 pt-safe pb-safe flex flex-col">
+        <header class="flex items-center gap-2.5">
+          <button type="button" class="btn-icon" data-action="close-session" aria-label="Tutup">
             <span class="material-symbols-outlined text-[22px]" aria-hidden="true">close</span>
           </button>
-
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center justify-between mb-1">
-              <p id="sesi-title" class="text-[12px] text-muted truncate pr-2">Level 1 · Petualangan Huruf</p>
-              <p id="sesi-progress-text" class="text-[12px] font-bold text-ink shrink-0">Soal 1 dari 5</p>
-            </div>
-            <div class="h-3 rounded-full bg-[#F1E8DA] overflow-hidden" role="progressbar" aria-labelledby="sesi-progress-text" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1">
-              <div id="sesi-progress-bar" class="h-full rounded-full bg-gradient-to-r from-gold to-[#FFB020] transition-all duration-300" style="width:20%"></div>
+          <div class="flex-1">
+            <div class="progress-track" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1" aria-labelledby="sesi-progress-text">
+              <div id="sesi-progress-bar" class="progress-fill" style="width:20%"></div>
             </div>
           </div>
-
-          <span class="inline-flex items-center gap-1 h-10 px-3 rounded-full bg-[#FFF3D6] text-[#7A4A00] font-bold text-[15px] shrink-0">
-            <span class="material-symbols-outlined text-[20px]" aria-hidden="true" style="font-variation-settings:'FILL' 1;">star</span>
+          <span class="pill">
+            <img src="img/kit/star.png" alt="" width="16" height="16" class="w-4 h-4" />
             <span data-stars>0</span>
           </span>
         </header>
 
-        <div id="story-box" class="hidden card p-4 mt-4">
-          <div class="flex items-center justify-between gap-2 mb-1">
-            <p class="text-[12px] font-bold text-muted">Bacaan</p>
-            <button type="button" class="text-[12px] font-bold text-primary flex items-center gap-1" data-action="listen-story">
+        <p id="sesi-title" class="sr-only">Level 1</p>
+        <p id="sesi-progress-text" class="sr-only">Soal 1 dari 5</p>
+
+        <div id="story-box" class="hidden card p-3 mt-3">
+          <div class="flex items-center justify-between mb-1">
+            <p class="text-[11px] font-extrabold text-muted">Bacaan</p>
+            <button type="button" class="btn-icon !w-9 !h-9" data-action="listen-story" aria-label="Dengarkan bacaan">
               <span class="material-symbols-outlined text-[18px]" aria-hidden="true">volume_up</span>
-              <span>Dengarkan</span>
             </button>
           </div>
-          <p id="story-text" class="story-text text-ink"></p>
+          <p id="story-text" class="t-body text-ink"></p>
         </div>
 
-        <div class="card p-5 mt-4">
-          <div id="q-emoji" class="hidden text-center text-[52px] leading-none mb-2" aria-hidden="true"></div>
-          <p id="q-text" class="t-question font-head font-bold text-ink text-center"></p>
-
-          <div class="flex items-center gap-2 mt-4">
-            <button type="button" class="btn-primary flex-1" data-action="listen-question">
-              <span class="material-symbols-outlined text-[22px]" aria-hidden="true" style="font-variation-settings:'FILL' 1;">volume_up</span>
-              <span>Dengarkan</span>
-            </button>
-            <button type="button" class="btn-soft shrink-0" data-action="listen-slow">
-              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">graphic_eq</span>
-              <span>Lebih lambat</span>
-            </button>
-          </div>
-
-          <div class="text-center mt-2">
-            <button type="button" id="btn-example" class="text-[13px] font-bold text-primary underline underline-offset-4 py-1" data-action="example">
-              Lihat contoh
+        <div class="flex-1 flex flex-col justify-center gap-3 py-2">
+        <div class="q-card">
+          <img class="dee-q" src="img/kit/dee-baca.png" alt="" />
+          <p id="q-text" class="t-question"></p>
+          <div class="flex justify-center mt-3">
+            <button type="button" class="speaker-round" data-action="listen-question" aria-label="Dengarkan soal">
+              <span class="material-symbols-outlined text-[24px]" aria-hidden="true" style="font-variation-settings:'FILL' 1;">volume_up</span>
             </button>
           </div>
         </div>
 
-        <div id="options" class="grid grid-cols-2 gap-3 mt-4" role="group" aria-label="Pilihan jawaban"></div>
+        <div id="options" class="options-grid" role="group" aria-label="Pilihan jawaban"></div>
 
-        <p class="text-center text-[13px] text-muted mt-3">Pilih satu jawaban, lalu tekan Periksa.</p>
-
-        <div class="mt-auto pt-4">
-          <button type="button" id="btn-check" class="btn-primary" data-action="check" disabled>Periksa</button>
+        <button type="button" id="btn-check" class="btn-primary w-full mt-4" data-action="check" disabled>Periksa</button>
         </div>
       </div>
     </section>
 
-    <!-- =====================================================
-         SELESAI
-         ===================================================== -->
+    <!-- ============ SELESAI ============ -->
     <section id="screen-selesai" class="screen">
-      <div class="mx-auto w-full max-w-[430px] min-h-dvh px-6 pt-safe-lg pb-safe-lg flex flex-col justify-center">
+      <div class="mx-auto w-full max-w-[430px] min-h-dvh px-6 pt-safe pb-safe flex flex-col items-center justify-center text-center">
+        <img class="win-dee" src="img/kit/dee-senang.png" alt="" />
+        <h1 class="win-title">Hebat!</h1>
+        <div id="selesai-stars" class="win-stars" aria-label="3 dari 3 bintang"></div>
+        <p id="selesai-gain" class="pill mt-3">+0</p>
+        <p id="selesai-title" class="sr-only">Level selesai</p>
+        <p id="selesai-sub" class="sr-only"></p>
+        <div id="selesai-chips" class="hidden"></div>
 
-        <div class="card p-6 text-center">
-          <div id="selesai-stars" class="flex items-center justify-center gap-1 mb-2" aria-label="3 dari 3 bintang"></div>
-
-          <h1 id="selesai-title" class="font-head font-extrabold text-[26px] leading-tight text-ink">Level selesai!</h1>
-          <p id="selesai-sub" class="t-body text-muted mt-1">Kamu menyelesaikan 5 soal.</p>
-
-          <div id="selesai-chips" class="flex items-center justify-center gap-2 mt-3 flex-wrap"></div>
-
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FFF3D6] text-[#7A4A00] font-bold text-[15px] mt-4">
-            <span class="material-symbols-outlined text-[20px]" aria-hidden="true" style="font-variation-settings:'FILL' 1;">star</span>
-            <span id="selesai-gain">+10 bintang</span>
-          </div>
-
-          <div class="mt-6 flex flex-col gap-2">
-            <button type="button" id="btn-next-level" class="btn-primary" data-action="next-level">
-              <span data-label>Lanjut ke Level 2</span>
-              <span class="material-symbols-outlined text-[22px]" aria-hidden="true">arrow_forward</span>
-            </button>
-            <button type="button" class="btn-soft w-full" data-action="repeat-session">Ulangi latihan</button>
-            <button type="button" class="text-[14px] font-bold text-muted py-2" data-action="start-break">Istirahat dulu</button>
-          </div>
-        </div>
-
-        <img src="img/mascot-owl.png" alt="" width="96" height="96" class="w-24 h-24 rounded-full object-cover mx-auto mt-5" />
+        <button type="button" id="btn-next-level" class="btn-primary w-full mt-6" data-action="next-level">
+          <span data-label>Lanjut</span>
+        </button>
+        <button type="button" class="btn-ghost w-full mt-2" data-action="repeat-session">Ulangi</button>
+        <button type="button" class="btn-link mt-3" data-action="start-break">Istirahat</button>
       </div>
     </section>
 
-    <!-- =====================================================
-         ISTIRAHAT
-         ===================================================== -->
+    <!-- ============ ISTIRAHAT ============ -->
     <section id="screen-istirahat" class="screen">
-      <div class="mx-auto w-full max-w-[430px] min-h-dvh px-6 pt-safe-lg pb-safe-lg flex flex-col items-center justify-center text-center">
-
-        <div class="breath mb-6" aria-hidden="true"></div>
-
-        <h1 class="font-head font-extrabold text-[28px] text-ink">Waktunya istirahat</h1>
-        <p class="t-body text-muted mt-2 mb-4">Tarik napas pelan, lalu lanjut lagi ya.</p>
-
-        <p id="break-time" class="font-head font-bold text-[40px] leading-none text-ink" aria-live="polite">1:00</p>
-
-        <div class="w-full mt-8 flex flex-col gap-2">
-          <button type="button" id="btn-break-continue" class="btn-primary" data-action="end-break" disabled>Lanjut belajar</button>
-          <button type="button" class="text-[14px] font-bold text-muted py-2" data-action="skip-break">Lewati istirahat</button>
-        </div>
+      <div class="mx-auto w-full max-w-[430px] min-h-dvh px-6 pt-safe pb-safe flex flex-col items-center justify-center text-center">
+        <img src="img/kit/dee-baca.png" alt="" class="dee-img w-[130px]" />
+        <h1 class="win-title text-[30px] mt-2">Istirahat</h1>
+        <p id="break-time" class="font-head font-extrabold text-[38px] leading-none mt-2" aria-live="polite">1:00</p>
+        <button type="button" id="btn-break-continue" class="btn-primary w-full mt-6" data-action="end-break" disabled>Lanjut</button>
+        <button type="button" class="btn-link mt-3" data-action="skip-break">Lewati</button>
       </div>
     </section>
 
-    <!-- =====================================================
-         PENGATURAN
-         ===================================================== -->
+    <!-- ============ PENGATURAN ============ -->
     <section id="screen-pengaturan" class="screen">
-      <div class="mx-auto w-full max-w-[430px] px-5 pt-safe pb-24">
-
-        <header class="flex items-center gap-3 mb-5">
-          <button type="button" class="w-11 h-11 rounded-full bg-white border border-border flex items-center justify-center text-ink shrink-0"
-            data-action="back-profil" aria-label="Kembali ke profil">
+      <div class="mx-auto w-full max-w-[430px] px-4 pt-safe pb-10">
+        <header class="flex items-center gap-2.5 mb-3">
+          <button type="button" class="btn-icon" data-action="back-profil" aria-label="Kembali">
             <span class="material-symbols-outlined text-[22px]" aria-hidden="true">arrow_back</span>
           </button>
-          <div class="min-w-0">
-            <h1 class="font-head font-extrabold text-[22px] leading-tight text-ink">Pengaturan</h1>
-            <p class="text-[13px] text-muted">Sesuaikan agar nyaman dibaca</p>
-          </div>
+          <h1 class="font-head font-extrabold text-[22px] leading-none">Pengaturan</h1>
         </header>
 
-        <div class="card p-4 mb-4">
-          <h2 class="font-head font-bold text-[17px] text-ink mb-1">Ukuran teks</h2>
-          <p class="text-[13px] text-muted mb-3">Berlaku untuk soal dan pilihan jawaban.</p>
+        <div class="card p-4 mb-3">
+          <p class="font-head font-extrabold text-[15px] mb-2">Ukuran teks</p>
           <div id="set-scale" class="flex gap-2" role="group" aria-label="Ukuran teks">
             <button type="button" class="chip-choice flex-1" data-action="set-scale" data-scale="sm" aria-pressed="false">Kecil</button>
             <button type="button" class="chip-choice flex-1" data-action="set-scale" data-scale="md" aria-pressed="true">Sedang</button>
             <button type="button" class="chip-choice flex-1" data-action="set-scale" data-scale="lg" aria-pressed="false">Besar</button>
           </div>
-          <div class="mt-3 rounded-2xl bg-[#FBF6EC] p-3">
-            <p class="text-[12px] text-muted mb-1">Contoh</p>
-            <p id="set-preview" class="font-head font-bold text-ink">Ibu memasak nasi.</p>
+          <div class="mt-3 rounded-2xl bg-[#F3FCF8] p-3">
+            <p id="set-preview" class="font-head font-bold">Ibu memasak nasi.</p>
           </div>
         </div>
 
-        <div class="card p-4 mb-4">
-          <h2 class="font-head font-bold text-[17px] text-ink mb-1">Kecepatan audio</h2>
-          <p class="text-[13px] text-muted mb-3">Pilih yang paling enak didengar.</p>
+        <div class="card p-4 mb-3">
+          <p class="font-head font-extrabold text-[15px] mb-2">Kecepatan audio</p>
           <div id="set-speed" class="flex gap-2" role="group" aria-label="Kecepatan audio">
             <button type="button" class="chip-choice flex-1" data-action="set-speed" data-speed="slow" aria-pressed="false">Lambat</button>
             <button type="button" class="chip-choice flex-1" data-action="set-speed" data-speed="normal" aria-pressed="true">Normal</button>
           </div>
         </div>
 
-        <div class="card px-4 divide-y divide-[#F1E8DA]">
-          <div class="flex items-center gap-3 py-3.5">
-            <div class="min-w-0 flex-1">
-              <p class="font-bold text-[15px] text-ink">Ulangi instruksi otomatis</p>
-              <p class="text-[13px] text-muted">Soal dibacakan saat muncul</p>
-            </div>
+        <div class="card px-4 divide-y divide-[#EEF8F4]">
+          <div class="flex items-center gap-3 py-3">
+            <p class="flex-1 font-bold text-[14px]">Ulangi instruksi</p>
             <button type="button" class="toggle" role="switch" aria-checked="false" data-action="toggle-setting" data-setting="autoRepeat" aria-label="Ulangi instruksi otomatis"></button>
           </div>
-
-          <div class="flex items-center gap-3 py-3.5">
-            <div class="min-w-0 flex-1">
-              <p class="font-bold text-[15px] text-ink">Tampilkan tombol contoh</p>
-              <p class="text-[13px] text-muted">Bantuan kecil di setiap soal</p>
-            </div>
-            <button type="button" class="toggle" role="switch" aria-checked="true" data-action="toggle-setting" data-setting="showExample" aria-label="Tampilkan tombol contoh"></button>
-          </div>
-
-          <div class="flex items-center gap-3 py-3.5">
-            <div class="min-w-0 flex-1">
-              <p class="font-bold text-[15px] text-ink">Kurangi animasi</p>
-              <p class="text-[13px] text-muted">Agar layar lebih tenang</p>
-            </div>
+          <div class="flex items-center gap-3 py-3">
+            <p class="flex-1 font-bold text-[14px]">Kurangi animasi</p>
             <button type="button" class="toggle" role="switch" aria-checked="false" data-action="toggle-setting" data-setting="reduceMotion" aria-label="Kurangi animasi"></button>
           </div>
-
-          <div class="flex items-center gap-3 py-3.5">
-            <div class="min-w-0 flex-1">
-              <p class="font-bold text-[15px] text-ink">Kontras tinggi</p>
-              <p class="text-[13px] text-muted">Tulisan lebih tegas</p>
-            </div>
+          <div class="flex items-center gap-3 py-3">
+            <p class="flex-1 font-bold text-[14px]">Kontras tinggi</p>
             <button type="button" class="toggle" role="switch" aria-checked="false" data-action="toggle-setting" data-setting="highContrast" aria-label="Kontras tinggi"></button>
           </div>
-
-          <div class="flex items-center gap-3 py-3.5">
-            <div class="min-w-0 flex-1">
-              <p class="font-bold text-[15px] text-ink">Efek suara</p>
-              <p class="text-[13px] text-muted">Bunyi kecil saat menjawab</p>
-            </div>
+          <div class="flex items-center gap-3 py-3">
+            <p class="flex-1 font-bold text-[14px]">Efek suara</p>
             <button type="button" class="toggle" role="switch" aria-checked="true" data-action="toggle-setting" data-setting="sfx" aria-label="Efek suara"></button>
           </div>
         </div>
 
-        <button type="button" class="btn-primary mt-5" data-action="back-profil">Selesai</button>
+        <button type="button" class="btn-primary w-full mt-4" data-action="back-profil">Selesai</button>
       </div>
     </section>
   </main>
 
-  <!-- =====================================================
-       NAVIGASI BAWAH
-       ===================================================== -->
-  <nav id="bottom-nav" class="is-hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-xl border-t border-border nav-shell pb-nav" aria-label="Navigasi utama">
-    <div class="mx-auto max-w-[430px] grid grid-cols-4 h-20">
+  <!-- NAV -->
+  <nav id="bottom-nav" class="is-hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-xl border-t-2 border-[#E7F6F0] pb-nav" aria-label="Navigasi utama">
+    <div class="mx-auto max-w-[430px] grid grid-cols-4 h-[70px]">
       <button type="button" class="nav-item" data-action="tab" data-tab="peta" aria-current="page">
-        <span class="material-symbols-outlined text-[26px]" aria-hidden="true" style="font-variation-settings:'FILL' 1;">map</span>
+        <span class="material-symbols-outlined" aria-hidden="true">map</span>
         <span>Peta</span>
       </button>
       <button type="button" class="nav-item" data-action="tab" data-tab="latihan">
-        <span class="material-symbols-outlined text-[26px]" aria-hidden="true">school</span>
+        <span class="material-symbols-outlined" aria-hidden="true">auto_stories</span>
         <span>Latihan</span>
       </button>
       <button type="button" class="nav-item" data-action="tab" data-tab="hadiah">
-        <span class="material-symbols-outlined text-[26px]" aria-hidden="true">emoji_events</span>
+        <span class="material-symbols-outlined" aria-hidden="true">military_tech</span>
         <span>Hadiah</span>
       </button>
       <button type="button" class="nav-item" data-action="tab" data-tab="profil">
-        <span class="material-symbols-outlined text-[26px]" aria-hidden="true">person</span>
+        <span class="material-symbols-outlined" aria-hidden="true">face</span>
         <span>Profil</span>
       </button>
     </div>
   </nav>
 
-  <!-- =====================================================
-       SHEET UMPAN BALIK
-       ===================================================== -->
+  <!-- SHEET -->
   <div id="sheet-backdrop" class="sheet-backdrop"></div>
   <div id="sheet" class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
-    <div id="sheet-card" class="card p-5" tabindex="-1">
-      <div class="flex items-start gap-3 mb-3">
-        <div id="sheet-icon" class="w-12 h-12 rounded-full bg-[#E8F7EC] text-[#1B7F3B] flex items-center justify-center shrink-0"></div>
-        <div class="min-w-0">
-          <h2 id="sheet-title" class="font-head font-bold text-[19px] leading-snug text-ink"></h2>
-          <p id="sheet-body" class="t-body text-muted mt-1"></p>
-        </div>
-      </div>
-      <div id="sheet-actions"></div>
+    <div id="sheet-card" class="sheet-card" tabindex="-1">
+      <img id="sheet-dee" class="sheet-dee" src="img/kit/dee-senang.png" alt="" width="84" height="98" />
+      <h2 id="sheet-title" class="sheet-title"></h2>
+      <p id="sheet-body" class="sheet-body"></p>
+      <div id="sheet-actions" class="mt-4"></div>
     </div>
   </div>
 
-  <!-- =====================================================
-       MODAL
-       ===================================================== -->
+  <!-- MODAL -->
   <div id="modal" role="dialog" aria-modal="true" aria-label="Dialog">
     <div class="card p-5">
       <div id="modal-body"></div>
@@ -652,9 +426,7 @@
 
   <div id="toast" role="status" aria-live="polite"></div>
 
-  <noscript>
-    <p style="padding:24px;font-family:sans-serif">Duolexia butuh JavaScript aktif untuk berjalan.</p>
-  </noscript>
+  <noscript><p style="padding:24px;font-family:sans-serif">Duolexia butuh JavaScript aktif.</p></noscript>
 
   <script src="app.js"></script>
 </body>
