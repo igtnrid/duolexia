@@ -1,4 +1,4 @@
-const CACHE_NAME = 'duolexia-v6'; 
+const CACHE_NAME = 'duolexia-v3'; 
 
 const ASSETS = [
   './',
