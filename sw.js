@@ -1,20 +1,19 @@
-const CACHE_NAME = 'duolexia-v2'; // Naikkan versi ke v2
+const CACHE_NAME = 'duolexia-v4'; // Wajib naik versi setiap kali Anda mengedit file
 
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
   './mascot.png',
-  './icons/icon-192.png',
-  './icons/icon-512.png',
-  // Daftar file audio Anda:
-  './audio/b.mp3',
-  './audio/d.mp3',
-  './audio/p.mp3',
-  './audio/q.mp3',
-  './audio/welcome.mp3'
+  './avatar1.png',
+  './avatar2.png',
+  './avatar3.png',
+  './avatar4.png',
+  './avatar5.png',
+  './avatar6.png'
 ];
 
+// 1. Proses Install: Menyimpan file ke dalam cache
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(CACHE_NAME)
@@ -23,19 +22,23 @@ self.addEventListener('install', (e) => {
   );
 });
 
+// 2. Proses Activate: Menghapus cache versi lama
 self.addEventListener('activate', (e) => {
   e.waitUntil(
-    caches.keys()
-      .then(keys => Promise.all(
+    caches.keys().then(keys => {
+      return Promise.all(
         keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
-      ))
-      .then(() => self.clients.claim())
+      );
+    }).then(() => self.clients.claim())
   );
 });
 
+// 3. Proses Fetch: Mengambil file dari cache atau internet
 self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET') return;
 
+  // Jika membuka halaman (navigasi), utamakan jaringan internet (Network First)
+  // Agar update kode HTML langsung terlihat
   if (e.request.mode === 'navigate') {
     e.respondWith(
       fetch(e.request).catch(() => caches.match('./index.html'))
@@ -43,16 +46,17 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
+  // Untuk aset (gambar, css), utamakan cache (Cache First)
   e.respondWith(
     caches.match(e.request).then(cached => {
       if (cached) return cached;
       return fetch(e.request).then(res => {
-        if (!res || res.status !== 200) return res;
-        if (res.type !== 'basic' && res.type !== 'cors') return res;
+        // Hanya simpan response yang valid
+        if (!res || res.status !== 200 || res.type === 'opaque') return res;
         const copy = res.clone();
         caches.open(CACHE_NAME).then(c => c.put(e.request, copy));
         return res;
-      }).catch(() => {});
-    })
+      });
+    }).catch(() => {})
   );
 });
