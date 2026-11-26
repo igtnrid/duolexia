@@ -159,14 +159,13 @@
         <button id="header-back" aria-label="Kembali" class="hidden w-11 h-11 rounded-full bg-surface-container-lowest flex items-center justify-center text-on-surface shadow-[0_3px_0_0_#d1e4fb] active:translate-y-[2px] active:shadow-[0_1px_0_0_#d1e4fb] transition-all shrink-0" type="button">
           <span class="material-symbols-outlined text-[20px]">arrow_back</span>
         </button>
-        <!-- LOGO BURUNG HANTU -->
         <img src="mascot.png" alt="Logo Burung Hantu Duolexia" class="h-9 w-9 rounded-full object-cover shrink-0 shadow-[0_2px_0_0_#a0c9ff] border-2 border-primary-container" />
         <span id="header-title" class="font-headline-sm text-headline-sm text-on-surface truncate">Belajar</span>
       </div>
       <div class="flex items-center gap-space-sm shrink-0">
         <div id="header-streak" class="h-11 px-3 rounded-full bg-tertiary-fixed flex items-center gap-1.5 text-tertiary">
           <span class="material-symbols-outlined text-[20px]">local_fire_department</span>
-          <span class="font-label-md text-label-md whitespace-nowrap">0 Hari</span>
+          <span id="header-streak-text" class="font-label-md text-label-md whitespace-nowrap">0 Hari</span>
         </div>
         <button id="btn-display" aria-label="Pengaturan Tampilan" class="h-11 min-w-[44px] px-3.5 rounded-full bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-[0_3px_0_0_#d1e4fb] active:translate-y-[2px] active:shadow-[0_1px_0_0_#d1e4fb] transition-all flex items-center justify-center" type="button">Aa</button>
         <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
@@ -198,7 +197,6 @@
             <h2 class="font-headline-sm text-headline-sm text-on-surface mt-1">Hebat! Ayo lanjutkan belajarmu hari ini</h2>
           </div>
 
-          <!-- Circular Daily Goal Progress Ring (30/50 XP) -->
           <div class="relative w-20 h-20 shrink-0 flex items-center justify-center bg-surface-container-lowest rounded-full shadow-[0_3px_0_0_#d1e4fb]">
             <svg aria-hidden="true" class="w-16 h-16 -rotate-90" viewBox="0 0 64 64">
               <circle cx="32" cy="32" fill="none" r="26" stroke="#e3efff" stroke-width="6"></circle>
@@ -219,10 +217,10 @@
             </div>
             <div class="min-w-0 flex-1">
               <p class="font-label-sm text-label-sm text-on-surface-variant">Pelajaran Berikutnya</p>
-              <p class="font-title-md text-title-md text-on-surface truncate">Petualangan Huruf: Bunyi b-d-p-q</p>
+              <p id="next-lesson-title" class="font-title-md text-title-md text-on-surface truncate">Level 1: Bunyi Dasar</p>
             </div>
           </div>
-          <button data-open-lesson class="w-full h-14 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow-[0_4px_0_0_#65B00C] active:translate-y-[2px] active:shadow-[0_2px_0_0_#65B00C] transition-all flex items-center justify-center gap-space-sm" type="button">
+          <button data-open-active-lesson class="w-full h-14 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow-[0_4px_0_0_#65B00C] active:translate-y-[2px] active:shadow-[0_2px_0_0_#65B00C] transition-all flex items-center justify-center gap-space-sm" type="button">
             <span>Lanjutkan</span>
             <span class="material-symbols-outlined text-[22px]">play_arrow</span>
           </button>
@@ -240,102 +238,12 @@
             <p class="font-body-md text-body-md text-on-tertiary-fixed-variant truncate">3 soal kemarin perlu diulang</p>
           </div>
         </div>
-        <button data-open-lesson class="h-12 px-5 rounded-lg bg-secondary-container text-on-secondary font-label-md text-label-md shadow-[0_4px_0_0_#1474C7] active:translate-y-[2px] active:shadow-[0_2px_0_0_#1474C7] transition-all shrink-0 flex items-center justify-center" type="button">Mulai</button>
+        <button data-open-active-lesson class="h-12 px-5 rounded-lg bg-secondary-container text-on-secondary font-label-md text-label-md shadow-[0_4px_0_0_#1474C7] active:translate-y-[2px] active:shadow-[0_2px_0_0_#1474C7] transition-all shrink-0 flex items-center justify-center" type="button">Mulai</button>
       </div>
 
-      <!-- 3. Zigzag Learning Path -->
-      <div class="flex flex-col gap-space-lg mt-space-sm">
+      <!-- 3. Zigzag Learning Path (Dynamic via JS) -->
+      <div id="learning-path" class="flex flex-col gap-space-lg mt-space-sm"></div>
 
-        <!-- Module 1: Telinga Pintar (Selesai) -->
-        <div class="flex flex-col gap-space-md">
-          <div class="bg-primary-container text-on-primary rounded-lg px-space-md py-3 shadow-[0_4px_0_0_#65B00C] flex items-center justify-between">
-            <div class="flex items-center gap-space-sm min-w-0">
-              <span class="material-symbols-outlined text-[24px] shrink-0" style="font-variation-settings:'FILL' 1;">hearing</span>
-              <span class="font-title-md text-title-md truncate">1. Telinga Pintar</span>
-            </div>
-            <span class="px-2.5 py-0.5 rounded-full bg-surface-container-lowest text-primary font-label-sm text-label-sm shrink-0">Aktif</span>
-          </div>
-          <div class="flex flex-col items-center gap-space-md py-space-xs">
-            <button data-done aria-label="Pelajaran 1 selesai" class="w-16 h-16 rounded-full bg-primary-container text-on-primary shadow-[0_5px_0_0_#65B00C] active:translate-y-[2px] active:shadow-[0_3px_0_0_#65B00C] transition-all flex items-center justify-center -translate-x-10" type="button">
-              <span class="material-symbols-outlined text-[30px]" style="font-variation-settings:'FILL' 1;">check</span>
-            </button>
-            <button data-done aria-label="Pelajaran 2 selesai" class="w-16 h-16 rounded-full bg-primary-container text-on-primary shadow-[0_5px_0_0_#65B00C] active:translate-y-[2px] active:shadow-[0_3px_0_0_#65B00C] transition-all flex items-center justify-center translate-x-10" type="button">
-              <span class="material-symbols-outlined text-[30px]" style="font-variation-settings:'FILL' 1;">check</span>
-            </button>
-            <button data-done aria-label="Pelajaran 3 selesai" class="w-16 h-16 rounded-full bg-primary-container text-on-primary shadow-[0_5px_0_0_#65B00C] active:translate-y-[2px] active:shadow-[0_3px_0_0_#65B00C] transition-all flex items-center justify-center -translate-x-6" type="button">
-              <span class="material-symbols-outlined text-[30px]" style="font-variation-settings:'FILL' 1;">star</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Module 2: Petualangan Huruf (Aktif) -->
-        <div class="flex flex-col gap-space-md">
-          <div class="bg-secondary-container text-on-secondary rounded-lg px-space-md py-3 shadow-[0_4px_0_0_#1474C7] flex items-center justify-between">
-            <div class="flex items-center gap-space-sm min-w-0">
-              <span class="material-symbols-outlined text-[24px] shrink-0" style="font-variation-settings:'FILL' 1;">abc</span>
-              <span class="font-title-md text-title-md truncate">2. Petualangan Huruf</span>
-            </div>
-            <span class="px-2.5 py-0.5 rounded-full bg-golden-yellow text-on-surface font-label-sm text-label-sm shrink-0">Terkunci</span>
-          </div>
-          <div class="flex flex-col items-center gap-space-md py-space-xs">
-            <button data-done aria-label="Pelajaran 1 selesai" class="w-16 h-16 rounded-full bg-primary-container text-on-primary shadow-[0_5px_0_0_#65B00C] active:translate-y-[2px] active:shadow-[0_3px_0_0_#65B00C] transition-all flex items-center justify-center translate-x-8" type="button">
-              <span class="material-symbols-outlined text-[30px]" style="font-variation-settings:'FILL' 1;">check</span>
-            </button>
-
-            <!-- Active Node -->
-            <div class="relative flex items-center justify-center -translate-x-6 my-space-xs">
-              <div class="absolute w-24 h-24 rounded-full bg-golden-yellow/35 animate-pulse"></div>
-              <button data-open-lesson aria-label="Pelajaran aktif: Bunyi b-d-p-q" class="relative z-10 w-20 h-20 rounded-full bg-golden-yellow text-on-surface shadow-[0_6px_0_0_#994700] active:translate-y-[2px] active:shadow-[0_4px_0_0_#994700] transition-all flex flex-col items-center justify-center" type="button">
-                <span class="material-symbols-outlined text-[34px]" style="font-variation-settings:'FILL' 1;">play_arrow</span>
-              </button>
-              <!-- Maskot Burung Hantu Mengintip -->
-              <div class="absolute left-24 flex items-center gap-space-xs">
-                <img src="mascot.png" alt="Maskot Burung Hantu Duolexia" class="w-16 h-16 rounded-full object-cover bg-ice-cyan shadow-[0_3px_0_0_#a0c9ff] border-2 border-primary-container" />
-              </div>
-            </div>
-
-            <button data-locked aria-label="Pelajaran terkunci" class="w-16 h-16 rounded-full bg-surface-container-high text-on-surface-variant shadow-[0_5px_0_0_#a0c9ff] flex items-center justify-center translate-x-10 opacity-80" type="button">
-              <span class="material-symbols-outlined text-[26px]">lock</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Module 3: Detektif Bunyi (Locked) -->
-        <div class="flex flex-col gap-space-md">
-          <div class="bg-surface-container-high text-on-surface-variant rounded-lg px-space-md py-3 shadow-[0_4px_0_0_#a0c9ff] flex items-center justify-between">
-            <div class="flex items-center gap-space-sm min-w-0">
-              <span class="material-symbols-outlined text-[24px] shrink-0">search</span>
-              <span class="font-title-md text-title-md truncate">3. Detektif Bunyi</span>
-            </div>
-            <span class="material-symbols-outlined text-[20px] shrink-0">lock</span>
-          </div>
-          <div class="flex flex-col items-center gap-space-md py-space-xs">
-            <button data-locked aria-label="Pelajaran terkunci" class="w-16 h-16 rounded-full bg-surface-container-high text-on-surface-variant shadow-[0_5px_0_0_#a0c9ff] flex items-center justify-center -translate-x-10 opacity-80" type="button">
-              <span class="material-symbols-outlined text-[26px]">lock</span>
-            </button>
-            <button data-locked aria-label="Pelajaran terkunci" class="w-16 h-16 rounded-full bg-surface-container-high text-on-surface-variant shadow-[0_5px_0_0_#a0c9ff] flex items-center justify-center translate-x-8 opacity-80" type="button">
-              <span class="material-symbols-outlined text-[26px]">lock</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Module 4: Kereta Suku Kata (Locked) -->
-        <div class="flex flex-col gap-space-md">
-          <div class="bg-surface-container-high text-on-surface-variant rounded-lg px-space-md py-3 shadow-[0_4px_0_0_#a0c9ff] flex items-center justify-between">
-            <div class="flex items-center gap-space-sm min-w-0">
-              <span class="material-symbols-outlined text-[24px] shrink-0">train</span>
-              <span class="font-title-md text-title-md truncate">4. Kereta Suku Kata</span>
-            </div>
-            <span class="material-symbols-outlined text-[20px] shrink-0">lock</span>
-          </div>
-          <div class="flex flex-col items-center gap-space-md py-space-xs">
-            <button data-locked aria-label="Pelajaran terkunci" class="w-16 h-16 rounded-full bg-surface-container-high text-on-surface-variant shadow-[0_5px_0_0_#a0c9ff] flex items-center justify-center -translate-x-6 opacity-80" type="button">
-              <span class="material-symbols-outlined text-[26px]">lock</span>
-            </button>
-          </div>
-        </div>
-
-      </div>
     </section>
 
     <!-- ============ SCREEN: PELAJARAN ============ -->
@@ -348,9 +256,9 @@
         </button>
         <div class="flex-1 flex items-center gap-space-sm">
           <div class="w-full h-5 rounded-full bg-ice-cyan p-1 shadow-[inset_0_2px_4px_rgba(9,29,46,0.08)] overflow-hidden">
-            <div id="lesson-progress" class="h-full w-1/2 rounded-full bg-gradient-to-r from-tertiary via-golden-yellow to-golden-yellow transition-all duration-500"></div>
+            <div id="lesson-progress" class="h-full w-1/4 rounded-full bg-gradient-to-r from-tertiary via-golden-yellow to-golden-yellow transition-all duration-500"></div>
           </div>
-          <span id="lesson-progress-label" class="font-label-md text-label-md text-on-surface shrink-0">2/4</span>
+          <span id="lesson-progress-label" class="font-label-md text-label-md text-on-surface shrink-0">1/4</span>
         </div>
         <div class="h-11 px-3.5 rounded-full bg-surface-container-lowest text-on-surface shadow-[0_3px_0_0_#d1e4fb] flex items-center gap-1.5 shrink-0">
           <span class="material-symbols-outlined text-golden-yellow text-[20px]" style="font-variation-settings:'FILL' 1;">star</span>
@@ -361,7 +269,6 @@
       <!-- Prompt + audio -->
       <div class="bg-ice-cyan rounded-lg p-space-lg flex flex-col items-center text-center gap-space-md shadow-[0_4px_0_0_#d1e4fb]">
         <div class="flex items-center gap-space-sm">
-          <!-- Maskot Burung Hantu di Layar Pelajaran -->
           <img src="mascot.png" alt="Maskot Burung Hantu Duolexia" class="w-14 h-14 rounded-full object-cover bg-surface-container-lowest shadow-[0_3px_0_0_#d1e4fb] border-2 border-primary-container shrink-0" />
           <p class="font-title-md text-title-md text-on-surface text-left">Dengarkan bunyi, lalu pilih huruf yang tepat</p>
         </div>
@@ -379,22 +286,7 @@
 
       <!-- Options -->
       <div class="grid grid-cols-2 gap-space-md w-full" id="options-grid">
-        <button aria-pressed="true" data-letter="b" class="option-card h-32 rounded-lg bg-secondary-fixed text-on-secondary-fixed shadow-[0_4px_0_0_#1474C7] active:translate-y-[2px] active:shadow-[0_2px_0_0_#1474C7] transition-all flex flex-col items-center justify-center gap-1" type="button">
-          <span class="font-headline-lg text-headline-lg leading-none">b</span>
-          <span class="dot w-2 h-2 rounded-full bg-secondary"></span>
-        </button>
-        <button aria-pressed="false" data-letter="d" class="option-card h-32 rounded-lg bg-surface-container-lowest text-on-surface shadow-[0_4px_0_0_#d1e4fb] active:translate-y-[2px] active:shadow-[0_2px_0_0_#d1e4fb] transition-all flex flex-col items-center justify-center gap-1" type="button">
-          <span class="font-headline-lg text-headline-lg leading-none">d</span>
-          <span class="dot w-2 h-2 rounded-full bg-transparent"></span>
-        </button>
-        <button aria-pressed="false" data-letter="p" class="option-card h-32 rounded-lg bg-surface-container-lowest text-on-surface shadow-[0_4px_0_0_#d1e4fb] active:translate-y-[2px] active:shadow-[0_2px_0_0_#d1e4fb] transition-all flex flex-col items-center justify-center gap-1" type="button">
-          <span class="font-headline-lg text-headline-lg leading-none">p</span>
-          <span class="dot w-2 h-2 rounded-full bg-transparent"></span>
-        </button>
-        <button aria-pressed="false" data-letter="q" class="option-card h-32 rounded-lg bg-surface-container-lowest text-on-surface shadow-[0_4px_0_0_#d1e4fb] active:translate-y-[2px] active:shadow-[0_2px_0_0_#d1e4fb] transition-all flex flex-col items-center justify-center gap-1" type="button">
-          <span class="font-headline-lg text-headline-lg leading-none">q</span>
-          <span class="dot w-2 h-2 rounded-full bg-transparent"></span>
-        </button>
+        <!-- Diisi via JS -->
       </div>
 
       <!-- Feedback -->
@@ -461,22 +353,22 @@
         <h3 class="font-title-md text-title-md text-on-surface">Progres Modul</h3>
         <div class="flex flex-col gap-space-sm">
           <div class="flex items-center justify-between font-label-md text-label-md">
-            <span class="text-on-surface">1. Telinga Pintar</span><span class="text-primary">100%</span>
+            <span class="text-on-surface">1. Telinga Pintar</span><span id="progress-m1" class="text-primary">0%</span>
           </div>
           <div class="h-3 rounded-full bg-surface-container-high overflow-hidden">
-            <div class="h-full w-full rounded-full bg-primary-container"></div>
+            <div id="progress-bar-m1" class="h-full w-0 rounded-full bg-primary-container transition-all"></div>
           </div>
           <div class="flex items-center justify-between font-label-md text-label-md mt-space-xs">
-            <span class="text-on-surface">2. Petualangan Huruf</span><span class="text-secondary">50%</span>
+            <span class="text-on-surface">2. Petualangan Huruf</span><span id="progress-m2" class="text-secondary">0%</span>
           </div>
           <div class="h-3 rounded-full bg-surface-container-high overflow-hidden">
-            <div class="h-full w-1/2 rounded-full bg-secondary-container"></div>
+            <div id="progress-bar-m2" class="h-full w-0 rounded-full bg-secondary-container transition-all"></div>
           </div>
           <div class="flex items-center justify-between font-label-md text-label-md mt-space-xs">
-            <span class="text-on-surface-variant">3. Detektif Bunyi</span><span class="text-on-surface-variant">0%</span>
+            <span class="text-on-surface">3. Detektif Bunyi</span><span id="progress-m3" class="text-on-surface-variant">0%</span>
           </div>
           <div class="h-3 rounded-full bg-surface-container-high overflow-hidden">
-            <div class="h-full w-0 rounded-full bg-secondary-container"></div>
+            <div id="progress-bar-m3" class="h-full w-0 rounded-full bg-surface-container-high transition-all"></div>
           </div>
         </div>
       </div>
@@ -509,7 +401,7 @@
         <span class="material-symbols-outlined text-[52px] text-on-primary-fixed" style="font-variation-settings:'FILL' 1;">emoji_events</span>
       </div>
       <h2 class="font-headline-md text-headline-md text-on-surface">Pelajaran Selesai!</h2>
-      <p class="font-body-md text-body-md text-on-surface-variant">Kamu berhasil menyelesaikan latihan bunyi b-d-p-q. Terus semangat!</p>
+      <p class="font-body-md text-body-md text-on-surface-variant">Kamu berhasil menyelesaikan latihan ini. Terus semangat!</p>
       <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-tertiary-fixed text-tertiary font-label-md text-label-md">
         <span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1;">bolt</span>
         <span>+12 XP</span>
@@ -537,25 +429,98 @@
     };
     const TITLES = { belajar: 'Belajar', pelajaran: 'Sesi Membaca', pindai: 'Pindai', kemajuan: 'Kemajuan' };
 
+    // ===== STATE & STORAGE =====
     const STORAGE_KEY = 'duolexia-progress-v1';
-const DEFAULT_PROGRESS = { xp: 0, stars: 0, streak: 0, modulesDone: 0 };
+    const DEFAULT_PROGRESS = { xp: 0, stars: 0, streak: 0, modulesDone: 0, completedLevels: 0 };
 
-function loadProgress() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? Object.assign({}, DEFAULT_PROGRESS, JSON.parse(raw)) : Object.assign({}, DEFAULT_PROGRESS);
-  } catch (e) {
-    return Object.assign({}, DEFAULT_PROGRESS);
-  }
-}
-function saveProgress() {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); } catch (e) {}
-}
+    function loadProgress() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? Object.assign({}, DEFAULT_PROGRESS, JSON.parse(raw)) : Object.assign({}, DEFAULT_PROGRESS);
+      } catch (e) {
+        return Object.assign({}, DEFAULT_PROGRESS);
+      }
+    }
+    function saveProgress() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); } catch (e) {}
+    }
 
-const progress = loadProgress();
-let xp = progress.xp;
+    let progress = loadProgress();
+    let xp = progress.xp;
+    let currentLevel = progress.completedLevels + 1;
 
-    /* ---------------- Toast ---------------- */
+    // ===== LEVEL DATA =====
+    // Format: questions, options, dan file audio (jika ada)
+    const LEVEL_DATA = [
+      {
+        title: "Level 1: Bunyi b-d-p-q",
+        q: [
+          { letter: 'd', say: 'de', audio: 'audio/d.mp3', options: ['b','d','p','q'] },
+          { letter: 'b', say: 'be', audio: 'audio/b.mp3', options: ['b','d','p','q'] },
+          { letter: 'p', say: 'pe', audio: 'audio/p.mp3', options: ['b','d','p','q'] },
+          { letter: 'q', say: 'ki', audio: 'audio/q.mp3', options: ['b','d','p','q'] }
+        ]
+      },
+      {
+        title: "Level 2: Bunyi m-n-w-u",
+        q: [
+          { letter: 'm', say: 'em', audio: 'audio/m.mp3', options: ['m','n','w','u'] },
+          { letter: 'n', say: 'en', audio: 'audio/n.mp3', options: ['m','n','w','u'] },
+          { letter: 'w', say: 'we', audio: 'audio/w.mp3', options: ['m','n','w','u'] },
+          { letter: 'u', say: 'u', audio: 'audio/u.mp3', options: ['m','n','w','u'] }
+        ]
+      },
+      // Level 3 - 12 menggunakan data cadangan (Level 1) agar bisa dimainkan
+      { title: "Level 3: Petualangan 3", q: [{ letter: 'b', say: 'be', audio: 'audio/b.mp3', options: ['b','d','p','q'] }] },
+      { title: "Level 4: Suku Kata 1", q: [{ letter: 'ba', say: 'ba', audio: 'audio/ba.mp3', options: ['ba','bi','bu','be'] }] }
+    ];
+
+    // Isi sisa level agar total 12 (biar UI tidak error)
+    for(let i = LEVEL_DATA.length + 1; i <= 12; i++) {
+        LEVEL_DATA.push({ title: `Level ${i}: Segera Hadir`, q: LEVEL_DATA[0].q });
+    }
+
+    // ===== AUDIO PLAYER =====
+    let currentAudio = null;
+
+    function playAudio(src, speed = 1.0, fallbackText = '') {
+      try {
+        if (currentAudio) {
+          currentAudio.pause();
+          currentAudio.currentTime = 0;
+        }
+        currentAudio = new Audio(src);
+        currentAudio.playbackRate = speed;
+        
+        // Putar audio, jika gagal (file belum ada), gunakan TTS sebagai cadangan
+        currentAudio.play().catch(err => {
+          console.warn('File audio belum ada, pakai TTS:', src);
+          if (fallbackText) speak(fallbackText, speed);
+        });
+        return true;
+      } catch (e) {
+        if (fallbackText) speak(fallbackText, speed);
+        return false;
+      }
+    }
+
+    function speak(text, rate) {
+      rate = rate || 0.9;
+      if (!('speechSynthesis' in window)) return false;
+      try {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang  = 'id-ID';
+        u.rate  = rate;
+        u.pitch = 1.05;
+        window.speechSynthesis.speak(u);
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    // ===== TOAST & ROUTER =====
     let toastTimer;
     function showToast(msg) {
       const t = $('#toast');
@@ -570,8 +535,7 @@ let xp = progress.xp;
       }, 2200);
     }
 
-    /* ---------------- Router ---------------- */
-    function showScreen(name) {
+    function showScreen(name, levelId) {
       Object.values(screens).forEach(s => s && s.classList.add('hidden'));
       const target = screens[name];
       if (!target) return;
@@ -595,10 +559,20 @@ let xp = progress.xp;
       });
 
       window.scrollTo(0, 0);
-      if (isLesson) startLesson();
+
+      if (isLesson) {
+        if (levelId) currentLevel = levelId;
+        const data = LEVEL_DATA[currentLevel - 1] || LEVEL_DATA[0];
+        lesson.questions = data.q;
+        startLesson();
+      } else if (name === 'belajar') {
+        renderPath(); // Selalu perbarui path saat kembali ke beranda
+      } else if (name === 'kemajuan') {
+        renderStatsProgress();
+      }
     }
 
-    /* ---------------- XP ring ---------------- */
+    // ===== XP & STATS =====
     function updateXp() {
       const label = $('#xp-label');
       if (label) label.textContent = Math.min(xp, 50) + '/50';
@@ -610,36 +584,125 @@ let xp = progress.xp;
       }
     }
 
-    /* ---------------- Speech ---------------- */
-    function speak(text, rate) {
-      rate = rate || 0.9;
-      if (!('speechSynthesis' in window)) {
-        showToast('Audio tidak didukung di perangkat ini');
-        return false;
-      }
-      try {
-        window.speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(text);
-        u.lang  = 'id-ID';
-        u.rate  = rate;
-        u.pitch = 1.05;
-        window.speechSynthesis.speak(u);
-        return true;
-      } catch (e) {
-        return false;
+    function renderStats() {
+      const streakText = $('#header-streak-text');
+      if (streakText) streakText.textContent = (progress.streak || 0) + ' Hari';
+
+      const sStreak = $('#stat-streak');
+      const sXp = $('#stat-xp');
+      const sMod = $('#stat-modules');
+      const sStar = $('#stat-stars');
+      if (sStreak) sStreak.textContent = progress.streak || 0;
+      if (sXp) sXp.textContent = progress.xp || 0;
+      if (sMod) sMod.textContent = progress.modulesDone || 0;
+      if (sStar) sStar.textContent = progress.stars || 0;
+
+      const nextTitle = $('#next-lesson-title');
+      if (nextTitle) {
+         nextTitle.textContent = LEVEL_DATA[Math.min(progress.completedLevels, 11)].title;
       }
     }
 
-    /* ---------------- Lesson state ---------------- */
+    function renderStatsProgress() {
+      // Update modul bar statis agar sesuai
+      const m1 = Math.min(100, Math.round((progress.completedLevels / 3) * 100));
+      const m2 = Math.min(100, Math.round(((progress.completedLevels - 3) / 3) * 100));
+      
+      if($('#progress-m1')) {
+        $('#progress-m1').textContent = m1 + '%';
+        $('#progress-bar-m1').style.width = m1 + '%';
+      }
+      if($('#progress-m2')) {
+        $('#progress-m2').textContent = (m2 < 0 ? 0 : m2) + '%';
+        $('#progress-bar-m2').style.width = (m2 < 0 ? 0 : m2) + '%';
+      }
+    }
+
+    // ===== RENDER ZIGZAG PATH =====
+    function renderPath() {
+      const container = $('#learning-path');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const modules = [
+        { title: '1. Telinga Pintar', icon: 'hearing', start: 1, end: 3 },
+        { title: '2. Petualangan Huruf', icon: 'abc', start: 4, end: 6 },
+        { title: '3. Detektif Bunyi', icon: 'search', start: 7, end: 9 },
+        { title: '4. Kereta Suku Kata', icon: 'train', start: 10, end: 12 }
+      ];
+
+      modules.forEach((mod) => {
+        let moduleHTML = `
+          <div class="flex flex-col gap-space-md">
+            <div class="bg-secondary-container text-on-secondary rounded-lg px-space-md py-3 shadow-[0_4px_0_0_#1474C7] flex items-center justify-between">
+              <div class="flex items-center gap-space-sm min-w-0">
+                <span class="material-symbols-outlined text-[24px] shrink-0" style="font-variation-settings:'FILL' 1;">${mod.icon}</span>
+                <span class="font-title-md text-title-md truncate">${mod.title}</span>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-surface-container-lowest text-secondary font-label-sm text-label-sm shrink-0">${progress.completedLevels >= mod.end ? 'Selesai' : 'Buka'}</span>
+            </div>
+            <div class="flex flex-col items-center gap-space-md py-space-xs">
+        `;
+
+        for (let i = mod.start; i <= mod.end; i++) {
+          const isDone = i <= progress.completedLevels;
+          const isActive = i === progress.completedLevels + 1;
+          const isLocked = i > progress.completedLevels + 1;
+
+          // Posisi zig-zag
+          let offset = '';
+          if (i % 3 === 1) offset = '-translate-x-10';
+          else if (i % 3 === 2) offset = 'translate-x-10';
+          else offset = '-translate-x-6';
+
+          if (isDone) {
+             moduleHTML += `
+              <button data-level="${i}" class="w-16 h-16 rounded-full bg-primary-container text-on-primary shadow-[0_5px_0_0_#65B00C] active:translate-y-[2px] active:shadow-[0_3px_0_0_#65B00C] transition-all flex items-center justify-center ${offset}" type="button">
+                <span class="material-symbols-outlined text-[30px]" style="font-variation-settings:'FILL' 1;">check</span>
+              </button>
+             `;
+          } else if (isActive) {
+             moduleHTML += `
+              <div class="relative flex items-center justify-center ${offset} my-space-xs">
+                <div class="absolute w-24 h-24 rounded-full bg-golden-yellow/35 animate-pulse"></div>
+                <button data-level="${i}" class="relative z-10 w-20 h-20 rounded-full bg-golden-yellow text-on-surface shadow-[0_6px_0_0_#994700] active:translate-y-[2px] active:shadow-[0_4px_0_0_#994700] transition-all flex flex-col items-center justify-center" type="button">
+                  <span class="material-symbols-outlined text-[34px]" style="font-variation-settings:'FILL' 1;">play_arrow</span>
+                </button>
+                ${i === 2 || i === 5 ? `<div class="absolute left-24 flex items-center gap-space-xs"><img src="mascot.png" alt="Maskot" class="w-16 h-16 rounded-full object-cover bg-ice-cyan shadow-[0_3px_0_0_#a0c9ff] border-2 border-primary-container" /></div>` : ''}
+              </div>
+             `;
+          } else {
+             moduleHTML += `
+              <button data-locked class="w-16 h-16 rounded-full bg-surface-container-high text-on-surface-variant shadow-[0_5px_0_0_#a0c9ff] flex items-center justify-center ${offset} opacity-80" type="button">
+                <span class="material-symbols-outlined text-[26px]">lock</span>
+              </button>
+             `;
+          }
+        }
+
+        moduleHTML += `</div></div>`;
+        container.innerHTML += moduleHTML;
+      });
+
+      // Bind events ke tombol yang baru dibuat
+      $$('#learning-path [data-level]').forEach(btn => {
+         btn.addEventListener('click', () => {
+            const lvl = parseInt(btn.dataset.level);
+            if (lvl <= progress.completedLevels + 1) {
+               showScreen('pelajaran', lvl);
+            }
+         });
+      });
+      $$('#learning-path [data-locked]').forEach(btn => {
+         btn.addEventListener('click', () => showToast('Selesaikan level sebelumnya dulu ya!'));
+      });
+    }
+
+    // ===== LESSON LOGIC =====
     const lesson = {
-      questions: [
-        { letter: 'd', say: 'de' },
-        { letter: 'b', say: 'be' },
-        { letter: 'p', say: 'pe' },
-        { letter: 'q', say: 'ki' },
-      ],
-      index: 1,
-      selected: 'b',
+      questions: [],
+      index: 0,
+      selected: null,
       answered: false,
       stars: progress.stars || 0,
     };
@@ -664,6 +727,37 @@ let xp = progress.xp;
       if (bar) bar.style.width = (cur / total * 100) + '%';
       const stars = $('#star-count');
       if (stars) stars.textContent = lesson.stars;
+    }
+
+    function renderOptions() {
+      const grid = $('#options-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      
+      const q = lesson.questions[lesson.index];
+      if (!q) return;
+
+      // Render 4 tombol opsi
+      q.options.forEach(letter => {
+         grid.innerHTML += `
+           <button aria-pressed="false" data-letter="${letter}" class="option-card h-32 rounded-lg bg-surface-container-lowest text-on-surface shadow-[0_4px_0_0_#d1e4fb] active:translate-y-[2px] active:shadow-[0_2px_0_0_#d1e4fb] transition-all flex flex-col items-center justify-center gap-1" type="button">
+             <span class="font-headline-lg text-headline-lg leading-none">${letter}</span>
+             <span class="dot w-2 h-2 rounded-full bg-transparent"></span>
+           </button>
+         `;
+      });
+
+      // Bind klik event
+      $$('#options-grid .option-card').forEach(card => {
+        card.addEventListener('click', () => {
+          if (lesson.answered) return;
+          setSelected(card.dataset.letter);
+          const fb = $('#feedback-banner');
+          if (fb) fb.classList.add('hidden');
+        });
+      });
+
+      setSelected(null);
     }
 
     function setSelected(letter) {
@@ -706,13 +800,14 @@ let xp = progress.xp;
     }
 
     function startLesson() {
-      lesson.index = 1;
+      lesson.index = 0; // Mulai dari 0
       lesson.answered = false;
-      setSelected('b');
       const fb = $('#feedback-banner');
       if (fb) fb.classList.add('hidden');
       const btn = $('#btn-check');
       if (btn) btn.textContent = 'Periksa';
+      
+      renderOptions();
       updateLessonChrome();
     }
 
@@ -723,43 +818,42 @@ let xp = progress.xp;
         return;
       }
       lesson.answered = false;
-      setSelected(null);
       const fb = $('#feedback-banner');
       if (fb) fb.classList.add('hidden');
       const btn = $('#btn-check');
       if (btn) btn.textContent = 'Periksa';
+      
+      renderOptions();
       updateLessonChrome();
     }
 
     function completeLesson() {
-  xp = Math.min(50, xp + 12);
-  progress.xp = xp;
-  progress.stars = lesson.stars;
-  progress.modulesDone = (progress.modulesDone || 0) + 1;
-  saveProgress();
-  updateXp();
-  renderStats();
-  $('#completion-overlay').classList.remove('hidden');
-}
+      xp = Math.min(50, xp + 12);
+      progress.xp = xp;
+      progress.stars = lesson.stars;
 
-    /* ---------------- Option clicks ---------------- */
-    $$('#options-grid .option-card').forEach(card => {
-      card.addEventListener('click', () => {
-        if (lesson.answered) return;
-        setSelected(card.dataset.letter);
-        const fb = $('#feedback-banner');
-        if (fb) fb.classList.add('hidden');
-      });
-    });
+      // Naikkan level jika menyelesaikan level aktif
+      if (currentLevel === progress.completedLevels + 1) {
+          progress.completedLevels++;
+          progress.modulesDone = Math.min(4, Math.floor(progress.completedLevels / 3));
+      }
 
-    /* ---------------- Check button ---------------- */
+      saveProgress();
+      updateXp();
+      renderStats();
+      $('#completion-overlay').classList.remove('hidden');
+    }
+
+    // ===== EVENT LISTENERS =====
     const btnCheck = $('#btn-check');
     if (btnCheck) {
       btnCheck.addEventListener('click', () => {
         if (lesson.answered) { advanceLesson(); return; }
         if (!lesson.selected) { showFeedback('Pilih dulu salah satu huruf, ya.', false); return; }
+        
         const q = lesson.questions[lesson.index];
         const ok = lesson.selected === q.letter;
+        
         showFeedback(ok ? 'Hebat! Jawabanmu benar.' : 'Hampir! Coba dengarkan lagi bunyinya.', ok);
         if (ok) {
           lesson.answered = true;
@@ -771,14 +865,15 @@ let xp = progress.xp;
       });
     }
 
-    /* ---------------- Audio buttons ---------------- */
     const btnListen = $('#btn-listen');
     if (btnListen) {
       btnListen.addEventListener('click', () => {
         const q = lesson.questions[lesson.index];
         const icon = $('#icon-listen');
         if (icon) icon.textContent = 'graphic_eq';
-        speak(q.say, 0.9);
+        
+        playAudio(q.audio, 1.0, q.say); // Panggil Audio Asli
+        
         setTimeout(() => { if (icon) icon.textContent = 'volume_up'; }, 900);
         btnListen.classList.add('ring-4', 'ring-secondary-container/40');
         setTimeout(() => btnListen.classList.remove('ring-4', 'ring-secondary-container/40'), 400);
@@ -789,23 +884,22 @@ let xp = progress.xp;
     if (btnSlow) {
       btnSlow.addEventListener('click', () => {
         const q = lesson.questions[lesson.index];
-        speak(q.say, 0.5);
+        playAudio(q.audio, 0.6, q.say); // Putar lambat
         btnSlow.classList.add('ring-4', 'ring-secondary-fixed');
         setTimeout(() => btnSlow.classList.remove('ring-4', 'ring-secondary-fixed'), 400);
       });
     }
 
-    /* ---------------- Welcome audio ---------------- */
     const welcomeAudio = $('#welcome-audio-btn');
     if (welcomeAudio) {
       welcomeAudio.addEventListener('click', () => {
         welcomeAudio.classList.add('scale-110', 'bg-primary-fixed', 'text-on-primary-fixed');
         setTimeout(() => welcomeAudio.classList.remove('scale-110', 'bg-primary-fixed', 'text-on-primary-fixed'), 400);
-        speak('Hebat! Ayo lanjutkan belajarmu hari ini.', 0.95);
+        playAudio('audio/welcome.mp3', 1.0, 'Hebat! Ayo lanjutkan belajarmu hari ini.');
       });
     }
 
-    /* ---------------- Navigation wiring ---------------- */
+    // Navigasi
     $$('#bottom-nav [data-path]').forEach(a => {
       a.addEventListener('click', (e) => {
         e.preventDefault();
@@ -817,11 +911,8 @@ let xp = progress.xp;
     if (headerBack) headerBack.addEventListener('click', () => showScreen('belajar'));
 
     $$('[data-close-lesson]').forEach(b => b.addEventListener('click', () => showScreen('belajar')));
-    $$('[data-open-lesson]').forEach(b => b.addEventListener('click', () => showScreen('pelajaran')));
-    $$('[data-locked]').forEach(b => b.addEventListener('click', () => showToast('Selesaikan pelajaran sebelumnya dulu, ya.')));
-    $$('[data-done]').forEach(b => b.addEventListener('click', () => showToast('Pelajaran ini sudah selesai. Hebat!')));
+    $$('[data-open-active-lesson]').forEach(b => b.addEventListener('click', () => showScreen('pelajaran', progress.completedLevels + 1)));
 
-    /* ---------------- Completion overlay ---------------- */
     const overlayClose = $('#completion-close');
     if (overlayClose) {
       overlayClose.addEventListener('click', () => {
@@ -831,48 +922,31 @@ let xp = progress.xp;
       });
     }
 
-    /* ---------------- Display settings ---------------- */
     const btnDisplay = $('#btn-display');
     if (btnDisplay) {
       btnDisplay.addEventListener('click', () => {
         document.body.classList.toggle('font-legible');
-        showToast(document.body.classList.contains('font-legible')
-          ? 'Mode nyaman dibaca: aktif'
-          : 'Mode nyaman dibaca: nonaktif');
+        showToast(document.body.classList.contains('font-legible') ? 'Mode nyaman dibaca: aktif' : 'Mode nyaman dibaca: nonaktif');
       });
     }
 
-    /* ---------------- Scan placeholder ---------------- */
     const btnScan = $('#btn-scan');
     if (btnScan) btnScan.addEventListener('click', () => showToast('Fitur pindai segera hadir.'));
 
-    /* ---------------- Stats display ---------------- */
-function renderStats() {
-  const streakText = $('#header-streak-text');
-  if (streakText) streakText.textContent = (progress.streak || 0) + ' Hari';
-
-  const sStreak = $('#stat-streak');
-  const sXp = $('#stat-xp');
-  const sMod = $('#stat-modules');
-  const sStar = $('#stat-stars');
-  if (sStreak) sStreak.textContent = progress.streak || 0;
-  if (sXp) sXp.textContent = progress.xp || 0;
-  if (sMod) sMod.textContent = progress.modulesDone || 0;
-  if (sStar) sStar.textContent = progress.stars || 0;
-}
-
-/* ---------------- Init ---------------- */
-updateXp();
-renderStats();
-showScreen('belajar');
+    // ===== INIT =====
+    updateXp();
+    renderStats();
+    showScreen('belajar');
   })();
   </script>
+
+  <!-- PWA Service Worker Register -->
   <script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js');
-  });
-}
-</script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js');
+      });
+    }
+  </script>
 </body>
 </html>
