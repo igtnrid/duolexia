@@ -1,15 +1,18 @@
 {
   "name": "Duolexia — Belajar Membaca",
   "short_name": "Duolexia",
+  "description": "Aplikasi belajar membaca untuk anak usia 6–8 tahun: enam level singkat dengan audio dan latihan interaktif.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#B5F2EA",
-  "theme_color": "#B5F2EA",
+  "background_color": "#FFF7EC",
+  "theme_color": "#FFF7EC",
   "lang": "id",
+  "categories": ["education", "kids"],
   "icons": [
-    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }
