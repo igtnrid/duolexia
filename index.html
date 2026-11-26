@@ -7,13 +7,38 @@
 <meta name="mobile-web-app-capable" content="yes"/>
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Duolexia">
 <title>Duolexia — Belajar Membaca</title>
 
-<!-- Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;700;800&family=Quicksand:wght@700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,600,1,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+<style>
+  html, body { width: 100%; margin: 0; padding: 0; }
+  body { overscroll-behavior: none; min-height: 100dvh; }
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+  ::-webkit-scrollbar { display: none; }
+
+  .screen-pad { padding-bottom: calc(7rem + env(safe-area-inset-bottom, 0px)); }
+  .screen-pad-lesson { padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px)); }
+
+  /* Mode nyaman dibaca (tombol Aa) */
+  body.font-legible .font-body-md,
+  body.font-legible .font-body-lg,
+  body.font-legible .font-label-md,
+  body.font-legible .font-label-lg,
+  body.font-legible .font-title-md,
+  body.font-legible .font-headline-sm,
+  body.font-legible .font-headline-lg {
+    letter-spacing: 0.06em;
+    word-spacing: 0.12em;
+  }
+</style>
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script id="tailwind-config">
@@ -22,300 +47,357 @@
     theme: {
       extend: {
         colors: {
-          "primary-container": "#84d818", "surface-container": "#e3efff", "on-surface": "#091d2e",
-          "surface-container-highest": "#d1e4fb", "surface-container-low": "#edf4ff", "on-primary": "#ffffff",
-          "secondary": "#0061a6", "golden-yellow": "#FFC700", "surface": "#f7f9ff",
-          "secondary-fixed-dim": "#a0c9ff", "secondary-container": "#2c9cfe", "surface-container-lowest": "#ffffff",
-          "on-primary-container": "#335a00", "error-container": "#ffdad6", "surface-container-high": "#d9eaff",
-          "tertiary-fixed": "#ffdbc8", "tertiary": "#994700", "mint-canvas": "#B5F2EA", "secondary-fixed": "#d2e4ff",
-          "ice-cyan": "#E6FAF8", "on-error-container": "#93000a", "outline": "#717a64", "on-surface-variant": "#414a36",
-          "primary-fixed": "#a3fa40", "primary": "#3d6a00", "error": "#ba1a1a"
+          "primary-container": "#84d818",
+          "surface-container": "#e3efff",
+          "map-water": "#4AC1F7",
+          "on-surface": "#091d2e",
+          "mascot-brown": "#C86D2D",
+          "error": "#ba1a1a",
+          "on-secondary-fixed-variant": "#00497f",
+          "surface-tint": "#3d6a00",
+          "surface-container-highest": "#d1e4fb",
+          "on-secondary-container": "#00325a",
+          "surface-container-low": "#edf4ff",
+          "on-primary": "#ffffff",
+          "inverse-surface": "#203243",
+          "secondary": "#0061a6",
+          "sky-border": "#1474C7",
+          "inverse-primary": "#88dc1f",
+          "golden-yellow": "#FFC700",
+          "on-tertiary-container": "#823b00",
+          "surface": "#f7f9ff",
+          "inverse-on-surface": "#e8f2ff",
+          "on-primary-fixed-variant": "#2c5000",
+          "secondary-fixed-dim": "#a0c9ff",
+          "secondary-container": "#2c9cfe",
+          "surface-container-lowest": "#ffffff",
+          "on-primary-container": "#335a00",
+          "on-background": "#091d2e",
+          "error-container": "#ffdad6",
+          "background": "#f7f9ff",
+          "surface-container-high": "#d9eaff",
+          "on-primary-fixed": "#0f2000",
+          "tertiary-container": "#ffb080",
+          "surface-bright": "#f7f9ff",
+          "lime-border": "#65B00C",
+          "on-secondary": "#ffffff",
+          "tertiary-fixed": "#ffdbc8",
+          "tertiary": "#994700",
+          "on-tertiary-fixed-variant": "#753400",
+          "mint-canvas": "#B5F2EA",
+          "secondary-fixed": "#d2e4ff",
+          "ice-cyan": "#E6FAF8",
+          "on-error-container": "#93000a",
+          "map-grass": "#98E03C",
+          "tertiary-fixed-dim": "#ffb68b",
+          "outline-variant": "#c0cab0",
+          "outline": "#717a64",
+          "on-tertiary": "#ffffff",
+          "on-surface-variant": "#414a36",
+          "on-error": "#ffffff",
+          "on-tertiary-fixed": "#321200",
+          "primary-fixed-dim": "#88dc1f",
+          "surface-variant": "#d1e4fb",
+          "surface-dim": "#c9dcf3",
+          "on-secondary-fixed": "#001c37",
+          "primary-fixed": "#a3fa40",
+          "primary": "#3d6a00"
         },
-        borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
-        spacing: { "space-xs": "0.25rem", "space-xl": "2rem", "gutter": "1rem", "space-lg": "1.5rem", "space-sm": "0.5rem", "margin": "1.25rem", "space-md": "1rem" },
-        fontFamily: { "label-sm": ["Nunito Sans"], "body-md": ["Nunito Sans"], "title-md": ["Nunito Sans"], "headline-sm": ["Quicksand"], "body-lg": ["Nunito Sans"], "label-md": ["Nunito Sans"], "label-lg": ["Nunito Sans"], "headline-md": ["Quicksand"], "headline-lg": ["Quicksand"], "title-lg": ["Nunito Sans"] },
-        fontSize: { "label-sm": ["12px", { lineHeight: "16px", fontWeight: "700" }], "body-md": ["16px", { lineHeight: "24px", fontWeight: "600" }], "title-md": ["18px", { lineHeight: "26px", fontWeight: "700" }], "headline-sm": ["20px", { lineHeight: "28px", fontWeight: "700" }], "body-lg": ["18px", { lineHeight: "28px", fontWeight: "600" }], "label-md": ["14px", { lineHeight: "20px", fontWeight: "700" }], "label-lg": ["18px", { lineHeight: "24px", fontWeight: "800" }], "headline-md": ["24px", { lineHeight: "32px", fontWeight: "700" }], "title-lg": ["20px", { lineHeight: "28px", fontWeight: "800" }] }
+        borderRadius: {
+          "DEFAULT": "1rem",
+          "lg": "2rem",
+          "xl": "3rem",
+          "full": "9999px"
+        },
+        spacing: {
+          "space-xs": "0.25rem",
+          "space-xl": "2rem",
+          "gutter": "1rem",
+          "space-lg": "1.5rem",
+          "space-sm": "0.5rem",
+          "margin": "1.25rem",
+          "space-md": "1rem"
+        },
+        fontFamily: {
+          "label-sm": ["Nunito Sans"],
+          "body-md": ["Nunito Sans"],
+          "title-md": ["Nunito Sans"],
+          "headline-lg-mobile": ["Quicksand"],
+          "body-lg": ["Nunito Sans"],
+          "label-md": ["Nunito Sans"],
+          "label-lg": ["Nunito Sans"],
+          "headline-lg": ["Quicksand"],
+          "headline-md": ["Quicksand"],
+          "title-lg": ["Nunito Sans"],
+          "headline-sm": ["Quicksand"]
+        },
+        fontSize: {
+          "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.03em", fontWeight: "700" }],
+          "body-md": ["16px", { lineHeight: "24px", letterSpacing: "0.02em", fontWeight: "600" }],
+          "title-md": ["18px", { lineHeight: "26px", letterSpacing: "0.02em", fontWeight: "700" }],
+          "headline-lg-mobile": ["28px", { lineHeight: "36px", letterSpacing: "0.02em", fontWeight: "700" }],
+          "body-lg": ["18px", { lineHeight: "28px", letterSpacing: "0.025em", fontWeight: "600" }],
+          "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "700" }],
+          "label-lg": ["18px", { lineHeight: "24px", letterSpacing: "0.03em", fontWeight: "800" }],
+          "headline-lg": ["36px", { lineHeight: "44px", letterSpacing: "0.02em", fontWeight: "700" }],
+          "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "0.02em", fontWeight: "700" }],
+          "title-lg": ["20px", { lineHeight: "28px", letterSpacing: "0.02em", fontWeight: "800" }],
+          "headline-sm": ["20px", { lineHeight: "28px", letterSpacing: "0.015em", fontWeight: "700" }]
+        }
       }
     }
   }
 </script>
-<style>
-  /* MOBILE FRIENDLY */
-  html, body { width: 100%; height: 100dvh; margin: 0; padding: 0; overflow: hidden; background-color: #f7f9ff; }
-  body { overscroll-behavior: none; }
-  .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
-  .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
-  ::-webkit-scrollbar { display: none; }
-  
-  /* PERBAIKAN BUG CSS: Gunakan !important agar layar benar-benar tersembunyi */
-  .hidden-screen { display: none !important; }
-  .screen-flex { display: flex; flex-direction: column; width: 100%; height: 100dvh; }
-</style>
 </head>
 
-<body class="font-body-md text-on-surface antialiased select-none">
+<body class="bg-mint-canvas font-body-md text-on-surface flex flex-col min-h-screen">
 
-  <!-- ========================================== -->
-  <!-- SCREEN 1: PROFIL                           -->
-  <!-- ========================================== -->
-  <section id="screen-profil" class="screen-flex bg-surface pt-safe pb-safe overflow-y-auto">
-    <div class="flex flex-col w-full px-margin pb-space-lg h-full">
-      
-      <!-- Header -->
-      <header class="flex items-center justify-center pt-space-sm mb-space-md shrink-0 relative">
-        <div class="flex flex-col items-center text-center">
-          <div class="w-16 h-16 rounded-full bg-ice-cyan shadow-sm p-1 flex items-center justify-center">
-            <img alt="Logo Duolexia" class="w-14 h-14 rounded-full object-contain" src="mascot.png">
-          </div>
-          <h1 class="font-headline-sm text-headline-sm text-primary mt-1 tracking-tight">Duolexia</h1>
-          <p class="font-label-sm text-label-sm text-on-surface-variant -mt-0.5">Petualangan Membaca Ceria</p>
-        </div>
-      </header>
-
-      <!-- Form Profil -->
-      <section class="w-full shrink-0 mb-4">
-        <div class="bg-white rounded-3xl p-space-md shadow-sm">
-          <label class="block font-title-md text-label-md text-on-surface font-bold mb-1.5 flex items-center gap-1.5">
-            <span class="material-symbols-outlined text-primary text-[20px]">edit</span>Nama Panggilanmu
-          </label>
-          <div class="relative flex items-center mb-4">
-            <input id="input-nama" class="w-full bg-surface-container-low text-on-surface font-headline-sm text-headline-sm rounded-2xl px-4 py-3 border-2 border-primary-container focus:outline-none shadow-inner" placeholder="Tuliskan namamu..." type="text" value="">
-            <span class="absolute right-3 material-symbols-outlined text-primary text-[24px]">auto_awesome</span>
-          </div>
-
-          <label class="block font-title-md text-label-md text-on-surface font-bold mb-1.5 flex items-center gap-1.5">
-            <span class="material-symbols-outlined text-primary text-[20px]">school</span>Kelas Kamu
-          </label>
-          <div class="grid grid-cols-3 gap-2">
-            <button class="class-btn py-2 px-3 rounded-2xl border-2 border-primary-container bg-primary-container text-white font-headline-sm shadow-sm active:scale-95" data-kelas="Kelas 1">Kelas 1</button>
-            <button class="class-btn py-2 px-3 rounded-2xl border-2 border-transparent bg-surface-container-low text-on-surface font-headline-sm shadow-sm active:scale-95" data-kelas="Kelas 2">Kelas 2</button>
-            <button class="class-btn py-2 px-3 rounded-2xl border-2 border-transparent bg-surface-container-low text-on-surface font-headline-sm shadow-sm active:scale-95" data-kelas="Kelas 3">Kelas 3</button>
-          </div>
-        </div>
-      </section>
-        
-      <!-- Pilih Avatar -->
-      <section class="w-full flex-1 flex flex-col min-h-0">
-        <h3 class="font-title-md text-title-md text-on-surface font-bold mb-space-sm flex items-center gap-1.5 shrink-0">
-          <span class="material-symbols-outlined text-secondary text-[20px]">face</span>Pilih Teman Belajarmu:
-        </h3>
-        
-        <div class="grid grid-cols-3 gap-2.5 pb-2">
-          <button class="avatar-btn relative flex items-center justify-center bg-white rounded-2xl p-1.5 border-2 border-primary-container shadow-md transition-all active:scale-95" data-src="avatar1.png">
-            <span class="check-badge absolute -top-1 -right-1 bg-primary-container text-white rounded-full w-5 h-5 flex items-center justify-center shadow-sm z-10"><span class="material-symbols-outlined text-[14px]">check</span></span>
-            <img src="avatar1.png" alt="Avatar 1" class="w-full h-auto aspect-square rounded-xl object-cover bg-amber-100 border border-slate-100">
-          </button>
-          <button class="avatar-btn relative flex items-center justify-center bg-surface-container-low rounded-2xl p-1.5 border-2 border-transparent shadow-xs transition-all active:scale-95" data-src="avatar2.png">
-            <span class="check-badge hidden absolute -top-1 -right-1 bg-primary-container text-white rounded-full w-5 h-5 flex items-center justify-center shadow-sm z-10"><span class="material-symbols-outlined text-[14px]">check</span></span>
-            <img src="avatar2.png" alt="Avatar 2" class="w-full h-auto aspect-square rounded-xl object-cover bg-teal-100 border border-slate-100">
-          </button>
-          <button class="avatar-btn relative flex items-center justify-center bg-surface-container-low rounded-2xl p-1.5 border-2 border-transparent shadow-xs transition-all active:scale-95" data-src="avatar3.png">
-            <span class="check-badge hidden absolute -top-1 -right-1 bg-primary-container text-white rounded-full w-5 h-5 flex items-center justify-center shadow-sm z-10"><span class="material-symbols-outlined text-[14px]">check</span></span>
-            <img src="avatar3.png" alt="Avatar 3" class="w-full h-auto aspect-square rounded-xl object-cover bg-yellow-100 border border-slate-100">
-          </button>
-          <button class="avatar-btn relative flex items-center justify-center bg-surface-container-low rounded-2xl p-1.5 border-2 border-transparent shadow-xs transition-all active:scale-95" data-src="avatar4.png">
-            <span class="check-badge hidden absolute -top-1 -right-1 bg-primary-container text-white rounded-full w-5 h-5 flex items-center justify-center shadow-sm z-10"><span class="material-symbols-outlined text-[14px]">check</span></span>
-            <img src="avatar4.png" alt="Avatar 4" class="w-full h-auto aspect-square rounded-xl object-cover bg-teal-100 border border-slate-100">
-          </button>
-          <button class="avatar-btn relative flex items-center justify-center bg-surface-container-low rounded-2xl p-1.5 border-2 border-transparent shadow-xs transition-all active:scale-95" data-src="avatar5.png">
-            <span class="check-badge hidden absolute -top-1 -right-1 bg-primary-container text-white rounded-full w-5 h-5 flex items-center justify-center shadow-sm z-10"><span class="material-symbols-outlined text-[14px]">check</span></span>
-            <img src="avatar5.png" alt="Avatar 5" class="w-full h-auto aspect-square rounded-xl object-cover bg-blue-100 border border-slate-100">
-          </button>
-          <button class="avatar-btn relative flex items-center justify-center bg-surface-container-low rounded-2xl p-1.5 border-2 border-transparent shadow-xs transition-all active:scale-95" data-src="avatar6.png">
-            <span class="check-badge hidden absolute -top-1 -right-1 bg-primary-container text-white rounded-full w-5 h-5 flex items-center justify-center shadow-sm z-10"><span class="material-symbols-outlined text-[14px]">check</span></span>
-            <img src="avatar6.png" alt="Avatar 6" class="w-full h-auto aspect-square rounded-xl object-cover bg-teal-100 border border-slate-100">
-          </button>
-        </div>
-      </section>
-
-      <!-- Footer -->
-      <footer class="w-full mt-auto pt-space-md shrink-0">
-        <button id="btn-mulai" class="w-full bg-primary-container text-white rounded-2xl py-3.5 px-6 flex items-center justify-center gap-3 shadow-[0_5px_0_#65B00C] active:translate-y-1 active:shadow-none transition-all font-bold">
-          <span class="font-headline-sm text-headline-sm font-bold tracking-wide">Mulai Belajar ▶</span>
+  <!-- HEADER -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-mint-canvas/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+    <div class="h-16 px-margin max-w-[480px] mx-auto flex items-center justify-between gap-space-sm">
+      <div class="flex items-center gap-space-sm min-w-0">
+        <button id="header-back" aria-label="Kembali" class="hidden w-11 h-11 rounded-full bg-surface-container-lowest flex items-center justify-center text-on-surface shadow-[0_3px_0_0_#d1e4fb] active:translate-y-[2px] active:shadow-[0_1px_0_0_#d1e4fb] transition-all shrink-0" type="button">
+          <span class="material-symbols-outlined text-[20px]">arrow_back</span>
         </button>
-      </footer>
-    </div>
-  </section>
-
-  <!-- ========================================== -->
-  <!-- SCREEN 2: PETA BELAJAR                     -->
-  <!-- ========================================== -->
-  <div id="screen-map" class="hidden-screen screen-flex bg-surface relative">
-    <header class="shrink-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
-      <div class="h-16 px-margin flex items-center justify-between">
-        <div class="flex items-center gap-space-sm">
-          <div class="h-10 w-10 rounded-full bg-ice-cyan flex items-center justify-center p-1 border border-white shadow-sm shrink-0 overflow-hidden">
-            <img alt="Logo" class="h-full w-full object-contain" src="mascot.png">
-          </div>
-          <div class="flex flex-col">
-            <span class="font-headline-sm text-headline-sm text-secondary tracking-wide leading-none">Duolexia</span>
-            <span class="font-label-sm text-[12px] text-primary font-bold">Peta Belajar</span>
-          </div>
-        </div>
-        <button onclick="goToProfile()" class="flex items-center gap-2 bg-surface-container-lowest px-2.5 py-1 rounded-full border border-primary-container shadow-sm active:scale-95 transition-transform">
-          <img id="avatar-display" src="avatar1.png" alt="Avatar" class="w-8 h-8 rounded-full object-cover border border-white">
-          <span class="font-label-md text-label-md text-on-surface font-bold pr-1" id="name-display">Anak</span>
-        </button>
+        <img src="mascot.png" alt="Logo Burung Hantu Duolexia" class="h-9 w-9 rounded-full object-cover shrink-0 shadow-[0_2px_0_0_#a0c9ff] border-2 border-primary-container" />
+        <span id="header-title" class="font-headline-sm text-headline-sm text-on-surface truncate">Belajar</span>
       </div>
-    </header>
+      <div class="flex items-center gap-space-sm shrink-0">
+        <div id="header-streak" class="h-11 px-3 rounded-full bg-tertiary-fixed flex items-center gap-1.5 text-tertiary">
+          <span class="material-symbols-outlined text-[20px]">local_fire_department</span>
+          <span id="header-streak-text" class="font-label-md text-label-md whitespace-nowrap">0 Hari</span>
+        </div>
+        <button id="btn-display" aria-label="Pengaturan Tampilan" class="h-11 min-w-[44px] px-3.5 rounded-full bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-[0_3px_0_0_#d1e4fb] active:translate-y-[2px] active:shadow-[0_1px_0_0_#d1e4fb] transition-all flex items-center justify-center" type="button">Aa</button>
+        <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+          <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+        </div>
+      </div>
+    </div>
+  </header>
 
-    <main class="flex-1 w-full overflow-y-auto bg-surface relative pb-24">
-      <section class="w-full px-margin py-space-sm bg-surface-container-low shadow-sm flex flex-col gap-space-sm shrink-0">
-        <div class="flex items-center justify-between gap-2">
-          <div class="flex items-center gap-2.5 min-w-0">
-            <img id="avatar-display-2" src="avatar1.png" alt="Avatar" class="w-11 h-11 rounded-full border-2 border-primary-container shadow-sm object-cover">
-            <div class="flex flex-col min-w-0">
-              <span class="font-headline-sm text-headline-sm text-secondary truncate leading-tight" id="greeting-text">Halo! 👋</span>
-              <span class="font-label-sm text-[12px] text-on-surface-variant leading-tight">Yuk petualang lagi!</span>
+  <!-- MAIN -->
+  <main class="flex-1 w-full pt-16">
+
+    <!-- SCREEN: BELAJAR -->
+    <section id="screen-belajar" class="w-full max-w-[480px] mx-auto px-margin screen-pad flex flex-col gap-space-md">
+
+      <!-- Welcome Card -->
+      <div class="bg-ice-cyan rounded-lg p-space-md shadow-[0_4px_0_0_#a0c9ff] flex flex-col gap-space-md relative overflow-hidden">
+        <div class="flex items-start justify-between gap-space-md">
+          <div class="flex-1 min-w-0 flex flex-col gap-space-xs">
+            <div class="flex items-center gap-space-xs">
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-lowest text-primary font-label-sm text-label-sm">
+                <span class="material-symbols-outlined text-[16px]" style="font-variation-settings:'FILL' 1;">auto_awesome</span>
+                Target Harian
+              </span>
+              <button id="welcome-audio-btn" aria-label="Dengarkan pesan" class="w-8 h-8 rounded-full bg-surface-container-lowest text-secondary flex items-center justify-center shadow-[0_2px_0_0_#d1e4fb] active:translate-y-[1px] active:shadow-none transition-all" type="button">
+                <span class="material-symbols-outlined text-[18px]">volume_up</span>
+              </button>
+            </div>
+            <h2 class="font-headline-sm text-headline-sm text-on-surface mt-1">Hebat! Ayo lanjutkan belajarmu hari ini</h2>
+          </div>
+
+          <div class="relative w-20 h-20 shrink-0 flex items-center justify-center bg-surface-container-lowest rounded-full shadow-[0_3px_0_0_#d1e4fb]">
+            <svg aria-hidden="true" class="w-16 h-16 -rotate-90" viewBox="0 0 64 64">
+              <circle cx="32" cy="32" fill="none" r="26" stroke="#e3efff" stroke-width="6"></circle>
+              <circle id="xp-ring" cx="32" cy="32" fill="none" r="26" stroke="#84d818" stroke-dasharray="163.36" stroke-dashoffset="163.36" stroke-linecap="round" stroke-width="6"></circle>
+            </svg>
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+              <span id="xp-label" class="font-label-md text-label-md text-on-surface leading-none">0/50</span>
+              <span class="font-label-sm text-label-sm text-primary leading-none mt-0.5">XP</span>
             </div>
           </div>
-          <div class="flex items-center gap-1.5 bg-surface-container-lowest px-2.5 py-1 rounded-full shadow-sm border border-white">
-            <span class="material-symbols-outlined text-golden-yellow text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
-            <span class="font-label-md text-label-md font-bold text-on-surface" id="star-count-map">0</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="w-full relative px-margin py-space-lg flex flex-col items-center bg-mint-canvas/30 min-h-[800px]">
-        <svg class="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none" viewBox="0 0 380 920" xmlns="http://www.w3.org/2000/svg">
-          <path d="M 190 850 C 90 770, 70 700, 150 630 C 270 530, 310 470, 210 370 C 110 270, 100 210, 190 120 C 230 80, 200 40, 190 20" fill="none" stroke="#D1E4FB" stroke-linecap="round" stroke-linejoin="round" stroke-width="26"></path>
-          <path d="M 190 850 C 90 770, 70 700, 150 630 C 270 530, 310 470, 210 370 C 110 270, 100 210, 190 120 C 230 80, 200 40, 190 20" fill="none" stroke="#FFFFFF" stroke-dasharray="14 10" stroke-linecap="round" stroke-width="16"></path>
-        </svg>
-
-        <div id="map-nodes-container" class="w-full h-full flex flex-col justify-between items-center z-10 py-8 relative gap-8"></div>
-      </section>
-    </main>
-
-    <nav class="absolute bottom-0 left-0 right-0 z-50 pb-safe bg-surface-container-lowest/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.05)]">
-      <div class="max-w-[480px] mx-auto flex justify-around items-center h-20 px-space-sm">
-        <button data-tab="belajar" class="nav-item flex flex-col items-center justify-center gap-1 min-w-[100px] h-14 px-3 rounded-2xl transition-all bg-primary-container text-on-primary-container">
-          <span class="material-symbols-outlined text-[24px]">menu_book</span>
-          <span class="font-label-sm text-label-sm">Belajar</span>
-        </button>
-        <button data-tab="kemajuan" class="nav-item flex flex-col items-center justify-center gap-1 min-w-[100px] h-14 px-3 rounded-2xl transition-all text-on-surface-variant">
-          <span class="material-symbols-outlined text-[24px]">emoji_events</span>
-          <span class="font-label-sm text-label-sm">Kemajuan</span>
-        </button>
-      </div>
-    </nav>
-  </div>
-
-  <!-- ========================================== -->
-  <!-- SCREEN 3: KEMAJUAN                         -->
-  <!-- ========================================== -->
-  <div id="screen-kemajuan" class="hidden-screen screen-flex bg-surface relative">
-    <header class="shrink-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
-      <div class="h-16 px-margin flex items-center justify-between">
-        <div class="flex items-center gap-space-sm">
-          <div class="h-10 w-10 rounded-full bg-ice-cyan flex items-center justify-center p-1 border border-white shadow-sm shrink-0 overflow-hidden">
-            <img alt="Logo" class="h-full w-full object-contain" src="mascot.png">
-          </div>
-          <div class="flex flex-col">
-            <span class="font-headline-sm text-headline-sm text-secondary tracking-wide leading-none">Duolexia</span>
-            <span class="font-label-sm text-[12px] text-primary font-bold">Kemajuan</span>
-          </div>
-        </div>
-        <button onclick="goToProfile()" class="flex items-center gap-2 bg-surface-container-lowest px-2.5 py-1 rounded-full border border-primary-container shadow-sm active:scale-95 transition-transform">
-          <img id="avatar-display-3" src="avatar1.png" alt="Avatar" class="w-8 h-8 rounded-full object-cover border border-white">
-          <span class="font-label-md text-label-md text-on-surface font-bold pr-1" id="name-display-2">Anak</span>
-        </button>
-      </div>
-    </header>
-
-    <main class="flex-1 w-full overflow-y-auto bg-surface relative pb-24">
-      <div class="px-margin pt-space-sm flex flex-col gap-space-md">
-        <div class="bg-ice-cyan rounded-lg p-space-md shadow-[0_4px_0_0_#a0c9ff]">
-          <h2 class="font-headline-sm text-headline-sm text-on-surface">Kemajuanmu</h2>
-          <p class="font-body-md text-body-md text-on-surface-variant">Terus berlatih setiap hari, ya!</p>
         </div>
 
-        <div class="grid grid-cols-2 gap-space-md">
-          <div class="bg-surface-container-lowest rounded-lg p-space-md shadow-[0_4px_0_0_#d1e4fb] flex flex-col gap-1">
-            <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">bolt</span>
-            <span id="stat-xp" class="font-headline-md text-headline-md text-on-surface">0</span>
-            <span class="font-label-sm text-label-sm text-on-surface-variant">Total Bintang</span>
+        <!-- Next Lesson + CTA -->
+        <div class="bg-surface-container-lowest rounded-DEFAULT p-space-md flex flex-col gap-space-sm">
+          <div class="flex items-center gap-space-sm min-w-0">
+            <div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center shrink-0 text-on-primary-fixed">
+              <span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 1;">menu_book</span>
+            </div>
+            <div class="min-w-0 flex-1">
+              <p class="font-label-sm text-label-sm text-on-surface-variant">Pelajaran Berikutnya</p>
+              <p id="next-lesson-title" class="font-title-md text-title-md text-on-surface truncate">Modul 1: Petualangan Huruf</p>
+            </div>
           </div>
-          <div class="bg-surface-container-lowest rounded-lg p-space-md shadow-[0_4px_0_0_#d1e4fb] flex flex-col gap-1">
-            <span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1;">menu_book</span>
-            <span id="stat-modules" class="font-headline-md text-headline-md text-on-surface">0</span>
-            <span class="font-label-sm text-label-sm text-on-surface-variant">Modul Selesai</span>
-          </div>
-        </div>
-      </div>
-    </main>
-
-    <nav class="absolute bottom-0 left-0 right-0 z-50 pb-safe bg-surface-container-lowest/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.05)]">
-      <div class="max-w-[480px] mx-auto flex justify-around items-center h-20 px-space-sm">
-        <button data-tab="belajar" class="nav-item flex flex-col items-center justify-center gap-1 min-w-[100px] h-14 px-3 rounded-2xl transition-all text-on-surface-variant">
-          <span class="material-symbols-outlined text-[24px]">menu_book</span>
-          <span class="font-label-sm text-label-sm">Belajar</span>
-        </button>
-        <button data-tab="kemajuan" class="nav-item flex flex-col items-center justify-center gap-1 min-w-[100px] h-14 px-3 rounded-2xl transition-all bg-primary-container text-on-primary-container">
-          <span class="material-symbols-outlined text-[24px]">emoji_events</span>
-          <span class="font-label-sm text-label-sm">Kemajuan</span>
-        </button>
-      </div>
-    </nav>
-  </div>
-
-  <!-- ========================================== -->
-  <!-- SCREEN 4: LATIHAN                          -->
-  <!-- ========================================== -->
-  <div id="screen-latihan" class="hidden-screen screen-flex bg-mint-canvas">
-    <header class="shrink-0 w-full z-50 pt-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_2px_10px_rgba(0,0,0,0.03)]">
-      <div class="h-16 px-margin flex items-center justify-between gap-space-sm">
-        <button aria-label="Keluar" class="w-11 h-11 rounded-full flex items-center justify-center bg-ice-cyan text-on-surface active:translate-y-0.5 transition-transform" onclick="exitLesson()" type="button">
-          <span class="material-symbols-outlined text-2xl font-bold">close</span>
-        </button>
-        <div class="flex-1 max-w-xs flex flex-col px-2">
-          <div class="w-full h-3.5 bg-ice-cyan rounded-full overflow-hidden p-0.5 flex items-center">
-            <div id="progress-bar" class="h-full w-0 bg-gradient-to-r from-golden-yellow to-tertiary-container rounded-full transition-all duration-300"></div>
-          </div>
-        </div>
-        <div class="flex items-center gap-1 bg-ice-cyan px-3 py-1.5 rounded-full">
-          <span class="material-symbols-outlined text-error text-[20px] fill-current animate-pulse">favorite</span>
-          <span class="font-label-md text-label-md text-on-surface font-extrabold" id="lives-count">3</span>
-        </div>
-      </div>
-    </header>
-
-    <main class="flex-1 flex flex-col w-full overflow-y-auto px-margin pt-space-sm pb-safe gap-space-sm">
-      <div class="shrink-0 bg-surface-container-lowest rounded-lg p-space-md shadow-md flex items-center gap-space-sm overflow-hidden">
-        <div class="shrink-0">
-          <div class="w-16 h-16 rounded-full bg-ice-cyan p-1 flex items-center justify-center shadow-sm">
-            <img alt="Maskot" class="w-full h-full object-contain" src="mascot.png">
-          </div>
-        </div>
-        <div class="flex-1 flex flex-col justify-center min-w-0">
-          <h1 class="font-headline-sm text-headline-sm text-on-surface font-bold leading-snug" id="question-text">Pertanyaan...</h1>
-          <button class="mt-2 inline-flex items-center self-start gap-2 bg-secondary text-on-secondary px-3.5 py-1.5 rounded-full shadow-[0_3px_0_#1474C7] active:translate-y-1 active:shadow-none transition-all" id="btn-audio" type="button">
-            <span class="material-symbols-outlined text-[18px]">volume_up</span>
-            <span class="font-label-md text-label-sm font-bold">Dengarkan</span>
+          <button data-open-active-lesson class="w-full h-14 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow-[0_4px_0_0_#65B00C] active:translate-y-[2px] active:shadow-[0_2px_0_0_#65B00C] transition-all flex items-center justify-center gap-space-sm" type="button">
+            <span>Lanjutkan</span>
+            <span class="material-symbols-outlined text-[22px]">play_arrow</span>
           </button>
         </div>
       </div>
 
-      <div id="options-grid" class="grid grid-cols-2 gap-space-md relative mt-1 flex-1 content-start shrink-0 min-h-[250px]"></div>
-
-      <div class="shrink-0 bg-surface-container-lowest rounded-lg p-space-sm flex items-center justify-center text-center shadow-sm mt-auto" id="feedback-box">
-        <span class="font-label-md text-label-md text-on-surface font-black" id="feedback-text">Sentuh salah satu jawaban di atas!</span>
+      <!-- Latihan ulang -->
+      <div class="bg-tertiary-fixed rounded-lg p-space-md shadow-[0_4px_0_0_#ffb68b] flex items-center justify-between gap-space-md">
+        <div class="flex items-center gap-space-sm min-w-0 flex-1">
+          <div class="w-12 h-12 rounded-DEFAULT bg-surface-container-lowest text-tertiary flex items-center justify-center shrink-0 shadow-[0_3px_0_0_#ffb68b]">
+            <span class="material-symbols-outlined text-[26px]" style="font-variation-settings:'FILL' 1;">replay</span>
+          </div>
+          <div class="min-w-0 flex-1">
+            <h3 class="font-title-md text-title-md text-on-tertiary-fixed">Latihan ulang</h3>
+            <p class="font-body-md text-body-md text-on-tertiary-fixed-variant truncate">Ulangi modul yang sudah selesai</p>
+          </div>
+        </div>
+        <button data-open-active-lesson class="h-12 px-5 rounded-lg bg-secondary-container text-on-secondary font-label-md text-label-md shadow-[0_4px_0_0_#1474C7] active:translate-y-[2px] active:shadow-[0_2px_0_0_#1474C7] transition-all shrink-0 flex items-center justify-center" type="button">Mulai</button>
       </div>
 
-      <div class="shrink-0 mb-4">
-        <button class="w-full h-14 bg-primary-container text-on-surface rounded-lg font-label-lg text-label-lg shadow-[0_5px_0_#65B00C] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2 uppercase tracking-wider" id="btn-check" type="button">
-          <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-          <span>PERIKSA JAWABAN</span>
+      <!-- Zigzag Learning Path (Dynamic via JS) -->
+      <div id="learning-path" class="flex flex-col gap-space-lg mt-space-sm"></div>
+
+    </section>
+
+    <!-- SCREEN: PELAJARAN -->
+    <section id="screen-pelajaran" class="hidden w-full max-w-[480px] mx-auto px-margin screen-pad-lesson flex flex-col gap-space-lg">
+
+      <!-- Top bar -->
+      <div class="flex items-center justify-between gap-space-sm pt-space-xs">
+        <button data-close-lesson aria-label="Tutup pelajaran" class="w-11 h-11 rounded-full bg-surface-container-lowest text-on-surface flex items-center justify-center shadow-[0_3px_0_0_#d1e4fb] active:translate-y-[2px] active:shadow-[0_1px_0_0_#d1e4fb] transition-all shrink-0" type="button">
+          <span class="material-symbols-outlined text-[22px]">close</span>
+        </button>
+        <div class="flex-1 flex items-center gap-space-sm">
+          <div class="w-full h-5 rounded-full bg-ice-cyan p-1 shadow-[inset_0_2px_4px_rgba(9,29,46,0.08)] overflow-hidden">
+            <div id="lesson-progress" class="h-full w-1/5 rounded-full bg-gradient-to-r from-tertiary via-golden-yellow to-golden-yellow transition-all duration-500"></div>
+          </div>
+          <span id="lesson-progress-label" class="font-label-md text-label-md text-on-surface shrink-0">1/5</span>
+        </div>
+        <div class="h-11 px-3.5 rounded-full bg-surface-container-lowest text-on-surface shadow-[0_3px_0_0_#d1e4fb] flex items-center gap-1.5 shrink-0">
+          <span class="material-symbols-outlined text-golden-yellow text-[20px]" style="font-variation-settings:'FILL' 1;">star</span>
+          <span id="star-count" class="font-label-lg text-label-lg text-on-surface">0</span>
+        </div>
+      </div>
+
+      <!-- Prompt + audio -->
+      <div class="bg-ice-cyan rounded-lg p-space-lg flex flex-col items-center text-center gap-space-md shadow-[0_4px_0_0_#d1e4fb]">
+        <div class="flex items-center gap-space-sm w-full">
+          <img src="mascot.png" alt="Maskot Burung Hantu Duolexia" class="w-14 h-14 rounded-full object-cover bg-surface-container-lowest shadow-[0_3px_0_0_#d1e4fb] border-2 border-primary-container shrink-0" />
+          <!-- ID Baru: prompt-text -->
+          <p id="prompt-text" class="font-title-md text-title-md text-on-surface text-left w-full leading-snug">Dengarkan bunyi, lalu pilih huruf yang tepat</p>
+        </div>
+        <div class="flex items-center justify-center gap-space-md w-full mt-2">
+          <button id="btn-listen" class="flex-1 h-14 px-space-md rounded-lg bg-secondary-container text-on-secondary font-label-lg text-label-lg shadow-[0_4px_0_0_#1474C7] active:translate-y-[2px] active:shadow-[0_2px_0_0_#1474C7] transition-all flex items-center justify-center gap-2" type="button">
+            <span id="icon-listen" class="material-symbols-outlined text-[24px]" style="font-variation-settings:'FILL' 1;">volume_up</span>
+            <span>Dengar</span>
+          </button>
+          <button id="btn-slow" class="h-14 px-space-md rounded-full bg-surface-container-lowest text-secondary font-label-md text-label-md shadow-[0_4px_0_0_#d1e4fb] active:translate-y-[2px] active:shadow-[0_2px_0_0_#d1e4fb] transition-all flex items-center justify-center gap-1.5 shrink-0" type="button">
+            <span class="material-symbols-outlined text-[20px]">graphic_eq</span>
+            <span>Lebih lambat</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Options -->
+      <div class="grid grid-cols-2 gap-space-md w-full" id="options-grid"></div>
+
+      <!-- Feedback -->
+      <div id="feedback-banner" aria-live="polite" class="hidden rounded-lg p-space-md bg-surface-container-lowest text-on-surface shadow-[0_3px_0_0_#d1e4fb] flex items-center gap-space-sm">
+        <span id="feedback-icon" class="material-symbols-outlined text-[24px] text-primary">check_circle</span>
+        <span id="feedback-text" class="font-body-md text-body-md"></span>
+      </div>
+
+      <!-- Check -->
+      <div class="pt-space-xs">
+        <button id="btn-check" class="w-full h-14 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow-[0_4px_0_0_#65B00C] active:translate-y-[2px] active:shadow-[0_2px_0_0_#65B00C] transition-all flex items-center justify-center" type="button">Periksa</button>
+      </div>
+    </section>
+
+    <!-- SCREEN: PINDAI -->
+    <section id="screen-pindai" class="hidden w-full max-w-[480px] mx-auto px-margin screen-pad flex flex-col gap-space-md">
+      <div class="bg-ice-cyan rounded-lg p-space-lg shadow-[0_4px_0_0_#a0c9ff] flex flex-col items-center text-center gap-space-md">
+        <div class="w-20 h-20 rounded-full bg-surface-container-lowest flex items-center justify-center shadow-[0_3px_0_0_#d1e4fb]">
+          <span class="material-symbols-outlined text-[40px] text-secondary">document_scanner</span>
+        </div>
+        <h2 class="font-headline-sm text-headline-sm text-on-surface">Pindai Teks Bacaan</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant">Arahkan kamera ke buku atau lembar bacaan. Duolexia akan membacakannya untukmu.</p>
+        <div class="w-full aspect-[4/3] rounded-DEFAULT border-4 border-dashed border-secondary-fixed-dim bg-surface-container-lowest/60 flex items-center justify-center">
+          <span class="material-symbols-outlined text-[56px] text-secondary-fixed-dim">center_focus_strong</span>
+        </div>
+        <button id="btn-scan" class="w-full h-14 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow-[0_4px_0_0_#65B00C] active:translate-y-[2px] active:shadow-[0_2px_0_0_#65B00C] transition-all flex items-center justify-center gap-space-sm" type="button">
+          <span class="material-symbols-outlined">photo_camera</span>
+          <span>Buka Kamera</span>
         </button>
       </div>
-    </main>
+    </section>
+
+    <!-- SCREEN: KEMAJUAN -->
+    <section id="screen-kemajuan" class="hidden w-full max-w-[480px] mx-auto px-margin screen-pad flex flex-col gap-space-md">
+      <div class="bg-ice-cyan rounded-lg p-space-md shadow-[0_4px_0_0_#a0c9ff]">
+        <h2 class="font-headline-sm text-headline-sm text-on-surface">Kemajuanmu</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant">Terus berlatih setiap hari, ya!</p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-space-md">
+        <div class="bg-surface-container-lowest rounded-lg p-space-md shadow-[0_4px_0_0_#d1e4fb] flex flex-col gap-1">
+          <span class="material-symbols-outlined text-tertiary" style="font-variation-settings:'FILL' 1;">local_fire_department</span>
+          <span id="stat-streak" class="font-headline-md text-headline-md text-on-surface">0</span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant">Hari beruntun</span>
+        </div>
+        <div class="bg-surface-container-lowest rounded-lg p-space-md shadow-[0_4px_0_0_#d1e4fb] flex flex-col gap-1">
+          <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">bolt</span>
+          <span id="stat-xp" class="font-headline-md text-headline-md text-on-surface">0</span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant">Total XP</span>
+        </div>
+        <div class="bg-surface-container-lowest rounded-lg p-space-md shadow-[0_4px_0_0_#d1e4fb] flex flex-col gap-1">
+          <span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1;">menu_book</span>
+          <span id="stat-modules" class="font-headline-md text-headline-md text-on-surface">0</span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant">Modul selesai</span>
+        </div>
+        <div class="bg-surface-container-lowest rounded-lg p-space-md shadow-[0_4px_0_0_#d1e4fb] flex flex-col gap-1">
+          <span class="material-symbols-outlined text-golden-yellow" style="font-variation-settings:'FILL' 1;">star</span>
+          <span id="stat-stars" class="font-headline-md text-headline-md text-on-surface">0</span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant">Bintang</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BOTTOM NAV -->
+  <nav id="bottom-nav" class="fixed bottom-0 inset-x-0 z-50 pb-safe px-margin mb-space-sm pointer-events-none">
+    <div class="max-w-[480px] mx-auto bg-surface-container-lowest/95 backdrop-blur-xl rounded-lg shadow-[0_4px_16px_rgba(9,29,46,0.08)] flex justify-around items-center h-20 px-space-sm pointer-events-auto">
+      <a data-path="belajar" href="#" aria-current="page" class="flex flex-col items-center justify-center gap-1 min-w-[72px] h-14 px-3 rounded-DEFAULT transition-all bg-primary-container text-on-primary-container">
+        <span class="material-symbols-outlined text-[24px]">menu_book</span>
+        <span class="font-label-sm text-label-sm">Belajar</span>
+      </a>
+      <a data-path="pindai" href="#" class="flex flex-col items-center justify-center gap-1 min-w-[72px] h-14 px-3 rounded-DEFAULT text-on-surface-variant hover:text-on-surface transition-all">
+        <span class="material-symbols-outlined text-[24px]">document_scanner</span>
+        <span class="font-label-sm text-label-sm">Pindai</span>
+      </a>
+      <a data-path="kemajuan" href="#" class="flex flex-col items-center justify-center gap-1 min-w-[72px] h-14 px-3 rounded-DEFAULT text-on-surface-variant hover:text-on-surface transition-all">
+        <span class="material-symbols-outlined text-[24px]">emoji_events</span>
+        <span class="font-label-sm text-label-sm">Kemajuan</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- COMPLETION OVERLAY -->
+  <div id="completion-overlay" class="hidden fixed inset-0 z-[70] bg-on-surface/40 backdrop-blur-sm flex items-center justify-center p-margin">
+    <div class="bg-surface-container-lowest rounded-lg p-space-lg max-w-[360px] w-full text-center flex flex-col items-center gap-space-md shadow-[0_8px_0_0_#d1e4fb]">
+      <div class="w-24 h-24 rounded-full bg-primary-fixed flex items-center justify-center">
+        <span class="material-symbols-outlined text-[52px] text-on-primary-fixed" style="font-variation-settings:'FILL' 1;">emoji_events</span>
+      </div>
+      <h2 class="font-headline-md text-headline-md text-on-surface">Pelajaran Selesai!</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant">Kamu berhasil menyelesaikan latihan ini. Terus semangat!</p>
+      <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-tertiary-fixed text-tertiary font-label-md text-label-md">
+        <span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1;">bolt</span>
+        <span>+12 XP</span>
+      </div>
+      <button id="completion-close" class="w-full h-14 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow-[0_4px_0_0_#65B00C] active:translate-y-[2px] active:shadow-[0_2px_0_0_#65B00C] transition-all flex items-center justify-center" type="button">
+        Kembali ke Belajar
+      </button>
+    </div>
   </div>
 
+  <!-- TOAST -->
+  <div id="toast" class="fixed left-1/2 -translate-x-1/2 bottom-28 z-[80] px-4 py-2 rounded-full bg-inverse-surface text-inverse-on-surface font-label-md text-label-md shadow-lg opacity-0 translate-y-2 pointer-events-none transition-all duration-300"></div>
+
+  <!-- SCRIPT -->
   <script>
   (function () {
-    const $ = (s) => document.querySelector(s);
-    const $$ = (s) => document.querySelectorAll(s);
+    const $  = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
-    // iOS Audio Unlock
+    // ===== iOS AUDIO UNLOCK =====
+    // Trik khusus agar iOS mengizinkan pemutaran suara
     let audioUnlocked = false;
     function unlockAudio() {
       if (audioUnlocked) return;
@@ -330,414 +412,565 @@
         audioUnlocked = true;
         document.removeEventListener('touchstart', unlockAudio);
         document.removeEventListener('click', unlockAudio);
+        console.log('Audio iOS terbuka');
       } catch(e) {}
     }
     document.addEventListener('touchstart', unlockAudio);
     document.addEventListener('click', unlockAudio);
 
-    // Data Kurikulum
-    const curriculum = [
+    // ===== DATA LEVEL (30 SOAL DARI PDF) =====
+    const LEVEL_DATA = [
       {
-        id: 1, title: "Sound Explorer", icon: "volume_up",
-        questions: [
-          { prompt: "Apakah kata batu dan satu memiliki bunyi akhir yang mirip?", speak: "Batu dan satu. Apakah bunyi akhirnya mirip?", options: ["Ya", "Tidak"], answer: "Ya" },
-          { prompt: "Berapa suku kata pada kata meja?", speak: "Meja. Berapa suku katanya?", options: ["1", "2", "3", "4"], answer: "2" },
-          { prompt: "Apa bunyi awal dari kata mata?", speak: "Mata. Apa bunyi awalnya?", options: ["/m/", "/b/", "/s/", "/k/"], answer: "/m/" },
-          { prompt: "Kata mana yang diawali bunyi /k/?", speak: "Pilih kata yang diawali bunyi K", options: ["Kucing", "Sapi", "Bola", "Meja"], answer: "Kucing" },
-          { prompt: "Berapa suku kata pada kata kelapa?", speak: "Kelapa. Berapa suku katanya?", options: ["2", "3", "4", "5"], answer: "3" },
-          { prompt: "Apa bunyi akhir kata tas?", speak: "Tas. Apa bunyi akhirnya?", options: ["/t/", "/s/", "/m/", "/k/"], answer: "/s/" }
+        title: "Modul 1: Petualangan Huruf",
+        q: [
+          { prompt: "Pilih huruf yang berbunyi /m/.", speak: "em", audio: "audio/m.mp3", options: ["m", "n", "b", "d"], answer: "m" },
+          { prompt: "Pilih huruf yang sama dengan contoh: b", speak: "be", audio: "audio/b.mp3", options: ["b", "d", "p", "q"], answer: "b" },
+          { prompt: "Cocokkan huruf M dengan gambar benda yang diawali bunyi /m/.", speak: "em", audio: "audio/m.mp3", options: ["Meja", "Bola", "Sapi", "Nasi"], answer: "Meja" },
+          { prompt: "Huruf apakah yang ditunjukkan? (S)", speak: "es", audio: "audio/s.mp3", options: ["S", "M", "B", "D"], answer: "S" },
+          { prompt: "Dengarkan bunyi /a/. Pilih huruf yang sesuai.", speak: "a", audio: "audio/a.mp3", options: ["A", "I", "U", "E"], answer: "A" }
         ]
       },
       {
-        id: 2, title: "Letter Explorer", icon: "abc",
-        questions: [
-          { prompt: "Pilih huruf b.", speak: "Pilih huruf be", options: ["b", "d", "p", "q"], answer: "b" },
-          { prompt: "Huruf kecil dari B adalah ...", speak: "Huruf kecil dari B adalah", options: ["b", "d", "p", "q"], answer: "b" },
-          { prompt: "Huruf apa yang menghasilkan bunyi /m/?", speak: "Huruf apa yang berbunyi em?", options: ["M", "S", "B", "K"], answer: "M" },
-          { prompt: "Pilih huruf yang sama dengan A.", speak: "Pilih huruf yang sama dengan A", options: ["a", "e", "o", "i"], answer: "a" },
-          { prompt: "Huruf apa yang mengawali kata sapi?", speak: "Huruf apa yang mengawali kata sapi?", options: ["S", "P", "T", "K"], answer: "S" },
-          { prompt: "Pilih huruf vokal.", speak: "Pilih huruf vokal", options: ["B", "A", "K", "M"], answer: "A" }
+        title: "Modul 2: Detektif Bunyi",
+        q: [
+          { prompt: "Dengarkan kata bola. Bunyi apa yang terdengar di awal?", speak: "bola", audio: "audio/bola.mp3", options: ["/b/", "/o/", "/l/", "/a/"], answer: "/b/" },
+          { prompt: "Dengarkan kata ikan. Bunyi apa yang terdengar di akhir?", speak: "ikan", audio: "audio/ikan.mp3", options: ["/i/", "/k/", "/a/", "/n/"], answer: "/n/" },
+          { prompt: "Kata mana yang diawali bunyi /s/?", speak: "es", audio: "audio/s.mp3", options: ["Sapi", "Bola", "Mata", "Nasi"], answer: "Sapi" },
+          { prompt: "Kata mana yang bunyi awalnya sama dengan 'mata'?", speak: "mata", audio: "audio/mata.mp3", options: ["Meja", "Bola", "Sapi", "Nasi"], answer: "Meja" },
+          { prompt: "Dengarkan kata sapi. Bunyi apa saja yang menyusunnya?", speak: "sapi", audio: "audio/sapi.mp3", options: ["/s/ /a/ /p/ /i/", "/b/ /o/ /l/ /a/", "/m/ /a/ /t/ /a/", "/i/ /k/ /a/ /n/"], answer: "/s/ /a/ /p/ /i/" }
         ]
       },
       {
-        id: 3, title: "Syllable Builder", icon: "train",
-        questions: [
-          { prompt: "Gabungkan: bo + la", speak: "Bo ditambah la menjadi?", options: ["bola", "boba", "lobo", "balo"], answer: "bola" },
-          { prompt: "Gabungkan: sa + pi", speak: "Sa ditambah pi menjadi?", options: ["sapi", "sapa", "pisa", "sipa"], answer: "sapi" },
-          { prompt: "Gabungkan: bu + ku", speak: "Bu ditambah ku menjadi?", options: ["buku", "bubu", "kuku", "kubu"], answer: "buku" },
-          { prompt: "Kata mata terdiri dari...", speak: "Kata mata terdiri dari", options: ["ma-ta", "mat-a", "m-ata", "m-a-t-a"], answer: "ma-ta" },
-          { prompt: "Suku kata pertama dari kata kelapa adalah ...", speak: "Suku kata pertama dari kelapa", options: ["ke", "la", "pa", "ka"], answer: "ke" },
-          { prompt: "Pilih susunan yang membentuk kata roti.", speak: "Pilih susunan kata roti", options: ["ro-ti", "ti-ro", "ri-to", "to-ri"], answer: "ro-ti" }
+        title: "Modul 3: Kereta Suku Kata",
+        q: [
+          { prompt: "BA + JU = ...", speak: "ba ju", audio: "audio/baju.mp3", options: ["BAJU", "BOLA", "SAPI", "MATA"], answer: "BAJU" },
+          { prompt: "SA + PI = ...", speak: "sa pi", audio: "audio/sapi.mp3", options: ["SAPI", "BAJU", "MATA", "NASI"], answer: "SAPI" },
+          { prompt: "Pisahkan kata BOLA menjadi suku kata.", speak: "bola", audio: "audio/bola.mp3", options: ["BO-LA", "BOL-A", "B-OLA", "BO-L-LA"], answer: "BO-LA" },
+          { prompt: "Pisahkan kata KELAPA menjadi suku kata.", speak: "kelapa", audio: "audio/kelapa.mp3", options: ["KE-LA-PA", "KEL-A-PA", "KE-LAP-A", "K-E-L-A-P-A"], answer: "KE-LA-PA" },
+          { prompt: "BO + ... = BOLA", speak: "bo la", audio: "audio/bola.mp3", options: ["LA", "LU", "LI", "LE"], answer: "LA" }
         ]
       },
       {
-        id: 4, title: "Word Detective", icon: "search",
-        questions: [
-          { prompt: "Lengkapi kata _api agar menjadi sapi.", speak: "Lengkapi kata api menjadi sapi", options: ["s", "m", "b", "k"], answer: "s" },
-          { prompt: "Susun huruf: b-u-k-u", speak: "Susun huruf be u ka u", options: ["buku", "kubu", "bubu", "kuku"], answer: "buku" },
-          { prompt: "Pilih kata yang sesuai dengan gambar rumah.", speak: "Pilih kata untuk gambar rumah", options: ["rumah", "ramah", "murah", "remah"], answer: "rumah" },
-          { prompt: "Kata mana yang memiliki dua suku kata?", speak: "Kata mana yang dua suku kata?", options: ["meja", "sekolah", "keluarga", "kucing"], answer: "meja" },
-          { prompt: "Pilih kata yang mengandung 'ng'.", speak: "Pilih kata yang mengandung ng", options: ["bangun", "batu", "bola", "buku"], answer: "bangun" },
-          { prompt: "Pisahkan kata kelapa menjadi suku kata.", speak: "Pisahkan kata kelapa", options: ["ke-la-pa", "kel-ap-a", "kelapa", "ke-lapa"], answer: "ke-la-pa" }
+        title: "Modul 4: Laboratorium Kata",
+        q: [
+          { prompt: "Lengkapi kata: B _ J U", speak: "ba ju", audio: "audio/baju.mp3", options: ["A", "I", "U", "E"], answer: "A" },
+          { prompt: "Susun huruf ini menjadi kata: A-M-T-A", speak: "a em te a", audio: "audio/mata.mp3", options: ["MATA", "TAMA", "MATA", "AMAT"], answer: "MATA" },
+          { prompt: "Pilih kata yang sesuai dengan gambar KUCING.", speak: "kucing", audio: "audio/kucing.mp3", options: ["Kucing", "Anjing", "Ayam", "Ikan"], answer: "Kucing" },
+          { prompt: "Pilih kata yang sesuai dengan gambar BOLA.", speak: "bola", audio: "audio/bola.mp3", options: ["BOLA", "BUKU", "SAPI", "MATA"], answer: "BOLA" },
+          { prompt: "Mana penulisan yang benar?", speak: "sapi", audio: "audio/sapi.mp3", options: ["SAPI", "SAPPI", "SAPII", "SSAPI"], answer: "SAPI" }
         ]
       },
       {
-        id: 5, title: "Sentence Reader", icon: "format_quote",
-        questions: [
-          { prompt: "Lengkapi: Ibu memasak ....", speak: "Ibu memasak apa?", options: ["nasi", "tidur", "meja", "bola"], answer: "nasi" },
-          { prompt: "Kalimat mana yang benar?", speak: "Pilih kalimat yang benar", options: ["Ayah membaca buku.", "Buku membaca Ayah.", "Ayah buku membaca.", "Buku Ayah membaca."], answer: "Ayah membaca buku." },
-          { prompt: "Tanda baca untuk mengakhiri kalimat berita adalah...", speak: "Tanda baca akhir kalimat berita", options: [".", "?", "!", ","], answer: "." },
-          { prompt: "Apa yang dilakukan Budi? 'Budi sedang berlari.'", speak: "Budi sedang berlari. Apa yang dilakukan Budi?", options: ["Berlari", "Tidur", "Makan", "Minum"], answer: "Berlari" },
-          { prompt: "Lengkapi: Adik minum ....", speak: "Adik minum apa?", options: ["air", "sepatu", "kursi", "buku"], answer: "air" },
-          { prompt: "Kalimat tanya diakhiri dengan ...", speak: "Kalimat tanya diakhiri dengan", options: ["?", ".", "!", ","], answer: "?" }
+        title: "Modul 5: Dunia Membaca",
+        q: [
+          { prompt: "Bacalah kata: BUKU", speak: "buku", audio: "audio/buku.mp3", options: ["BUKU", "BUKA", "BAKU", "BIKU"], answer: "BUKU" },
+          { prompt: "Bacalah kata: SEPEDA", speak: "sepeda", audio: "audio/sepeda.mp3", options: ["SEPEDA", "SEPEDAH", "SEPDA", "SEPEDA"], answer: "SEPEDA" },
+          { prompt: "Bacalah: 'Ibu memasak nasi.' Siapa yang memasak nasi?", speak: "Ibu memasak nasi", audio: "audio/kalimat1.mp3", options: ["Ibu", "Ayah", "Kakak", "Adik"], answer: "Ibu" },
+          { prompt: "'Ayah membaca ...' Lengkapi kalimat.", speak: "Ayah membaca", audio: "audio/kalimat2.mp3", options: ["Buku", "Bola", "Nasi", "Sepeda"], answer: "Buku" },
+          { prompt: "Pilih kalimat yang sesuai dengan gambar anak sedang makan.", speak: "Anak sedang makan", audio: "audio/kalimat3.mp3", options: ["Anak sedang makan.", "Anak sedang tidur.", "Anak sedang bermain.", "Anak sedang mandi."], answer: "Anak sedang makan." }
         ]
       },
       {
-        id: 6, title: "Story Explorer", icon: "auto_stories",
-        questions: [
-          { prompt: "Bacaan: 'Pada hari Minggu, Rani pergi ke taman bersama ibunya.' Kapan Rani pergi?", speak: "Rani pergi ke taman bersama ibunya. Kapan?", options: ["Minggu", "Senin", "Jumat", "Sabtu"], answer: "Minggu" },
-          { prompt: "Dengan siapa Rani pergi ke taman?", speak: "Dengan siapa Rani pergi?", options: ["Ibu", "Ayah", "Teman", "Kakak"], answer: "Ibu" },
-          { prompt: "Apa yang dilihat Rani di taman?", speak: "Apa yang dilihat Rani?", options: ["Kupu-kupu", "Burung", "Kucing", "Ikan"], answer: "Kupu-kupu" },
-          { prompt: "Apa yang mereka beli setelah bermain?", speak: "Apa yang mereka beli?", options: ["Es krim", "Roti", "Buku", "Mainan"], answer: "Es krim" },
-          { prompt: "Ke mana mereka pergi setelah membeli es krim?", speak: "Ke mana mereka pergi setelah membeli es krim?", options: ["Rumah", "Sekolah", "Pasar", "Taman"], answer: "Rumah" }
+        title: "Modul 6: Petualangan Cerita",
+        q: [
+          { prompt: "'Rina membawa payung.' Apa yang dibawa Rina?", speak: "Rina membawa payung", audio: "audio/cerita1.mp3", options: ["Payung", "Buku", "Bola", "Tas"], answer: "Payung" },
+          { prompt: "'Budi pergi ke sekolah pada pagi hari.' Kapan Budi pergi?", speak: "Budi pergi ke sekolah pada pagi hari", audio: "audio/cerita2.mp3", options: ["Pagi hari", "Siang hari", "Sore hari", "Malam hari"], answer: "Pagi hari" },
+          { prompt: "'Dina bangun tidur, mandi, lalu sarapan.' Apa yang dilakukan Dina setelah mandi?", speak: "Dina bangun tidur, mandi, lalu sarapan", audio: "audio/cerita3.mp3", options: ["Sarapan", "Tidur", "Sekolah", "Bermain"], answer: "Sarapan" },
+          { prompt: "'Mimi adalah kucing milik Adi. Mimi suka makan ikan.' Apa makanan kesukaan Mimi?", speak: "Mimi suka makan ikan", audio: "audio/cerita4.mp3", options: ["Ikan", "Daging", "Sayur", "Susu"], answer: "Ikan" },
+          { prompt: "'Hari ini hujan. Siti menggunakan payung saat pergi ke sekolah.' Mengapa Siti menggunakan payung?", speak: "Hari ini hujan. Siti menggunakan payung", audio: "audio/cerita5.mp3", options: ["Karena hujan", "Karena panas", "Karena angin", "Karena dingin"], answer: "Karena hujan" }
         ]
       }
     ];
 
-    let state = {
-      name: 'Petualang', avatar: 'avatar1.png', kelas: 'Kelas 1',
-      stars: parseInt(localStorage.getItem('duo_stars') || '0'),
-      completed: parseInt(localStorage.getItem('duo_completed') || '0'),
-      lives: 3
+    // ===== STATE & STORAGE =====
+    const STORAGE_KEY = 'duolexia-progress-v2';
+    const DEFAULT_PROGRESS = { xp: 0, stars: 0, streak: 0, modulesDone: 0, completedLevels: 0 };
+
+    function loadProgress() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? Object.assign({}, DEFAULT_PROGRESS, JSON.parse(raw)) : Object.assign({}, DEFAULT_PROGRESS);
+      } catch (e) {
+        return Object.assign({}, DEFAULT_PROGRESS);
+      }
+    }
+    function saveProgress() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); } catch (e) {}
+    }
+
+    let progress = loadProgress();
+    let xp = progress.xp;
+    let currentLevel = progress.completedLevels + 1;
+
+    const screens = {
+      belajar:  $('#screen-belajar'),
+      pelajaran: $('#screen-pelajaran'),
+      pindai:   $('#screen-pindai'),
+      kemajuan: $('#screen-kemajuan'),
     };
+    const TITLES = { belajar: 'Belajar', pelajaran: 'Sesi Membaca', pindai: 'Pindai', kemajuan: 'Kemajuan' };
 
-    let currentLevel = null;
-    let currentQIndex = 0;
-    let selectedAnswer = null;
-    let isAnswered = false;
+    // ===== AUDIO PLAYER =====
+    let currentAudio = null;
 
-    function playAudio(text, rate = 0.85) {
-      if (!('speechSynthesis' in window)) return;
+    function playAudio(src, speed = 1.0, fallbackText = '') {
+      try {
+        if (currentAudio) {
+          currentAudio.pause();
+          currentAudio.currentTime = 0;
+        }
+        currentAudio = new Audio(src);
+        currentAudio.playbackRate = speed;
+        
+        // Putar audio, jika gagal (file belum ada), gunakan TTS
+        currentAudio.play().catch(err => {
+          if (fallbackText) speak(fallbackText, speed);
+        });
+        return true;
+      } catch (e) {
+        if (fallbackText) speak(fallbackText, speed);
+        return false;
+      }
+    }
+
+    function speak(text, rate) {
+      rate = rate || 0.9;
+      if (!('speechSynthesis' in window)) return false;
       try {
         window.speechSynthesis.cancel();
         const u = new SpeechSynthesisUtterance(text);
-        u.lang = 'id-ID';
-        u.rate = rate;
+        u.lang  = 'id-ID';
+        u.rate  = rate;
         u.pitch = 1.05;
         window.speechSynthesis.speak(u);
-      } catch(e) {}
-    }
-
-    function showScreen(id) {
-      ['screen-profil', 'screen-map', 'screen-kemajuan', 'screen-latihan'].forEach(s => {
-        const el = document.getElementById(s);
-        if (el) el.classList.add('hidden-screen');
-      });
-      const target = document.getElementById(id);
-      if (target) target.classList.remove('hidden-screen');
-    }
-
-    window.switchTab = function(tab) {
-      showScreen('screen-' + tab);
-      if (tab === 'kemajuan') renderStats();
-    };
-
-    document.querySelectorAll('.nav-item').forEach(btn => {
-      btn.addEventListener('click', () => {
-        switchTab(btn.dataset.tab);
-      });
-    });
-
-    window.selectAvatar = function(btn, src) {
-      $$('.avatar-btn').forEach(b => {
-        b.classList.remove('border-primary-container', 'bg-white');
-        b.classList.add('border-transparent', 'bg-surface-container-low');
-        b.querySelector('.check-badge').classList.add('hidden');
-        b.querySelector('.check-badge').classList.remove('flex');
-      });
-      btn.classList.remove('border-transparent', 'bg-surface-container-low');
-      btn.classList.add('border-primary-container', 'bg-white');
-      btn.querySelector('.check-badge').classList.remove('hidden');
-      btn.querySelector('.check-badge').classList.add('flex');
-      state.avatar = src;
-    };
-
-    $$('.avatar-btn').forEach(btn => {
-      btn.addEventListener('click', () => selectAvatar(btn, btn.dataset.src));
-    });
-
-    $$('.class-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        $$('.class-btn').forEach(b => {
-          b.classList.remove('border-primary-container', 'bg-primary-container', 'text-white');
-          b.classList.add('border-transparent', 'bg-surface-container-low', 'text-on-surface');
-        });
-        btn.classList.remove('border-transparent', 'bg-surface-container-low', 'text-on-surface');
-        btn.classList.add('border-primary-container', 'bg-primary-container', 'text-white');
-        state.kelas = btn.dataset.kelas;
-      });
-    });
-
-    window.goToProfile = function() {
-      if (confirm('Ganti profil anak? Progres belajar tetap tersimpan.')) {
-        localStorage.removeItem('duolexia-profile');
-        location.reload();
-      }
-    };
-
-    $('#btn-mulai').addEventListener('click', () => {
-      let name = $('#input-nama').value.trim();
-      state.name = name !== '' ? name : 'Petualang';
-      
-      localStorage.setItem('duolexia-profile', JSON.stringify({
-        name: state.name,
-        avatar: state.avatar,
-        kelas: state.kelas
-      }));
-      
-      updateUserUI();
-      renderMap();
-      showScreen('screen-map');
-    });
-
-    function updateUserUI() {
-      $('#name-display').textContent = state.name;
-      $('#name-display-2').textContent = state.name;
-      $('#greeting-text').textContent = `Halo, ${state.name}! 👋`;
-      $('#avatar-display').src = state.avatar;
-      $('#avatar-display-2').src = state.avatar;
-      $('#avatar-display-3').src = state.avatar;
-    }
-
-    function renderMap() {
-      $('#star-count-map').textContent = state.stars;
-      const container = $('#map-nodes-container');
-      container.innerHTML = '';
-
-      for (let i = curriculum.length - 1; i >= 0; i--) {
-        const lvl = curriculum[i];
-        const isDone = lvl.id <= state.completed;
-        const isActive = lvl.id === state.completed + 1;
-        const isLocked = lvl.id > state.completed + 1;
-
-        let html = '';
-        
-        if (isActive) {
-          html = `
-            <div class="relative z-20 w-full max-w-[320px] flex flex-col items-center">
-              <div class="w-full bg-surface-container-lowest p-3.5 rounded-3xl shadow-lg flex flex-col items-center gap-2">
-                <div class="relative flex items-center justify-center my-1">
-                  <div class="absolute w-16 h-16 rounded-full bg-primary-container/30 animate-ping opacity-75"></div>
-                  <div class="w-14 h-14 rounded-full bg-primary-container flex items-center justify-center shadow-md relative z-10">
-                    <span class="material-symbols-outlined text-2xl text-on-primary-container">${lvl.icon}</span>
-                  </div>
-                  <div class="absolute -bottom-2 z-20 bg-tertiary text-on-tertiary px-2 py-0.5 rounded-full font-label-sm text-[10px] shadow-sm flex items-center gap-0.5">
-                    <span class="material-symbols-outlined text-[12px]">play_circle</span><span>Pos Aktif</span>
-                  </div>
-                </div>
-                <div class="text-center mt-1">
-                  <span class="font-title-md text-title-md text-on-surface block font-bold">${lvl.id}. ${lvl.title}</span>
-                </div>
-                <button onclick="startLesson(${lvl.id})" class="w-full h-11 bg-primary text-on-primary rounded-xl shadow-[0_4px_0_#2c5000] active:translate-y-1 active:shadow-none transition-transform flex items-center justify-center gap-1 font-label-md text-label-md mt-1">
-                  <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-                  <span>Mulai</span>
-                </button>
-              </div>
-            </div>
-          `;
-        } else if (isDone) {
-          const align = i % 2 === 0 ? 'justify-start pl-4' : 'justify-end pr-4';
-          html = `
-            <div class="relative z-10 w-full max-w-[300px] flex ${align}">
-              <div class="flex items-center gap-2 bg-surface-container-lowest/90 p-2 rounded-2xl shadow-sm cursor-pointer border border-primary-container" onclick="startLesson(${lvl.id})">
-                <div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center shadow-inner relative shrink-0">
-                  <span class="material-symbols-outlined text-[22px] text-primary" style="font-variation-settings: 'FILL' 1;">task_alt</span>
-                  <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm">
-                    <span class="material-symbols-outlined text-[14px]">check</span>
-                  </div>
-                </div>
-                <div class="flex flex-col">
-                  <span class="font-label-md text-label-md text-on-surface font-bold leading-tight">${lvl.id}. ${lvl.title}</span>
-                  <span class="font-label-sm text-[10px] text-primary font-bold">Selesai (Ulangi)</span>
-                </div>
-              </div>
-            </div>
-          `;
-        } else {
-          const align = i % 2 === 0 ? 'justify-start pl-4' : 'justify-end pr-4';
-          html = `
-            <div class="relative z-10 w-full max-w-[300px] flex ${align} opacity-70">
-              <div class="flex items-center gap-2 bg-surface-container/90 p-2 rounded-2xl shadow-sm border border-transparent">
-                <div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center shadow-inner shrink-0">
-                  <span class="material-symbols-outlined text-[22px] text-outline">lock</span>
-                </div>
-                <div class="flex flex-col">
-                  <span class="font-label-md text-label-md text-on-surface-variant font-bold leading-tight">${lvl.id}. ${lvl.title}</span>
-                  <span class="font-label-sm text-[10px] text-outline">Terkunci</span>
-                </div>
-              </div>
-            </div>
-          `;
-        }
-        container.innerHTML += html;
+        return true;
+      } catch (e) {
+        return false;
       }
     }
 
-    window.startLesson = function(id) {
-      currentLevel = curriculum.find(l => l.id === id);
-      currentQIndex = 0;
-      state.lives = 3;
-      $('#lives-count').textContent = state.lives;
-      
-      showScreen('screen-latihan');
-      loadQuestion();
-    };
+    // ===== TOAST & ROUTER =====
+    let toastTimer;
+    function showToast(msg) {
+      const t = $('#toast');
+      if (!t) return;
+      t.textContent = msg;
+      t.classList.remove('opacity-0', 'translate-y-2');
+      t.classList.add('opacity-100', 'translate-y-0');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        t.classList.add('opacity-0', 'translate-y-2');
+        t.classList.remove('opacity-100', 'translate-y-0');
+      }, 2200);
+    }
 
-    function loadQuestion() {
-      if (currentQIndex >= currentLevel.questions.length) {
-        finishLesson();
-        return;
-      }
+    function showScreen(name, levelId) {
+      Object.values(screens).forEach(s => s && s.classList.add('hidden'));
+      const target = screens[name];
+      if (!target) return;
+      target.classList.remove('hidden');
 
-      const q = currentLevel.questions[currentQIndex];
-      selectedAnswer = null;
-      isAnswered = false;
+      const isLesson = name === 'pelajaran';
 
-      $('#question-text').textContent = q.prompt;
-      $('#progress-bar').style.width = `${(currentQIndex / currentLevel.questions.length) * 100}%`;
+      $('#header-back').classList.toggle('hidden', !isLesson);
+      $('#header-streak').classList.toggle('hidden', isLesson);
+      $('#header-title').textContent = TITLES[name] || 'Duolexia';
 
-      const grid = $('#options-grid');
-      grid.innerHTML = '';
-      q.options.forEach(opt => {
-        const btn = document.createElement('button');
-        const isLongText = opt.length > 8;
-        const textSize = isLongText ? 'text-[18px] leading-tight' : 'text-[28px]';
-        
-        btn.className = `option-card w-full h-24 bg-surface-container-lowest rounded-lg p-2 shadow-[0_5px_0_#d1e4fb] active:translate-y-1.5 active:shadow-none transition-all flex flex-col items-center justify-center border-2 border-transparent text-center font-headline-sm ${textSize} text-on-surface font-extrabold`;
-        btn.textContent = opt;
-        btn.onclick = () => selectOption(btn, opt);
-        grid.appendChild(btn);
+      $('#bottom-nav').classList.toggle('hidden', isLesson);
+
+      $$('#bottom-nav [data-path]').forEach(a => {
+        const active = a.dataset.path === name;
+        a.classList.toggle('bg-primary-container', active);
+        a.classList.toggle('text-on-primary-container', active);
+        a.classList.toggle('text-on-surface-variant', !active);
+        if (active) a.setAttribute('aria-current', 'page');
+        else a.removeAttribute('aria-current');
       });
 
-      $('#feedback-box').className = "shrink-0 bg-surface-container-lowest rounded-lg p-space-sm flex items-center justify-center text-center shadow-sm mt-auto";
-      $('#feedback-text').textContent = "Sentuh salah satu jawaban di atas!";
-      $('#feedback-text').className = "font-label-md text-label-md text-on-surface font-black";
-      
-      const checkBtn = $('#btn-check');
-      checkBtn.innerHTML = '<span class="material-symbols-outlined text-[24px]">check_circle</span><span>PERIKSA JAWABAN</span>';
-      checkBtn.className = "w-full h-14 bg-primary-container text-on-surface rounded-lg font-label-lg text-label-lg shadow-[0_5px_0_#65B00C] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2 uppercase tracking-wider";
-      
-      playAudio(q.speak);
+      window.scrollTo(0, 0);
+
+      if (isLesson) {
+        if (levelId) currentLevel = levelId;
+        const data = LEVEL_DATA[currentLevel - 1] || LEVEL_DATA[0];
+        lesson.questions = data.q;
+        startLesson();
+      } else if (name === 'belajar') {
+        renderPath();
+      } else if (name === 'kemajuan') {
+        renderStats(); // Update stats
+      }
     }
 
-    function selectOption(btn, opt) {
-      if (isAnswered) return;
-      selectedAnswer = opt;
-      
-      $$('.option-card').forEach(b => {
-        b.classList.remove('bg-secondary-fixed', 'border-secondary', 'shadow-[0_5px_0_#1474C7]');
-        b.classList.add('bg-surface-container-lowest', 'border-transparent', 'shadow-[0_5px_0_#d1e4fb]');
-      });
-      
-      btn.classList.remove('bg-surface-container-lowest', 'border-transparent', 'shadow-[0_5px_0_#d1e4fb]');
-      btn.classList.add('bg-secondary-fixed', 'border-secondary', 'shadow-[0_5px_0_#1474C7]');
-      
-      $('#feedback-text').textContent = `Kamu memilih: ${opt}`;
+    // ===== XP & STATS =====
+    function updateXp() {
+      const label = $('#xp-label');
+      if (label) label.textContent = Math.min(xp, 50) + '/50';
+      const ring = $('#xp-ring');
+      if (ring) {
+        const C = 163.36;
+        const offset = C * (1 - Math.min(xp, 50) / 50);
+        ring.setAttribute('stroke-dashoffset', offset.toFixed(2));
+      }
     }
-
-    $('#btn-audio').addEventListener('click', () => {
-      const q = currentLevel.questions[currentQIndex];
-      playAudio(q.speak);
-    });
-
-    $('#btn-check').addEventListener('click', () => {
-      if (isAnswered) {
-        currentQIndex++;
-        loadQuestion();
-        return;
-      }
-
-      if (!selectedAnswer) {
-        $('#feedback-text').textContent = "Pilih jawaban dulu ya!";
-        return;
-      }
-
-      const q = currentLevel.questions[currentQIndex];
-      const isCorrect = selectedAnswer === q.answer;
-      isAnswered = true;
-
-      if (isCorrect) {
-        $('#feedback-box').className = "shrink-0 bg-primary-container rounded-lg p-space-sm flex items-center justify-center text-center shadow-sm mt-auto";
-        $('#feedback-text').textContent = "HEBAT SEKALI! Jawaban Benar! 🌟";
-        $('#feedback-text').className = "font-label-md text-label-md text-white font-black";
-        playAudio("Hebat! Jawabanmu benar.");
-        
-        state.stars++;
-        localStorage.setItem('duo_stars', state.stars);
-        $('#star-count-map').textContent = state.stars;
-        
-        $('#btn-check').innerHTML = '<span class="material-symbols-outlined text-[24px]">arrow_forward</span><span>LANJUT</span>';
-      } else {
-        $('#feedback-box').className = "shrink-0 bg-error-container rounded-lg p-space-sm flex items-center justify-center text-center shadow-sm mt-auto";
-        $('#feedback-text').textContent = `Hampir tepat! Jawabannya: ${q.answer}`;
-        $('#feedback-text').className = "font-label-md text-label-md text-on-error-container font-black";
-        playAudio("Hampir tepat. Ayo coba lagi di soal berikutnya.");
-        
-        state.lives--;
-        $('#lives-count').textContent = state.lives;
-        
-        if (state.lives <= 0) {
-          $('#btn-check').innerHTML = '<span class="material-symbols-outlined text-[24px]">refresh</span><span>ULANGI LATIHAN</span>';
-          $('#btn-check').onclick = () => { startLesson(currentLevel.id); $('#btn-check').onclick = null; };
-          return;
-        }
-        $('#btn-check').innerHTML = '<span class="material-symbols-outlined text-[24px]">arrow_forward</span><span>LANJUT</span>';
-      }
-    });
-
-    function finishLesson() {
-      if (currentLevel.id === state.completed + 1) {
-        state.completed++;
-        localStorage.setItem('duo_completed', state.completed);
-      }
-      showScreen('screen-map');
-      renderMap();
-    }
-
-    window.exitLesson = function() {
-      showScreen('screen-map');
-      renderMap();
-    };
 
     function renderStats() {
-      $('#stat-xp').textContent = state.stars;
-      $('#stat-modules').textContent = state.completed;
-    }
+      const streakText = $('#header-streak-text');
+      if (streakText) streakText.textContent = (progress.streak || 0) + ' Hari';
 
-    const savedProfile = localStorage.getItem('duolexia-profile');
-    if (savedProfile) {
-      try {
-        const p = JSON.parse(savedProfile);
-        state.name = p.name || 'Petualang';
-        state.avatar = p.avatar || 'avatar1.png';
-        state.kelas = p.kelas || 'Kelas 1';
-        
-        updateUserUI();
-        renderMap();
-        showScreen('screen-map');
-      } catch(e) {
-        showScreen('screen-profil');
+      const sStreak = $('#stat-streak');
+      const sXp = $('#stat-xp');
+      const sMod = $('#stat-modules');
+      const sStar = $('#stat-stars');
+      if (sStreak) sStreak.textContent = progress.streak || 0;
+      if (sXp) sXp.textContent = progress.xp || 0;
+      if (sMod) sMod.textContent = Math.floor(progress.completedLevels / 5); // 5 level per modul
+      if (sStar) sStar.textContent = progress.stars || 0;
+
+      const nextTitle = $('#next-lesson-title');
+      if (nextTitle) {
+         const nextLvl = Math.min(progress.completedLevels, LEVEL_DATA.length - 1);
+         nextTitle.textContent = LEVEL_DATA[nextLvl].title;
       }
-    } else {
-      showScreen('screen-profil');
     }
 
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js').catch(err => console.log('SW error:', err));
+    // ===== RENDER ZIGZAG PATH (6 Modul) =====
+    function renderPath() {
+      const container = $('#learning-path');
+      if (!container) return;
+      container.innerHTML = '';
+
+      // 6 Modul total. Masing-masing 1 Level (berisi 5 soal)
+      const modules = [
+        { title: '1. Petualangan Huruf', icon: 'abc' },
+        { title: '2. Detektif Bunyi', icon: 'search' },
+        { title: '3. Kereta Suku Kata', icon: 'train' },
+        { title: '4. Laboratorium Kata', icon: 'science' },
+        { title: '5. Dunia Membaca', icon: 'menu_book' },
+        { title: '6. Petualangan Cerita', icon: 'auto_stories' }
+      ];
+
+      modules.forEach((mod, idx) => {
+        const levelNum = idx + 1;
+        const isDone = levelNum <= progress.completedLevels;
+        const isActive = levelNum === progress.completedLevels + 1;
+        const isLocked = levelNum > progress.completedLevels + 1;
+        
+        let offset = '';
+        if (levelNum % 3 === 1) offset = '-translate-x-10';
+        else if (levelNum % 3 === 2) offset = 'translate-x-10';
+        else offset = '-translate-x-6';
+
+        let moduleHTML = `
+          <div class="flex flex-col gap-space-md mb-space-md">
+            <div class="bg-secondary-container text-on-secondary rounded-lg px-space-md py-3 shadow-[0_4px_0_0_#1474C7] flex items-center justify-between">
+              <div class="flex items-center gap-space-sm min-w-0">
+                <span class="material-symbols-outlined text-[24px] shrink-0" style="font-variation-settings:'FILL' 1;">${mod.icon}</span>
+                <span class="font-title-md text-title-md truncate">${mod.title}</span>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-surface-container-lowest text-secondary font-label-sm text-label-sm shrink-0">${isDone ? 'Selesai' : 'Buka'}</span>
+            </div>
+            <div class="flex flex-col items-center gap-space-md py-space-xs">
+        `;
+
+        if (isDone) {
+            moduleHTML += `
+            <button data-level="${levelNum}" class="w-16 h-16 rounded-full bg-primary-container text-on-primary shadow-[0_5px_0_0_#65B00C] active:translate-y-[2px] active:shadow-[0_3px_0_0_#65B00C] transition-all flex items-center justify-center ${offset}" type="button">
+              <span class="material-symbols-outlined text-[30px]" style="font-variation-settings:'FILL' 1;">check</span>
+            </button>
+            `;
+        } else if (isActive) {
+            moduleHTML += `
+            <div class="relative flex items-center justify-center ${offset} my-space-xs">
+              <div class="absolute w-24 h-24 rounded-full bg-golden-yellow/35 animate-pulse"></div>
+              <button data-level="${levelNum}" class="relative z-10 w-20 h-20 rounded-full bg-golden-yellow text-on-surface shadow-[0_6px_0_0_#994700] active:translate-y-[2px] active:shadow-[0_4px_0_0_#994700] transition-all flex flex-col items-center justify-center" type="button">
+                <span class="material-symbols-outlined text-[34px]" style="font-variation-settings:'FILL' 1;">play_arrow</span>
+              </button>
+              ${levelNum === 1 || levelNum === 3 ? `<div class="absolute left-24 flex items-center gap-space-xs"><img src="mascot.png" alt="Maskot" class="w-16 h-16 rounded-full object-cover bg-ice-cyan shadow-[0_3px_0_0_#a0c9ff] border-2 border-primary-container" /></div>` : ''}
+            </div>
+            `;
+        } else {
+            moduleHTML += `
+            <button data-locked class="w-16 h-16 rounded-full bg-surface-container-high text-on-surface-variant shadow-[0_5px_0_0_#a0c9ff] flex items-center justify-center ${offset} opacity-80" type="button">
+              <span class="material-symbols-outlined text-[26px]">lock</span>
+            </button>
+            `;
+        }
+
+        moduleHTML += `</div></div>`;
+        container.innerHTML += moduleHTML;
+      });
+
+      // Bind events ke tombol yang baru dibuat
+      $$('#learning-path [data-level]').forEach(btn => {
+         btn.addEventListener('click', () => {
+            const lvl = parseInt(btn.dataset.level);
+            if (lvl <= progress.completedLevels + 1) {
+               showScreen('pelajaran', lvl);
+            }
+         });
+      });
+      $$('#learning-path [data-locked]').forEach(btn => {
+         btn.addEventListener('click', () => showToast('Selesaikan level sebelumnya dulu ya!'));
       });
     }
+
+    // ===== LESSON LOGIC =====
+    const lesson = {
+      questions: [],
+      index: 0,
+      selected: null,
+      answered: false,
+      stars: progress.stars || 0,
+    };
+
+    const CLS = {
+      selBg:  'bg-secondary-fixed',
+      selTxt: 'text-on-secondary-fixed',
+      selSh:  'shadow-[0_4px_0_0_#1474C7]',
+      selAct: 'active:shadow-[0_2px_0_0_#1474C7]',
+      unBg:   'bg-surface-container-lowest',
+      unTxt:  'text-on-surface',
+      unSh:   'shadow-[0_4px_0_0_#d1e4fb]',
+      unAct:  'active:shadow-[0_2px_0_0_#d1e4fb]',
+    };
+
+    function updateLessonChrome() {
+      const total = lesson.questions.length;
+      const cur = lesson.index + 1;
+      const label = $('#lesson-progress-label');
+      if (label) label.textContent = cur + '/' + total;
+      const bar = $('#lesson-progress');
+      if (bar) bar.style.width = (cur / total * 100) + '%';
+      const stars = $('#star-count');
+      if (stars) stars.textContent = lesson.stars;
+    }
+
+    function renderOptions() {
+      const grid = $('#options-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      
+      const q = lesson.questions[lesson.index];
+      if (!q) return;
+
+      // Ubah teks prompt
+      const promptText = $('#prompt-text');
+      if (promptText) promptText.textContent = q.prompt;
+
+      // Render 4 tombol opsi
+      q.options.forEach(letter => {
+         // Jika teks lebih dari 4 karakter, kecilkan fontnya
+         const isLongText = letter.length > 4;
+         const textSize = isLongText ? 'text-[20px] font-headline-sm leading-tight' : 'text-headline-lg';
+
+         grid.innerHTML += `
+           <button aria-pressed="false" data-letter="${letter}" class="option-card h-32 rounded-lg bg-surface-container-lowest text-on-surface shadow-[0_4px_0_0_#d1e4fb] active:translate-y-[2px] active:shadow-[0_2px_0_0_#d1e4fb] transition-all flex flex-col items-center justify-center gap-1 px-2" type="button">
+             <span class="${textSize} text-center">${letter}</span>
+             <span class="dot w-2 h-2 rounded-full bg-transparent shrink-0 mt-1"></span>
+           </button>
+         `;
+      });
+
+      // Bind klik event
+      $$('#options-grid .option-card').forEach(card => {
+        card.addEventListener('click', () => {
+          if (lesson.answered) return;
+          setSelected(card.dataset.letter);
+          const fb = $('#feedback-banner');
+          if (fb) fb.classList.add('hidden');
+        });
+      });
+
+      setSelected(null);
+    }
+
+    function setSelected(letter) {
+      lesson.selected = letter;
+      $$('#options-grid .option-card').forEach(card => {
+        const on = card.dataset.letter === letter;
+        card.setAttribute('aria-pressed', on ? 'true' : 'false');
+        card.classList.toggle(CLS.selBg,  on);
+        card.classList.toggle(CLS.selTxt, on);
+        card.classList.toggle(CLS.selSh,  on);
+        card.classList.toggle(CLS.selAct, on);
+        card.classList.toggle(CLS.unBg,  !on);
+        card.classList.toggle(CLS.unTxt, !on);
+        card.classList.toggle(CLS.unSh,  !on);
+        card.classList.toggle(CLS.unAct, !on);
+        const dot = card.querySelector('.dot');
+        if (dot) {
+          dot.classList.toggle('bg-secondary', on);
+          dot.classList.toggle('bg-transparent', !on);
+        }
+      });
+    }
+
+    function showFeedback(msg, ok) {
+      const b = $('#feedback-banner');
+      const icon = $('#feedback-icon');
+      const text = $('#feedback-text');
+      if (!b || !icon || !text) return;
+      b.classList.remove('hidden');
+      text.textContent = msg;
+      icon.textContent = ok ? 'check_circle' : 'error';
+      icon.classList.toggle('text-primary', ok);
+      icon.classList.toggle('text-error', !ok);
+      b.classList.toggle('bg-surface-container-lowest', ok);
+      b.classList.toggle('bg-error-container', !ok);
+      b.classList.toggle('text-on-surface', ok);
+      b.classList.toggle('text-on-error-container', !ok);
+      b.classList.toggle('shadow-[0_3px_0_0_#d1e4fb]', ok);
+      b.classList.toggle('shadow-[0_3px_0_0_#ba1a1a]', !ok);
+    }
+
+    function startLesson() {
+      lesson.index = 0;
+      lesson.answered = false;
+      const fb = $('#feedback-banner');
+      if (fb) fb.classList.add('hidden');
+      const btn = $('#btn-check');
+      if (btn) btn.textContent = 'Periksa';
+      
+      renderOptions();
+      updateLessonChrome();
+    }
+
+    function advanceLesson() {
+      lesson.index++;
+      if (lesson.index >= lesson.questions.length) {
+        completeLesson();
+        return;
+      }
+      lesson.answered = false;
+      const fb = $('#feedback-banner');
+      if (fb) fb.classList.add('hidden');
+      const btn = $('#btn-check');
+      if (btn) btn.textContent = 'Periksa';
+      
+      renderOptions();
+      updateLessonChrome();
+    }
+
+    function completeLesson() {
+      xp = Math.min(50, xp + 12);
+      progress.xp = xp;
+      progress.stars = lesson.stars;
+
+      // Naikkan level jika menyelesaikan level aktif
+      if (currentLevel === progress.completedLevels + 1) {
+          progress.completedLevels++;
+          progress.modulesDone = Math.floor(progress.completedLevels / 5);
+      }
+
+      saveProgress();
+      updateXp();
+      renderStats();
+      $('#completion-overlay').classList.remove('hidden');
+    }
+
+    // ===== EVENT LISTENERS =====
+    const btnCheck = $('#btn-check');
+    if (btnCheck) {
+      btnCheck.addEventListener('click', () => {
+        if (lesson.answered) { advanceLesson(); return; }
+        if (!lesson.selected) { showFeedback('Pilih dulu salah satu jawabannya, ya.', false); return; }
+        
+        const q = lesson.questions[lesson.index];
+        const ok = lesson.selected === q.answer; // Cek berdasarkan answer, bukan letter
+        
+        showFeedback(ok ? 'Hebat! Jawabanmu benar.' : 'Hampir! Coba dengarkan lagi bunyinya.', ok);
+        if (ok) {
+          lesson.answered = true;
+          lesson.stars += 2;
+          const stars = $('#star-count');
+          if (stars) stars.textContent = lesson.stars;
+          btnCheck.textContent = 'Lanjut';
+        }
+      });
+    }
+
+    const btnListen = $('#btn-listen');
+    if (btnListen) {
+      btnListen.addEventListener('click', () => {
+        const q = lesson.questions[lesson.index];
+        const icon = $('#icon-listen');
+        if (icon) icon.textContent = 'graphic_eq';
+        
+        playAudio(q.audio, 1.0, q.speak); 
+        
+        setTimeout(() => { if (icon) icon.textContent = 'volume_up'; }, 900);
+        btnListen.classList.add('ring-4', 'ring-secondary-container/40');
+        setTimeout(() => btnListen.classList.remove('ring-4', 'ring-secondary-container/40'), 400);
+      });
+    }
+
+    const btnSlow = $('#btn-slow');
+    if (btnSlow) {
+      btnSlow.addEventListener('click', () => {
+        const q = lesson.questions[lesson.index];
+        playAudio(q.audio, 0.6, q.speak);
+        btnSlow.classList.add('ring-4', 'ring-secondary-fixed');
+        setTimeout(() => btnSlow.classList.remove('ring-4', 'ring-secondary-fixed'), 400);
+      });
+    }
+
+    const welcomeAudio = $('#welcome-audio-btn');
+    if (welcomeAudio) {
+      welcomeAudio.addEventListener('click', () => {
+        welcomeAudio.classList.add('scale-110', 'bg-primary-fixed', 'text-on-primary-fixed');
+        setTimeout(() => welcomeAudio.classList.remove('scale-110', 'bg-primary-fixed', 'text-on-primary-fixed'), 400);
+        playAudio('audio/welcome.mp3', 1.0, 'Hebat! Ayo lanjutkan belajarmu hari ini.');
+      });
+    }
+
+    // Navigasi
+    $$('#bottom-nav [data-path]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        showScreen(a.dataset.path);
+      });
+    });
+
+    const headerBack = $('#header-back');
+    if (headerBack) headerBack.addEventListener('click', () => showScreen('belajar'));
+
+    $$('[data-close-lesson]').forEach(b => b.addEventListener('click', () => showScreen('belajar')));
+    $$('[data-open-active-lesson]').forEach(b => b.addEventListener('click', () => showScreen('pelajaran', progress.completedLevels + 1)));
+
+    const overlayClose = $('#completion-close');
+    if (overlayClose) {
+      overlayClose.addEventListener('click', () => {
+        $('#completion-overlay').classList.add('hidden');
+        showScreen('belajar');
+        showToast('Pelajaran selesai! +12 XP');
+      });
+    }
+
+    const btnDisplay = $('#btn-display');
+    if (btnDisplay) {
+      btnDisplay.addEventListener('click', () => {
+        document.body.classList.toggle('font-legible');
+        showToast(document.body.classList.contains('font-legible') ? 'Mode nyaman dibaca: aktif' : 'Mode nyaman dibaca: nonaktif');
+      });
+    }
+
+    const btnScan = $('#btn-scan');
+    if (btnScan) btnScan.addEventListener('click', () => showToast('Fitur pindai segera hadir.'));
+
+    // ===== INIT =====
+    updateXp();
+    renderStats();
+    showScreen('belajar');
   })();
+  </script>
+
+  <!-- PWA Service Worker Register -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js');
+      });
+    }
   </script>
 </body>
 </html>
