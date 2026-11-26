@@ -40,14 +40,15 @@
   }
 </script>
 <style>
-  /* MOBILE FRIENDLY: Menggunakan 100dvh agar pas di layar HP */
+  /* MOBILE FRIENDLY */
   html, body { width: 100%; height: 100dvh; margin: 0; padding: 0; overflow: hidden; background-color: #f7f9ff; }
   body { overscroll-behavior: none; }
   .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
   .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
   ::-webkit-scrollbar { display: none; }
   
-  .hidden-screen { display: none; }
+  /* PERBAIKAN BUG CSS: Gunakan !important agar layar benar-benar tersembunyi */
+  .hidden-screen { display: none !important; }
   .screen-flex { display: flex; flex-direction: column; width: 100%; height: 100dvh; }
 </style>
 </head>
@@ -55,7 +56,7 @@
 <body class="font-body-md text-on-surface antialiased select-none">
 
   <!-- ========================================== -->
-  <!-- SCREEN 1: PROFIL (Tanpa Fitur Orang Tua)   -->
+  <!-- SCREEN 1: PROFIL                           -->
   <!-- ========================================== -->
   <section id="screen-profil" class="screen-flex bg-surface pt-safe pb-safe overflow-y-auto">
     <div class="flex flex-col w-full px-margin pb-space-lg h-full">
@@ -137,11 +138,9 @@
   </section>
 
   <!-- ========================================== -->
-  <!-- SCREEN 2: PETA BELAJAR (Dengan Bottom Nav) -->
+  <!-- SCREEN 2: PETA BELAJAR                     -->
   <!-- ========================================== -->
   <div id="screen-map" class="hidden-screen screen-flex bg-surface relative">
-    
-    <!-- Header Peta -->
     <header class="shrink-0 w-full z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
       <div class="h-16 px-margin flex items-center justify-between">
         <div class="flex items-center gap-space-sm">
@@ -153,7 +152,6 @@
             <span class="font-label-sm text-[12px] text-primary font-bold">Peta Belajar</span>
           </div>
         </div>
-        <!-- Tombol Avatar untuk Ganti Profil -->
         <button onclick="goToProfile()" class="flex items-center gap-2 bg-surface-container-lowest px-2.5 py-1 rounded-full border border-primary-container shadow-sm active:scale-95 transition-transform">
           <img id="avatar-display" src="avatar1.png" alt="Avatar" class="w-8 h-8 rounded-full object-cover border border-white">
           <span class="font-label-md text-label-md text-on-surface font-bold pr-1" id="name-display">Anak</span>
@@ -161,9 +159,7 @@
       </div>
     </header>
 
-    <!-- Konten Peta (Scrollable) -->
     <main class="flex-1 w-full overflow-y-auto bg-surface relative pb-24">
-      <!-- Sapaan -->
       <section class="w-full px-margin py-space-sm bg-surface-container-low shadow-sm flex flex-col gap-space-sm shrink-0">
         <div class="flex items-center justify-between gap-2">
           <div class="flex items-center gap-2.5 min-w-0">
@@ -180,20 +176,16 @@
         </div>
       </section>
 
-      <!-- Jalur Zigzag -->
       <section class="w-full relative px-margin py-space-lg flex flex-col items-center bg-mint-canvas/30 min-h-[800px]">
         <svg class="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none" viewBox="0 0 380 920" xmlns="http://www.w3.org/2000/svg">
           <path d="M 190 850 C 90 770, 70 700, 150 630 C 270 530, 310 470, 210 370 C 110 270, 100 210, 190 120 C 230 80, 200 40, 190 20" fill="none" stroke="#D1E4FB" stroke-linecap="round" stroke-linejoin="round" stroke-width="26"></path>
           <path d="M 190 850 C 90 770, 70 700, 150 630 C 270 530, 310 470, 210 370 C 110 270, 100 210, 190 120 C 230 80, 200 40, 190 20" fill="none" stroke="#FFFFFF" stroke-dasharray="14 10" stroke-linecap="round" stroke-width="16"></path>
         </svg>
 
-        <div id="map-nodes-container" class="w-full h-full flex flex-col justify-between items-center z-10 py-8 relative gap-8">
-          <!-- Diisi JS -->
-        </div>
+        <div id="map-nodes-container" class="w-full h-full flex flex-col justify-between items-center z-10 py-8 relative gap-8"></div>
       </section>
     </main>
 
-    <!-- BOTTOM NAV -->
     <nav class="absolute bottom-0 left-0 right-0 z-50 pb-safe bg-surface-container-lowest/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.05)]">
       <div class="max-w-[480px] mx-auto flex justify-around items-center h-20 px-space-sm">
         <button data-tab="belajar" class="nav-item flex flex-col items-center justify-center gap-1 min-w-[100px] h-14 px-3 rounded-2xl transition-all bg-primary-container text-on-primary-container">
@@ -303,9 +295,7 @@
         </div>
       </div>
 
-      <div id="options-grid" class="grid grid-cols-2 gap-space-md relative mt-1 flex-1 content-start shrink-0 min-h-[250px]">
-        <!-- Diisi JS -->
-      </div>
+      <div id="options-grid" class="grid grid-cols-2 gap-space-md relative mt-1 flex-1 content-start shrink-0 min-h-[250px]"></div>
 
       <div class="shrink-0 bg-surface-container-lowest rounded-lg p-space-sm flex items-center justify-center text-center shadow-sm mt-auto" id="feedback-box">
         <span class="font-label-md text-label-md text-on-surface font-black" id="feedback-text">Sentuh salah satu jawaban di atas!</span>
@@ -325,7 +315,7 @@
     const $ = (s) => document.querySelector(s);
     const $$ = (s) => document.querySelectorAll(s);
 
-    // ===== iOS AUDIO UNLOCK =====
+    // iOS Audio Unlock
     let audioUnlocked = false;
     function unlockAudio() {
       if (audioUnlocked) return;
@@ -345,7 +335,7 @@
     document.addEventListener('touchstart', unlockAudio);
     document.addEventListener('click', unlockAudio);
 
-    // ===== DATA KURIKULUM =====
+    // Data Kurikulum
     const curriculum = [
       {
         id: 1, title: "Sound Explorer", icon: "volume_up",
@@ -414,7 +404,6 @@
       }
     ];
 
-    // ===== STATE & STORAGE =====
     let state = {
       name: 'Petualang', avatar: 'avatar1.png', kelas: 'Kelas 1',
       stars: parseInt(localStorage.getItem('duo_stars') || '0'),
@@ -427,7 +416,6 @@
     let selectedAnswer = null;
     let isAnswered = false;
 
-    // ===== AUDIO TTS =====
     function playAudio(text, rate = 0.85) {
       if (!('speechSynthesis' in window)) return;
       try {
@@ -440,7 +428,6 @@
       } catch(e) {}
     }
 
-    // ===== NAVIGASI =====
     function showScreen(id) {
       ['screen-profil', 'screen-map', 'screen-kemajuan', 'screen-latihan'].forEach(s => {
         const el = document.getElementById(s);
@@ -455,14 +442,12 @@
       if (tab === 'kemajuan') renderStats();
     };
 
-    // Nav items click
     document.querySelectorAll('.nav-item').forEach(btn => {
       btn.addEventListener('click', () => {
         switchTab(btn.dataset.tab);
       });
     });
 
-    // ===== PROFIL & AVATAR =====
     window.selectAvatar = function(btn, src) {
       $$('.avatar-btn').forEach(b => {
         b.classList.remove('border-primary-container', 'bg-white');
@@ -493,7 +478,6 @@
       });
     });
 
-    // ===== GANTI PROFIL =====
     window.goToProfile = function() {
       if (confirm('Ganti profil anak? Progres belajar tetap tersimpan.')) {
         localStorage.removeItem('duolexia-profile');
@@ -501,12 +485,10 @@
       }
     };
 
-    // ===== START =====
     $('#btn-mulai').addEventListener('click', () => {
       let name = $('#input-nama').value.trim();
       state.name = name !== '' ? name : 'Petualang';
       
-      // SIMPAN PROFIL KE LOCALSTORAGE
       localStorage.setItem('duolexia-profile', JSON.stringify({
         name: state.name,
         avatar: state.avatar,
@@ -516,7 +498,6 @@
       updateUserUI();
       renderMap();
       showScreen('screen-map');
-      // Audio login sudah dihapus sesuai permintaan
     });
 
     function updateUserUI() {
@@ -528,7 +509,6 @@
       $('#avatar-display-3').src = state.avatar;
     }
 
-    // ===== RENDER MAP =====
     function renderMap() {
       $('#star-count-map').textContent = state.stars;
       const container = $('#map-nodes-container');
@@ -603,7 +583,6 @@
       }
     }
 
-    // ===== LATIHAN =====
     window.startLesson = function(id) {
       currentLevel = curriculum.find(l => l.id === id);
       currentQIndex = 0;
@@ -735,7 +714,6 @@
       $('#stat-modules').textContent = state.completed;
     }
 
-    // ===== INIT: CEK PROFIL TERSIMPAN =====
     const savedProfile = localStorage.getItem('duolexia-profile');
     if (savedProfile) {
       try {
@@ -754,7 +732,6 @@
       showScreen('screen-profil');
     }
 
-    // Register Service Worker
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js').catch(err => console.log('SW error:', err));

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'duolexia-v4'; // Wajib naik versi setiap kali Anda mengedit file
+const CACHE_NAME = 'duolexia-v6'; 
 
 const ASSETS = [
   './',
