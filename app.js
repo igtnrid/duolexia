@@ -1,5 +1,5 @@
-/* =========================================================
-   Duolexia — logika aplikasi
+﻿/* =========================================================
+   Duolexia â€” logika aplikasi
    ========================================================= */
 (function () {
   'use strict';
@@ -19,95 +19,101 @@
   var MODULES = [
     {
       n: 1,
-      title: 'Petualangan Huruf',
-      sub: 'Bentuk dan bunyi huruf',
-      icon: 'abc',
-      chips: ['Huruf', 'Bunyi huruf'],
+      title: 'Sound Explorer',
+      sub: 'Bunyi & suku kata',
+      icon: 'graphic_eq',
+      chips: ['Kesadaran Bunyi', 'Bunyi awal & akhir'],
       questions: [
-        { text: 'Pilih huruf yang berbunyi /m/.', options: ['m', 'n', 'b', 'd'], answer: 'm', say: 'em', hint: 'Bunyi /m/ seperti di kata mata.', explain: 'Tepat! Huruf m berbunyi /m/.' },
-        { text: 'Huruf mana yang sama dengan contoh: b?', options: ['b', 'd', 'p', 'q'], answer: 'b', say: 'be', hint: 'Perhatikan arah perut hurufnya, ya.', explain: 'Benar! Huruf itu adalah b.' },
-        { text: 'Pilih huruf besar dari huruf b.', options: ['B', 'D', 'P', 'Q'], answer: 'B', say: 'be besar', hint: 'Huruf besar bentuknya sama, hanya lebih besar.', explain: 'Hebat! Huruf besar dari b adalah B.' },
-        { text: 'Huruf M cocok dengan benda berawalan bunyi /m/. Mana benda itu?', options: ['Meja', 'Bola', 'Sapi', 'Nasi'], answer: 'Meja', say: 'em', emoji: '🪑', hint: 'Dengarkan bunyi pertamanya: /m/.', explain: 'Benar! Meja berawalan bunyi /m/.' },
-        { text: 'Dengarkan bunyi /a/. Pilih huruf yang sesuai.', options: ['A', 'I', 'U', 'E'], answer: 'A', say: 'a', hint: 'Bunyi /a/ seperti di kata api.', explain: 'Tepat! Huruf a berbunyi /a/.' }
+        { id: 'PA01', text: 'Apakah kata batu dan satu memiliki bunyi akhir yang mirip?', options: ['Ya', 'Tidak'], answer: 'Ya', say: 'batu, satu', hint: 'Dengarkan bunyi akhir kedua kata: ba-tu, sa-tu.', explain: 'Bagus! Bunyi akhir kedua kata mirip.' },
+        { id: 'PA02', text: 'Berapa suku kata pada kata meja?', options: ['1', '2', '3'], answer: '2', say: 'meja', hint: 'Hitung dengan tepukan: me-ja.', explain: 'Benar! Meja terdiri dari dua suku kata.' },
+        { id: 'PA03', text: 'Apa bunyi awal dari kata mata?', options: ['/m/', '/b/', '/s/'], answer: '/m/', say: 'mata', hint: 'Dengarkan bunyi pertama kata mata.', explain: 'Tepat! Mata diawali bunyi /m/.' },
+        { id: 'PA04', text: 'Kata mana yang diawali bunyi /k/?', options: ['Kucing', 'Sapi', 'Bola'], answer: 'Kucing', say: 'kucing, sapi, bola', emoji: 'ðŸˆ', hint: 'Dengarkan huruf pertama setiap kata.', explain: 'Benar! Kucing diawali bunyi /k/.' },
+        { id: 'PA05', text: 'Berapa suku kata pada kata kelapa?', options: ['2', '3', '4'], answer: '3', say: 'kelapa', emoji: 'ðŸ¥¥', hint: 'Ucapkan pelan: ke-la-pa.', explain: 'Tepat! Kelapa terdiri dari tiga suku kata.' },
+        { id: 'PA06', text: 'Apa bunyi akhir kata tas?', options: ['/t/', '/s/', '/m/'], answer: '/s/', say: 'tas', hint: 'Dengarkan bunyi terakhir kata tas.', explain: 'Benar! Tas diakhiri bunyi /s/.' }
       ]
     },
     {
       n: 2,
-      title: 'Detektif Bunyi',
-      sub: 'Bunyi awal dan akhir kata',
-      icon: 'graphic_eq',
-      chips: ['Bunyi awal', 'Bunyi akhir'],
+      title: 'Letter Explorer',
+      sub: 'Mengenal huruf',
+      icon: 'abc',
+      chips: ['Mengenal Huruf', 'Huruf & bunyi'],
       questions: [
-        { text: 'Dengarkan kata bola. Bunyi apa yang terdengar di awal?', options: ['/b/', '/o/', '/l/', '/a/'], answer: '/b/', say: 'bola', emoji: '⚽', hint: 'Bunyi pertama saat kamu mengucapkan bola.', explain: 'Tepat! Bola diawali bunyi /b/.' },
-        { text: 'Dengarkan kata ikan. Bunyi apa yang ada di akhir?', options: ['/i/', '/k/', '/a/', '/n/'], answer: '/n/', say: 'ikan', emoji: '🐟', hint: 'Bunyi terakhir saat kamu mengucapkan ikan.', explain: 'Benar! Ikan diakhiri bunyi /n/.' },
-        { text: 'Kata mana yang diawali bunyi /s/?', options: ['Sapi', 'Bola', 'Mata', 'Nasi'], answer: 'Sapi', say: 'es', emoji: '🐄', hint: 'Dengarkan huruf pertamanya.', explain: 'Tepat! Sapi diawali bunyi /s/.' },
-        { text: 'Kata mana yang bunyi awalnya sama dengan mata?', options: ['Meja', 'Bola', 'Sapi', 'Nasi'], answer: 'Meja', say: 'mata', emoji: '👀', hint: 'Mata diawali bunyi /m/.', explain: 'Benar! Meja juga diawali bunyi /m/.' },
-        { text: 'Dengarkan kata sapi. Bunyi apa saja yang menyusunnya?', options: ['/s/ /a/ /p/ /i/', '/b/ /o/ /l/ /a/', '/m/ /a/ /t/ /a/', '/i/ /k/ /a/ /n/'], answer: '/s/ /a/ /p/ /i/', say: 'sapi', hint: 'Ucapkan pelan-pelan: s-a-p-i.', explain: 'Tepat! Sapi terdiri dari /s/ /a/ /p/ /i/.' }
+        { id: 'AK01', text: 'Pilih huruf b.', options: ['b', 'd', 'p'], answer: 'b', say: 'be', hint: 'Huruf b punya tongkat di kiri dan perut di kanan.', explain: 'Benar! Huruf itu b.' },
+        { id: 'AK02', text: 'Huruf kecil dari B adalah â€¦', options: ['b', 'd', 'p'], answer: 'b', say: 'be besar', hint: 'Huruf besar B dan huruf kecilnya berpasangan.', explain: 'Tepat! Huruf kecil dari B adalah b.' },
+        { id: 'AK03', text: 'Huruf apa yang menghasilkan bunyi /m/?', options: ['M', 'S', 'B'], answer: 'M', say: 'em', hint: 'Bunyi /m/ seperti di kata mata.', explain: 'Benar! Huruf M berbunyi /m/.' },
+        { id: 'AK04', text: 'Pilih huruf yang sama dengan A.', options: ['a', 'e', 'o'], answer: 'a', say: 'a', hint: 'Bentuk hurufnya sama, hanya lebih kecil.', explain: 'Tepat! Huruf kecil dari A adalah a.' },
+        { id: 'AK05', text: 'Huruf apa yang mengawali kata sapi?', options: ['S', 'P', 'T'], answer: 'S', say: 'sapi', emoji: 'ðŸ„', hint: 'Dengarkan bunyi pertama kata sapi.', explain: 'Benar! Sapi diawali huruf S.' },
+        { id: 'AK06', text: 'Pilih huruf vokal.', options: ['B', 'A', 'K'], answer: 'A', say: 'a, i, u, e, o', hint: 'Huruf vokal: a, i, u, e, o.', explain: 'Tepat! A adalah huruf vokal.' }
       ]
     },
     {
       n: 3,
-      title: 'Kereta Suku Kata',
-      sub: 'Menyusun suku kata menjadi kata',
+      title: 'Syllable Builder',
+      sub: 'Menyusun kata',
       icon: 'train',
-      chips: ['Suku kata', 'Menyusun kata'],
+      chips: ['Suku Kata', 'Menyusun kata'],
       questions: [
-        { text: 'BA + JU = ...', options: ['BAJU', 'BOLA', 'SAPI', 'MATA'], answer: 'BAJU', say: 'ba ju', hint: 'Gabungkan bunyinya: ba-ju.', explain: 'Benar! BA + JU menjadi BAJU.' },
-        { text: 'SA + PI = ...', options: ['SAPI', 'BAJU', 'MATA', 'NASI'], answer: 'SAPI', say: 'sa pi', emoji: '🐄', hint: 'Gabungkan bunyinya: sa-pi.', explain: 'Tepat! SA + PI menjadi SAPI.' },
-        { text: 'Pisahkan kata BOLA menjadi suku kata.', options: ['BO-LA', 'BOL-A', 'B-OLA', 'BO-L-LA'], answer: 'BO-LA', say: 'bola', emoji: '⚽', hint: 'Bola punya dua suku kata: bo dan la.', explain: 'Tepat! BOLA menjadi BO-LA.' },
-        { text: 'Pisahkan kata KELAPA menjadi suku kata.', options: ['KE-LA-PA', 'KEL-A-PA', 'KE-LAP-A', 'K-E-L-A-P-A'], answer: 'KE-LA-PA', say: 'kelapa', emoji: '🥥', hint: 'Ucapkan pelan: ke-la-pa.', explain: 'Benar! KELAPA menjadi KE-LA-PA.' },
-        { text: 'BO + ... = BOLA', options: ['LA', 'LU', 'LI', 'LE'], answer: 'LA', say: 'bo la', hint: 'Bola: bo ditambah apa, ya?', explain: 'Tepat! BO + LA = BOLA.' }
+        { id: 'SB01', text: 'Gabungkan bo + la.', options: ['bola', 'boba', 'lobo'], answer: 'bola', say: 'bo, la', emoji: 'âš½', hint: 'Ucapkan pelan: bo-la.', explain: 'Benar! bo + la menjadi bola.' },
+        { id: 'SB02', text: 'Gabungkan sa + pi.', options: ['sapi', 'sapa', 'pisa'], answer: 'sapi', say: 'sa, pi', emoji: 'ðŸ„', hint: 'Ucapkan pelan: sa-pi.', explain: 'Tepat! sa + pi menjadi sapi.' },
+        { id: 'SB03', text: 'Gabungkan bu + ku.', options: ['buku', 'bubu', 'kuku'], answer: 'buku', say: 'bu, ku', emoji: 'ðŸ“–', hint: 'Ucapkan pelan: bu-ku.', explain: 'Benar! bu + ku menjadi buku.' },
+        { id: 'SB04', text: 'Kata mata terdiri dari â€¦', options: ['ma-ta', 'mat-a', 'm-ata'], answer: 'ma-ta', say: 'mata', emoji: 'ðŸ‘€', hint: 'Mata punya dua suku kata: ma dan ta.', explain: 'Tepat! Mata terdiri dari ma-ta.' },
+        { id: 'SB05', text: 'Suku kata pertama dari kata kelapa adalah â€¦', options: ['ke', 'la', 'pa'], answer: 'ke', say: 'kelapa', emoji: 'ðŸ¥¥', hint: 'Ucapkan pelan: ke-la-pa.', explain: 'Benar! Suku kata pertamanya ke.' },
+        { id: 'SB06', text: 'Pilih susunan yang membentuk kata roti.', options: ['ro-ti', 'ti-ro', 'ri-to'], answer: 'ro-ti', say: 'roti', emoji: 'ðŸž', hint: 'Roti dimulai dengan bunyi ro.', explain: 'Tepat! ro-ti membentuk kata roti.' }
       ]
     },
     {
       n: 4,
-      title: 'Laboratorium Kata',
-      sub: 'Membaca dan melengkapi kata',
+      title: 'Word Detective',
+      sub: 'Membaca kata',
       icon: 'science',
-      chips: ['Membaca kata', 'Ejaan'],
+      chips: ['Membaca Kata', 'Ejaan'],
       questions: [
-        { text: 'Lengkapi kata: B _ J U', options: ['A', 'I', 'U', 'E'], answer: 'A', say: 'ba ju', emoji: '👕', hint: 'Kata yang benar: BAJU.', explain: 'Benar! Kata itu BAJU.' },
-        { text: 'Susun huruf ini menjadi kata: A-M-T-A', options: ['MATA', 'TAMA', 'AMAT', 'MAAT'], answer: 'MATA', say: 'a em te a', emoji: '👀', hint: 'Huruf pertama M, lalu A, T, A.', explain: 'Tepat! MATA.' },
-        { text: 'Pilih kata yang sesuai gambar kucing.', options: ['Kucing', 'Anjing', 'Ayam', 'Ikan'], answer: 'Kucing', say: 'kucing', emoji: '🐈', hint: 'Suaranya "meong".', explain: 'Benar! Gambar itu kucing.' },
-        { text: 'Pilih kata yang sesuai gambar bola.', options: ['BOLA', 'BUKU', 'SAPI', 'MATA'], answer: 'BOLA', say: 'bola', emoji: '⚽', hint: 'Benda bulat untuk bermain.', explain: 'Tepat! Gambar itu BOLA.' },
-        { text: 'Mana penulisan yang benar?', options: ['SAPI', 'SAPPI', 'SAPII', 'SSAPI'], answer: 'SAPI', say: 'sapi', emoji: '🐄', hint: 'Kata sapi ditulis dengan satu P.', explain: 'Benar! Penulisan yang tepat: SAPI.' }
+        { id: 'WD01', text: 'Lengkapi kata _api agar menjadi sapi.', options: ['s', 'm', 'b'], answer: 's', say: 'sapi', emoji: 'ðŸ„', hint: 'Kata yang benar: sapi.', explain: 'Benar! Huruf s membuat kata itu menjadi sapi.' },
+        { id: 'WD02', text: 'Susun huruf b-u-k-u.', options: ['buku', 'kubu', 'bubu'], answer: 'buku', say: 'buku', emoji: 'ðŸ“–', hint: 'Huruf pertama b, lalu u, k, u.', explain: 'Tepat! b-u-k-u menjadi buku.' },
+        { id: 'WD03', text: 'Pilih kata yang sesuai dengan gambar rumah.', options: ['rumah', 'ramah', 'murah'], answer: 'rumah', say: 'rumah', emoji: 'ðŸ ', hint: 'Tempat tinggal disebut rumah.', explain: 'Benar! Gambar itu rumah.' },
+        { id: 'WD04', text: 'Kata mana yang memiliki dua suku kata?', options: ['meja', 'sekolah', 'keluarga'], answer: 'meja', say: 'meja, sekolah, keluarga', hint: 'Hitung suku kata dengan tepukan.', explain: 'Tepat! Meja terdiri dari dua suku kata.' },
+        { id: 'WD05', text: "Pilih kata yang mengandung 'ng'.", options: ['bangun', 'batu', 'bola'], answer: 'bangun', say: 'bangun', hint: 'Cari kata yang ada huruf n dan g berdekatan.', explain: 'Benar! Bangun mengandung ng.' },
+        { id: 'WD06', text: 'Pisahkan kata kelapa menjadi suku kata.', options: ['ke-la-pa', 'kel-ap-a', 'kela-pa'], answer: 'ke-la-pa', say: 'kelapa', emoji: 'ðŸ¥¥', hint: 'Ucapkan pelan: ke-la-pa.', explain: 'Tepat! Kelapa menjadi ke-la-pa.' }
       ]
     },
     {
       n: 5,
-      title: 'Dunia Membaca',
-      sub: 'Kalimat pendek dan tanda baca',
+      title: 'Sentence Reader',
+      sub: 'Membaca kalimat',
       icon: 'menu_book',
-      chips: ['Kalimat', 'Tanda baca'],
+      chips: ['Membaca Kalimat', 'Tanda baca'],
       questions: [
-        { text: 'Bacalah kata: BUKU', options: ['BUKU', 'BUKA', 'BAKU', 'BIKU'], answer: 'BUKU', say: 'buku', emoji: '📖', hint: 'Buku punya huruf U di kedua suku kata.', explain: 'Tepat! Kata itu BUKU.' },
-        { text: 'Bacalah kata: SEPEDA', options: ['SEPEDA', 'SEPEDAH', 'SEPDA', 'SAPEDA'], answer: 'SEPEDA', say: 'sepeda', emoji: '🚲', hint: 'Se-pe-da: tiga suku kata.', explain: 'Benar! Kata itu SEPEDA.' },
-        { text: '"Ibu memasak nasi." Siapa yang memasak nasi?', options: ['Ibu', 'Ayah', 'Kakak', 'Adik'], answer: 'Ibu', say: 'Ibu memasak nasi', emoji: '🍚', hint: 'Baca lagi kalimatnya: Ibu memasak nasi.', explain: 'Tepat! Ibu yang memasak nasi.' },
-        { text: '"Ayah membaca ..." Lengkapi kalimat.', options: ['Buku', 'Bola', 'Nasi', 'Sepeda'], answer: 'Buku', say: 'Ayah membaca buku', emoji: '📚', hint: 'Ayah membaca benda yang berisi cerita.', explain: 'Benar! Ayah membaca buku.' },
-        { text: 'Pilih kalimat yang sesuai gambar anak sedang makan.', options: ['Anak sedang makan.', 'Anak sedang tidur.', 'Anak sedang bermain.', 'Anak sedang mandi.'], answer: 'Anak sedang makan.', say: 'Anak sedang makan', emoji: '🍽️', hint: 'Gambar menunjukkan anak dengan piring.', explain: 'Tepat! Anak sedang makan.' }
+        { id: 'SR01', text: 'Lengkapi: Ibu memasak ....', options: ['nasi', 'tidur', 'meja'], answer: 'nasi', say: 'Ibu memasak nasi', emoji: 'ðŸš', hint: 'Ibu memasak sesuatu untuk dimakan.', explain: 'Benar! Ibu memasak nasi.' },
+        { id: 'SR02', text: 'Kalimat mana yang benar?', options: ['Ayah membaca buku.', 'Buku membaca Ayah.'], answer: 'Ayah membaca buku.', say: 'Ayah membaca buku', emoji: 'ðŸ“š', hint: 'Yang membaca adalah Ayah, bukan buku.', explain: 'Tepat! Kalimat yang benar: Ayah membaca buku.' },
+        { id: 'SR03', text: 'Tanda baca untuk mengakhiri kalimat berita adalah â€¦', options: ['.', '?', ','], answer: '.', say: 'titik', hint: 'Kalimat berita diakhiri titik.', explain: 'Benar! Kalimat berita diakhiri titik.' },
+        { id: 'SR04', text: "Apa yang dilakukan Budi? 'Budi sedang berlari.'", options: ['Berlari', 'Tidur', 'Makan'], answer: 'Berlari', say: 'Budi sedang berlari', hint: 'Cari kata kerja di dalam kalimat.', explain: 'Tepat! Budi sedang berlari.' },
+        { id: 'SR05', text: 'Lengkapi: Adik minum ....', options: ['air', 'sepatu', 'kursi'], answer: 'air', say: 'Adik minum air', emoji: 'ðŸ’§', hint: 'Sesuatu yang bisa diminum.', explain: 'Benar! Adik minum air.' },
+        { id: 'SR06', text: 'Kalimat tanya diakhiri dengan â€¦', options: ['?', '!', ','], answer: '?', say: 'tanda tanya', hint: 'Kalimat tanya memakai tanda tanya.', explain: 'Tepat! Kalimat tanya diakhiri tanda tanya.' }
       ]
     },
     {
       n: 6,
-      title: 'Petualangan Cerita',
-      sub: 'Paham isi cerita sederhana',
+      title: 'Story Explorer',
+      sub: 'Memahami cerita',
       icon: 'auto_stories',
-      chips: ['Cerita', 'Pemahaman'],
+      chips: ['Pemahaman Cerita', 'Tokoh & urutan'],
+      story: 'Pada hari Minggu, Rani pergi ke taman bersama ibunya. Di taman, Rani melihat kupu-kupu berwarna kuning. Setelah bermain, Rani dan ibu membeli es krim. Mereka kemudian pulang ke rumah.',
       questions: [
-        { text: '"Rina membawa payung." Apa yang dibawa Rina?', options: ['Payung', 'Buku', 'Bola', 'Tas'], answer: 'Payung', say: 'Rina membawa payung', emoji: '☂️', hint: 'Cari kata setelah "membawa".', explain: 'Benar! Rina membawa payung.' },
-        { text: '"Budi pergi ke sekolah pada pagi hari." Kapan Budi pergi?', options: ['Pagi hari', 'Siang hari', 'Sore hari', 'Malam hari'], answer: 'Pagi hari', say: 'Budi pergi ke sekolah pada pagi hari', emoji: '🌅', hint: 'Ada kata "pagi" di kalimat.', explain: 'Tepat! Budi pergi pagi hari.' },
-        { text: '"Dina bangun tidur, mandi, lalu sarapan." Apa yang dilakukan Dina setelah mandi?', options: ['Sarapan', 'Tidur', 'Sekolah', 'Bermain'], answer: 'Sarapan', say: 'Dina bangun tidur, mandi, lalu sarapan', emoji: '🥣', hint: 'Kata "lalu" menunjukkan urutan setelah mandi.', explain: 'Benar! Setelah mandi, Dina sarapan.' },
-        { text: '"Mimi adalah kucing milik Adi. Mimi suka makan ikan." Apa makanan kesukaan Mimi?', options: ['Ikan', 'Daging', 'Sayur', 'Susu'], answer: 'Ikan', say: 'Mimi suka makan ikan', emoji: '🐈', hint: 'Baca kalimat kedua.', explain: 'Tepat! Mimi suka ikan.' },
-        { text: '"Hari ini hujan. Siti menggunakan payung saat pergi ke sekolah." Mengapa Siti menggunakan payung?', options: ['Karena hujan', 'Karena panas', 'Karena angin', 'Karena dingin'], answer: 'Karena hujan', say: 'Hari ini hujan. Siti menggunakan payung', emoji: '🌧️', hint: 'Lihat kalimat pertama.', explain: 'Benar! Karena hujan.' }
+        { id: 'SE01', text: 'Kapan Rani pergi ke taman?', options: ['Minggu', 'Senin', 'Jumat'], answer: 'Minggu', say: 'Pada hari Minggu, Rani pergi ke taman', emoji: 'ðŸŒ³', hint: 'Lihat kalimat pertama pada cerita.', explain: 'Benar! Rani pergi pada hari Minggu.' },
+        { id: 'SE02', text: 'Dengan siapa Rani pergi?', options: ['Ayah', 'Ibu', 'Teman'], answer: 'Ibu', say: 'Rani pergi ke taman bersama ibunya', hint: 'Cari kata setelah "bersama".', explain: 'Tepat! Rani pergi bersama ibunya.' },
+        { id: 'SE03', text: 'Apa yang dilihat Rani?', options: ['Burung', 'Kupu-kupu', 'Kucing'], answer: 'Kupu-kupu', say: 'Rani melihat kupu-kupu berwarna kuning', emoji: 'ðŸ¦‹', hint: 'Ada di kalimat kedua.', explain: 'Benar! Rani melihat kupu-kupu.' },
+        { id: 'SE04', text: 'Apa yang mereka beli?', options: ['Roti', 'Es krim', 'Buku'], answer: 'Es krim', say: 'Rani dan ibu membeli es krim', emoji: 'ðŸ¦', hint: 'Cari kata setelah "membeli".', explain: 'Tepat! Mereka membeli es krim.' },
+        { id: 'SE05', text: 'Ke mana mereka pergi setelah membeli es krim?', options: ['Sekolah', 'Rumah', 'Pasar'], answer: 'Rumah', say: 'Mereka kemudian pulang ke rumah', hint: 'Kata "pulang" menuju ke tempat apa?', explain: 'Benar! Mereka pulang ke rumah.' }
       ]
     }
   ];
 
   var BADGES = [
-    { title: 'Detektif Huruf', need: 1, icon: 'abc' },
-    { title: 'Detektif Bunyi', need: 2, icon: 'graphic_eq' },
-    { title: 'Penyusun Kata', need: 3, icon: 'train' },
-    { title: 'Pembaca Kalimat', need: 5, icon: 'menu_book' }
+    { title: 'Kesadaran Bunyi', need: 1, icon: 'graphic_eq' },
+    { title: 'Mengenal Huruf', need: 2, icon: 'abc' },
+    { title: 'Menyusun Kata', need: 3, icon: 'train' },
+    { title: 'Membaca Kalimat', need: 5, icon: 'menu_book' }
   ];
 
   var DEFAULT_STATE = {
@@ -172,9 +178,10 @@
     }
     return total;
   }
-  function ratingFromFirstTry(firstTry) {
-    if (firstTry >= 5) return 3;
-    if (firstTry >= 3) return 2;
+  function ratingFromFirstTry(firstTry, total) {
+    var n = total || 5;
+    if (firstTry >= n) return 3;
+    if (firstTry >= Math.ceil(n * 0.6)) return 2;
     return 1;
   }
 
@@ -218,7 +225,7 @@
     if (saved.modulePoints && typeof saved.modulePoints === 'object') {
       for (var i = 1; i <= MODULES.length; i++) {
         if (saved.modulePoints[i] != null) {
-          s.modulePoints[i] = clampInt(saved.modulePoints[i], 0, 10, 0);
+          s.modulePoints[i] = clampInt(saved.modulePoints[i], 0, 12, 0);
         }
       }
     }
@@ -558,66 +565,227 @@
   /* ---------------------------------------------------------
      7. PETA BELAJAR
      --------------------------------------------------------- */
+  var ISLANDS = [
+    { name: 'Pulau Bunyi', icon: 'music_note' },
+    { name: 'Lembah Huruf', icon: 'search' },
+    { name: 'Danau Suku Kata', icon: 'extension' },
+    { name: 'Hutan Kata', icon: 'travel_explore' },
+    { name: 'Bukit Kalimat', icon: 'menu_book' },
+    { name: 'Istana Cerita', icon: 'fort' }
+  ];
+
+  var MAP_NODES = [
+    { left: 73.5, top: 86.4 },
+    { left: 26.5, top: 71.2 },
+    { left: 50.0, top: 54.5 },
+    { left: 76.5, top: 37.8 },
+    { left: 25.0, top: 22.7 },
+    { left: 50.0, top: 8.5 }
+  ];
+
+  var TRAIL = [
+    'M 250 570',
+    'C 190 555, 120 535, 90 470',
+    'C 60 405, 120 380, 170 360',
+    'C 220 340, 290 310, 260 250',
+    'C 230 190, 125 200, 85 150',
+    'C 55 105, 130 75, 170 55'
+  ];
+
+  function starsFor(rating, size) {
+    var html = '';
+    for (var i = 1; i <= 3; i++) {
+      html +=
+        '<span class="material-symbols-outlined" aria-hidden="true" style="font-size:' + (size || 22) + 'px;line-height:1;font-variation-settings:\'FILL\' ' + (i <= rating ? 1 : 0) + ';color:' + (i <= rating ? '#FFC53D' : '#D9CFC0') + '">star</span>';
+    }
+    return html;
+  }
+
+  function moduleRating(mod, points) {
+    var max = mod.questions.length * 2;
+    if (!max) return 0;
+    return Math.max(1, Math.min(3, Math.round((points / max) * 3)));
+  }
+
+  function reducedMotion() {
+    if (document.body.classList.contains('reduce-motion')) return true;
+    try {
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function renderTrail(active) {
+    var trail = $('#trail');
+    if (!trail) return;
+    var donePath = TRAIL.slice(0, active).join(' ');
+    var todoPath = TRAIL.slice(active - 1).join(' ');
+    trail.innerHTML =
+      '<path d="' + TRAIL.join(' ') + '" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" filter="url(#trailShadow)"></path>' +
+      '<path d="' + donePath + '" fill="none" stroke="#F59E0B" stroke-width="8" stroke-linecap="round"></path>' +
+      '<path class="trail-future" d="' + todoPath + '" fill="none" stroke="#CBD5E1" stroke-width="6" stroke-dasharray="6 12" stroke-linecap="round"></path>';
+  }
+
   function renderPeta() {
     var path = $('#path');
     if (!path) return;
 
-    var greeting = $('#peta-greeting');
-    if (greeting) greeting.textContent = state.profile ? 'Halo, ' + state.profile.name + '!' : 'Halo!';
+    var complete = state.completed;
+    var active = Math.min(complete + 1, MODULES.length);
+    var mod = MODULES[active - 1];
+    var island = ISLANDS[active - 1];
+    var profile = state.profile;
 
-    var nextModule = Math.min(state.completed + 1, MODULES.length);
-    var nextLabel = $('#peta-sub');
-    if (nextLabel) {
-      nextLabel.textContent = state.completed >= MODULES.length
-        ? 'Semua level selesai. Ulangi kapan saja, ya!'
-        : 'Lanjutkan Level ' + nextModule + ' hari ini';
+    var greet = $('#peta-greeting');
+    if (greet) greet.textContent = profile ? 'Halo, ' + profile.name + '!' : 'Halo!';
+
+    var progress = $('#peta-progress');
+    if (progress) progress.textContent = 'Level ' + active + ' / ' + MODULES.length + ' Terbuka';
+
+    var count = $('#peta-count');
+    if (count) count.textContent = complete + ' Pulau Terbuka';
+
+    var walkLabel = $('#walk-label');
+    if (walkLabel) walkLabel.textContent = 'Jalan ke Level ' + active;
+
+    renderTrail(active);
+
+    var nodes = '';
+    MODULES.forEach(function (m, i) {
+      var num = i + 1;
+      var isDone = num <= complete;
+      var isActive = num === complete + 1;
+      var isLocked = num > complete + 1;
+      var info = ISLANDS[i];
+      var rating = isDone ? moduleRating(m, state.modulePoints[num] || 0) : 0;
+      var cls = isDone ? 'is-done' : isActive ? 'is-active' : 'is-locked';
+      var badge = isDone
+        ? '<span class="node-badge is-check"><span class="material-symbols-outlined">check</span></span>'
+        : isLocked
+          ? '<span class="node-badge is-lock"><span class="material-symbols-outlined">lock</span></span>'
+          : '<span class="node-badge is-star"><span class="material-symbols-outlined">hotel_class</span></span>';
+
+      nodes +=
+        '<div class="map-node ' + cls + '" style="left:' + MAP_NODES[i].left + '%;top:' + MAP_NODES[i].top + '%" data-action="open-module" data-module="' + num + '"' + (isLocked ? ' data-locked="1"' : '') + ' role="button" tabindex="0" aria-label="Level ' + num + ': ' + esc(info.name) + ' (' + (isDone ? 'selesai' : isActive ? 'sekarang' : 'terkunci') + ')">' +
+        '<span class="node-stack">' +
+        (isActive ? '<span class="pulse-ring" aria-hidden="true"></span>' : '') +
+        '<span class="node-bubble"><span class="material-symbols-outlined" aria-hidden="true" style="font-variation-settings:\'FILL\' 1;">' + info.icon + '</span>' + badge + '</span>' +
+        '</span>' +
+        '<span class="node-label' + (isActive ? ' is-blue' : '') + '">' +
+        (isActive ? '<span class="ping-dot" aria-hidden="true"></span>' : '') +
+        '<span class="node-title">' + num + '. ' + esc(info.name) + '</span>' +
+        (!isActive && !isLocked ? '<span class="node-stars" aria-hidden="true">' + starsFor(rating, 12) + '</span>' : '') +
+        '</span>' +
+        (isActive ? '<span class="node-new"><span class="material-symbols-outlined">auto_awesome</span> Baru Terbuka!</span>' : '') +
+        '</div>';
+    });
+    path.innerHTML = nodes;
+
+    var walker = $('#walker');
+    if (walker) {
+      walker.style.left = MAP_NODES[active - 1].left + '%';
+      walker.style.top = (MAP_NODES[active - 1].top - 13) + '%';
+    }
+    var bubble = $('#walker-bubble');
+    if (bubble) {
+      bubble.textContent = (profile ? profile.name : 'Kamu') + ' sampai di ' + island.name + '! 🎉';
+    }
+    var walkImg = $('#walker-img');
+    if (walkImg) walkImg.src = avatarSrc(profile ? profile.avatar : 1);
+
+    var quest = $('#peta-current');
+    if (quest && mod) {
+      var pts = state.modulePoints[active] || 0;
+      var maxPts = mod.questions.length * 2;
+      var pct = Math.max(6, Math.min(100, Math.round((pts / maxPts) * 100)));
+      quest.innerHTML =
+        '<div class="flex items-center justify-between gap-2 mb-2.5">' +
+        '<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#FFF3D6] text-[#7A4A00] text-[11px] font-extrabold"><span class="material-symbols-outlined text-[15px]">bolt</span>Baru Terbuka!</span>' +
+        '<span class="text-[11px] font-bold text-muted">Level ' + active + ' • ' + mod.questions.length + ' latihan</span>' +
+        '</div>' +
+        '<div class="flex items-start justify-between gap-3">' +
+        '<div class="min-w-0 flex-1">' +
+        '<h2 class="font-head font-extrabold text-[22px] leading-tight text-primary">' + esc(mod.title) + '</h2>' +
+        '<p class="text-[13px] text-muted mt-0.5">' + esc(mod.sub) + ' di <span class="inline-block px-2 py-0.5 rounded-md bg-[#EFF4FF] text-primary font-bold">' + esc(island.name) + '</span></p>' +
+        '</div>' +
+        '<span class="w-12 h-12 rounded-xl bg-[#DBE1FF] text-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[30px]" aria-hidden="true" style="font-variation-settings:\'FILL\' 1;">' + island.icon + '</span></span>' +
+        '</div>' +
+        '<div class="h-2.5 rounded-full bg-[#E9EDFB] mt-3 overflow-hidden"><div class="h-full rounded-full bg-primary transition-all" style="width:' + pct + '%"></div></div>' +
+        '<button type="button" class="btn-primary mt-3.5 !min-h-[58px]" data-action="open-module" data-module="' + active + '">' +
+        '<span>Mulai Level ' + active + '</span>' +
+        '<span class="material-symbols-outlined text-[22px]" aria-hidden="true">arrow_forward</span>' +
+        '</button>';
     }
 
-    var html = '';
-    MODULES.forEach(function (mod) {
-      var num = mod.n;
-      var done = num <= state.completed;
-      var active = num === state.completed + 1;
-      var locked = num > state.completed + 1;
-      var points = state.modulePoints[num] || 0;
-      var rating = Math.min(3, Math.ceil(points / 3.34));
+    var review = $('#review-card');
+    if (review) {
+      var reviewLevel = active > 1 ? active - 1 : 1;
+      var reviewIsland = ISLANDS[reviewLevel - 1];
+      review.innerHTML =
+        '<div class="card p-3.5 mt-3 flex items-center justify-between gap-2.5">' +
+        '<div class="flex items-center gap-2.5 min-w-0">' +
+        '<span class="w-11 h-11 rounded-full bg-[#FFF3D6] text-[#7A4A00] flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[24px]" aria-hidden="true">replay</span></span>' +
+        '<div class="min-w-0">' +
+        '<p class="font-head font-bold text-[15px] leading-tight text-ink">Latihan Lagi</p>' +
+        '<p class="text-[12px] text-muted truncate">' + esc(reviewIsland.name) + ' (Level ' + reviewLevel + ')</p>' +
+        '</div></div>' +
+        '<button type="button" class="min-h-[46px] px-4 rounded-full bg-[#F7BE36] text-[#261900] font-bold text-[13px] flex items-center gap-1 shrink-0" data-action="open-module" data-module="' + reviewLevel + '">' +
+        '<span class="material-symbols-outlined text-[18px]" aria-hidden="true">play_circle</span><span>Ulangi</span></button>' +
+        '</div>';
+    }
+  }
 
-      var nodeClass = 'node';
-      if (done) nodeClass += ' node-done';
-      else if (active) nodeClass += ' node-active';
-      else nodeClass += ' node-locked';
+  function walkTheTrail() {
+    var walker = $('#walker');
+    if (!walker) return;
 
-      var icon = done ? 'check' : active ? 'play_arrow' : 'lock';
-      var status = done ? 'Selesai' : active ? 'Sekarang' : 'Terkunci';
-      var chipClass = done ? 'chip-done' : active ? 'chip-active' : 'chip-locked';
+    var active = Math.min(state.completed + 1, MODULES.length);
+    var island = ISLANDS[active - 1];
+    var name = state.profile ? state.profile.name : 'Rani';
 
-      var stars = '';
-      if (!locked) {
-        for (var s = 1; s <= 3; s++) stars += starSvg(s <= rating);
-      }
+    if (reducedMotion()) {
+      toast('Rani sudah sampai di ' + island.name + '!');
+      return;
+    }
 
-      html +=
-        '<div class="flex flex-col items-center gap-2 py-4">' +
-        '<div class="' + nodeClass + '" aria-hidden="true">' +
-        (active ? '<span class="halo" aria-hidden="true"></span>' : '') +
-        '<span class="material-symbols-outlined text-[34px] relative" aria-hidden="true" style="font-variation-settings:\'FILL\' 1;">' + icon + '</span>' +
-        '</div>' +
-        '<button type="button" class="w-full card p-3 flex items-center gap-3 text-left active:scale-[0.99] transition-transform" data-action="open-module" data-module="' + num + '"' + (locked ? ' data-locked="1"' : '') + ' aria-label="Level ' + num + ': ' + esc(mod.title) + ' (' + status + ')">' +
-        '<span class="w-10 h-10 rounded-full bg-[#EFF4FF] text-primary flex items-center justify-center shrink-0">' +
-        '<span class="material-symbols-outlined text-[22px]" aria-hidden="true">' + mod.icon + '</span></span>' +
-        '<span class="min-w-0 flex-1">' +
-        '<span class="block text-[11px] font-bold text-muted leading-none mb-0.5">Level ' + num + '</span>' +
-        '<span class="block font-head font-bold text-[16px] leading-tight text-ink">' + esc(mod.title) + '</span>' +
-        '<span class="block text-[13px] text-muted truncate">' + esc(mod.sub) + '</span>' +
-        '</span>' +
-        '<span class="flex flex-col items-end gap-1 shrink-0">' +
-        '<span class="text-[11px] font-bold px-2 py-1 rounded-full ' + chipClass + '">' + status + '</span>' +
-        '<span class="flex items-center gap-0.5" aria-label="' + rating + ' dari 3 bintang">' + stars + '</span>' +
-        '</span>' +
-        '</button></div>';
-    });
+    var frames = [];
+    for (var i = 0; i < active; i++) {
+      frames.push({ left: MAP_NODES[i].left + '%', top: (MAP_NODES[i].top - 13) + '%' });
+    }
+    frames.push({ left: MAP_NODES[active - 1].left + '%', top: (MAP_NODES[active - 1].top - 13) + '%' });
 
-    path.innerHTML = html;
+    try {
+      walker.animate(frames, { duration: 700 + 450 * active, easing: 'ease-in-out' });
+    } catch (err) {
+      /* abaikan */
+    }
+
+    sparkle(walker);
+    window.setTimeout(function () {
+      toast('Hore! ' + name + ' tiba di ' + island.name + '! 🎉');
+    }, 700 + 450 * active);
+  }
+
+  function sparkle(anchor) {
+    var layer = $('#sparkles');
+    if (!layer) return;
+    var rect = anchor.getBoundingClientRect();
+    var mapRect = layer.getBoundingClientRect();
+    for (var i = 0; i < 10; i++) {
+      var s = document.createElement('span');
+      s.className = 'sparkle';
+      s.textContent = '✨';
+      s.style.left = (rect.left - mapRect.left + rect.width / 2 + (Math.random() * 90 - 45)) + 'px';
+      s.style.top = (rect.top - mapRect.top + rect.height / 2 + (Math.random() * 40 - 20)) + 'px';
+      s.style.animationDelay = (Math.random() * 0.25) + 's';
+      layer.appendChild(s);
+      window.setTimeout(function (el) {
+        return function () {
+          if (el.parentNode) el.parentNode.removeChild(el);
+        };
+      }(s), 1600);
+    }
   }
 
   /* ---------------------------------------------------------
@@ -640,7 +808,7 @@
         '<p class="font-head font-bold text-[18px] text-ink truncate">' + esc(mod.title) + '</p>' +
         '</div>' +
         '</div>' +
-        '<p class="text-[14px] text-muted mb-3">' + (done ? 'Ulangi level mana saja untuk menjaga ingatanmu.' : 'Level ' + next + ' dari 6 · 5 soal singkat') + '</p>' +
+        '<p class="text-[14px] text-muted mb-3">' + (done ? 'Ulangi level mana saja untuk menjaga ingatanmu.' : 'Level ' + next + ' dari ' + MODULES.length + ' Â· ' + mod.questions.length + ' soal singkat') + '</p>' +
         '<button type="button" class="btn-primary" data-action="open-module" data-module="' + next + '">' +
         '<span>' + (done ? 'Ulangi Level 6' : 'Mulai Level ' + next) + '</span>' +
         '<span class="material-symbols-outlined text-[22px]" aria-hidden="true">arrow_forward</span>' +
@@ -802,7 +970,7 @@
     if (!mod || !q) return;
 
     var title = $('#sesi-title');
-    if (title) title.textContent = 'Level ' + session.module + ' · ' + mod.title;
+    if (title) title.textContent = 'Level ' + session.module + ' Â· ' + mod.title;
 
     var label = $('#sesi-progress-text');
     if (label) label.textContent = 'Soal ' + (session.index + 1) + ' dari ' + mod.questions.length;
@@ -821,6 +989,18 @@
       } else {
         emoji.textContent = '';
         emoji.classList.add('hidden');
+      }
+    }
+
+    var storyBox = $('#story-box');
+    var storyText = $('#story-text');
+    if (storyBox && storyText) {
+      if (mod.story) {
+        storyText.textContent = mod.story;
+        storyBox.classList.remove('hidden');
+      } else {
+        storyText.textContent = '';
+        storyBox.classList.add('hidden');
       }
     }
 
@@ -917,7 +1097,7 @@
 
   function finishSession() {
     var mod = MODULES[session.module - 1];
-    var rating = ratingFromFirstTry(session.firstTry);
+    var rating = ratingFromFirstTry(session.firstTry, mod.questions.length);
     var previous = state.modulePoints[session.module] || 0;
     var best = Math.max(previous, session.earned);
     var delta = best - previous;
@@ -951,7 +1131,7 @@
     if (title) title.textContent = 'Level ' + session.module + ' selesai!';
 
     var sub = $('#selesai-sub');
-    if (sub) sub.textContent = 'Kamu menyelesaikan 5 soal ' + mod.title + '.';
+    if (sub) sub.textContent = 'Kamu menyelesaikan ' + mod.questions.length + ' soal ' + mod.title + '.';
 
     var chips = $('#selesai-chips');
     if (chips) {
@@ -1196,9 +1376,9 @@
   function openAbout() {
     openModal(
       '<h2 class="font-head font-bold text-[22px] text-ink mb-2">Tentang Duolexia</h2>' +
-      '<p class="t-body text-ink mb-3">Duolexia membantu anak usia 6–8 tahun berlatih membaca lewat enam level singkat: huruf, bunyi, suku kata, kata, kalimat, dan cerita.</p>' +
+      '<p class="t-body text-ink mb-3">Duolexia membantu anak usia 6â€“8 tahun berlatih membaca lewat enam level singkat: huruf, bunyi, suku kata, kata, kalimat, dan cerita.</p>' +
       '<p class="t-body text-muted mb-4">Setiap soal punya audio, dan tidak ada skor yang menghakimi. Bintang hanya untuk memberi semangat.</p>' +
-      '<p class="text-[13px] text-muted mb-4">Versi 1.0 · Bahasa Indonesia</p>' +
+      '<p class="text-[13px] text-muted mb-4">Versi 1.0 Â· Bahasa Indonesia</p>' +
       '<button type="button" class="btn-primary" data-action="close-modal"><span>Mengerti</span></button>'
     );
   }
@@ -1336,6 +1516,13 @@
       var q = currentQuestion();
       if (q) speak(q.text, true);
     },
+    'walk': function () {
+      walkTheTrail();
+    },
+    'listen-story': function () {
+      var mod = MODULES[session.module - 1];
+      if (mod && mod.story) speak(mod.story);
+    },
     'example': function () {
       var q = currentQuestion();
       if (!q) return;
@@ -1382,6 +1569,14 @@
     hasGesture = true;
   });
 
+  document.addEventListener('keydown', function (event) {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    var el = event.target && event.target.closest ? event.target.closest('[data-action][role="button"]') : null;
+    if (!el) return;
+    event.preventDefault();
+    el.click();
+  });
+
   /* input nama */
   document.addEventListener('input', function (event) {
     if (event.target && event.target.id === 'name-input') {
@@ -1413,25 +1608,25 @@
   function runSelfTest() {
     var out = [];
     function check(name, condition) {
-      out.push((condition ? 'PASS' : 'FAIL') + ' — ' + name);
+      out.push((condition ? 'PASS' : 'FAIL') + ' â€” ' + name);
     }
 
     try {
-      check('rating 5 -> 3', ratingFromFirstTry(5) === 3);
-      check('rating 3 -> 2', ratingFromFirstTry(3) === 2);
-      check('rating 0 -> 1', ratingFromFirstTry(0) === 1);
+      check('rating 6/6 -> 3', ratingFromFirstTry(6, 6) === 3);
+      check('rating 4/6 -> 2', ratingFromFirstTry(4, 6) === 2);
+      check('rating 1/6 -> 1', ratingFromFirstTry(1, 6) === 1);
       check('dayKey format', /^\d{4}-\d{2}-\d{2}$/.test(dayKey()));
       check('data 6 modul', MODULES.length === 6);
-      check('setiap modul 5 soal', MODULES.every(function (m) { return m.questions.length === 5; }));
-      check('setiap soal 4 opsi', MODULES.every(function (m) {
-        return m.questions.every(function (q) { return q.options.length === 4; });
+      check('setiap modul 5-6 soal', MODULES.every(function (m) { return m.questions.length >= 5 && m.questions.length <= 6; }));
+      check('setiap soal 2-4 opsi', MODULES.every(function (m) {
+        return m.questions.every(function (q) { return q.options.length >= 2 && q.options.length <= 4; });
       }));
       check('jawaban ada di opsi', MODULES.every(function (m) {
         return m.questions.every(function (q) { return q.options.indexOf(q.answer) !== -1; });
       }));
       check('opsi tidak duplikat', MODULES.every(function (m) {
         return m.questions.every(function (q) {
-          return q.options.filter(function (o, i) { return q.options.indexOf(o) === i; }).length === 4;
+          return q.options.filter(function (o, i) { return q.options.indexOf(o) === i; }).length === q.options.length;
         });
       }));
 
@@ -1455,7 +1650,7 @@
 
       openModule(1);
       check('sesi: layar aktif', currentScreen === 'sesi');
-      check('sesi: 4 opsi dirender', $$('#options .option').length === 4);
+      check('sesi: opsi dirender', $$('#options .option').length >= 2);
 
       var q = currentQuestion();
       var idx = q.options.indexOf(q.answer);
@@ -1471,7 +1666,7 @@
       if (nextBtn) nextBtn.click();
       check('sesi: lanjut ke soal 2', session.index === 1);
 
-      for (var step = 0; step < 4; step++) {
+      for (var step = 0; step < MODULES[0].questions.length - 1; step++) {
         var qq = currentQuestion();
         var ii = qq.options.indexOf(qq.answer);
         var ob = $('#options .option[data-index="' + ii + '"]');
@@ -1482,12 +1677,12 @@
         if (nb) nb.click();
       }
 
-      check('sesi: selesai setelah 5 soal', currentScreen === 'selesai');
+      check('sesi: selesai setelah semua soal', currentScreen === 'selesai');
       check('sesi: level 1 terbuka', state.completed === 1);
       check('sesi: bintang bertambah', state.stars >= 10);
 
       show('peta');
-      check('peta: level 2 aktif', $$('#path .node-active').length === 1);
+      check('peta: level 2 aktif', $$('#path .is-active').length === 1);
       show('latihan');
       check('latihan: 6 baris keterampilan', $$('#lat-skills [data-module]').length === 6);
       show('hadiah');
@@ -1502,7 +1697,7 @@
       check('setelan: kurangi animasi', document.body.classList.contains('reduce-motion'));
       toggleSetting('reduceMotion');
     } catch (err) {
-      out.push('ERROR — ' + (err && err.message ? err.message : String(err)));
+      out.push('ERROR â€” ' + (err && err.message ? err.message : String(err)));
     }
 
     try {
@@ -1540,6 +1735,7 @@
       window.setTimeout(runSelfTest, 60);
       return;
     }
+
 
   }
 

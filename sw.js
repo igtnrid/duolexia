@@ -2,7 +2,7 @@
    Cache shell lokal + aset CDN (Tailwind & font) agar bisa dibuka offline
    setelah sekali dipakai dengan koneksi. */
 
-const CACHE = 'duolexia-v4';
+const CACHE = 'duolexia-v5';
 const RUNTIME = 'duolexia-runtime-v4';
 
 const ASSETS = [

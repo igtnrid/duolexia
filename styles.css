@@ -611,3 +611,486 @@ body.high-contrast .option {
 .day-today { box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.4); }
 
 #sheet-card:focus { outline: none; }
+
+
+/* ---------- peta petualangan ---------- */
+.map-shell {
+  background: #fffdf8;
+}
+.map {
+  position: relative;
+  width: 100%;
+  height: 710px;
+}
+.map-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.map-card {
+  position: absolute;
+  width: 66%;
+  min-height: 96px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid #e6e8f2;
+  box-shadow: 0 8px 20px rgba(27, 36, 48, 0.07);
+  text-align: left;
+  z-index: 2;
+  transition: transform 0.12s ease;
+}
+.map-card:active {
+  transform: scale(0.98);
+}
+.map-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  background: #eff4ff;
+  color: #2563eb;
+  font-size: 26px;
+}
+.map-done .map-icon {
+  background: #c9f4d6;
+  color: #12703a;
+}
+.map-locked {
+  background: #f4f5fa;
+  border-color: #edeef6;
+  box-shadow: none;
+}
+.map-locked .map-icon {
+  background: #e8eaf3;
+  color: #98a0b3;
+}
+.map-active {
+  background: #2563eb;
+  border-color: #1d4ed8;
+  box-shadow: 0 14px 28px rgba(37, 99, 235, 0.35);
+}
+.map-active .map-icon {
+  background: #fff;
+  color: #2563eb;
+}
+.map-body {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.map-stars {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 17px;
+}
+.map-title {
+  font-family: "Baloo 2", "Nunito", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.15;
+  color: #1b2430;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.map-meta {
+  font-size: 11.5px;
+  line-height: 1.2;
+  color: #5a6675;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.map-active .map-title {
+  color: #fff;
+}
+.map-active .map-meta {
+  color: #dce6ff;
+}
+.map-locked .map-title,
+.map-locked .map-meta {
+  color: #98a0b3;
+}
+.map-now {
+  position: absolute;
+  top: -12px;
+  left: 12px;
+  background: #ffc53d;
+  color: #5a3e00;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(27, 36, 48, 0.18);
+  z-index: 3;
+}
+.story-text {
+  font-size: var(--fs-lead);
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   PETA PULAU MEMBACA (desain baru)
+   ========================================================= */
+.adventure-map {
+  background: linear-gradient(180deg, #e3f2fd 0%, #e8f5e9 52%, #fff3e0 100%);
+  border: 2px solid #eadfcf;
+  border-radius: 24px;
+  padding: 10px 10px 12px;
+  box-shadow: 0 8px 30px rgba(0, 74, 198, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+.map-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 5px 9px;
+  border-radius: 999px;
+  border: 1px solid #eadfcf;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: #1b2430;
+  white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(27, 36, 48, 0.06);
+}
+.map-chip .material-symbols-outlined {
+  font-size: 16px;
+}
+.map-stage {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  border-radius: 18px;
+}
+.map-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.map-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  cursor: pointer;
+}
+.node-stack {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.node-bubble {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  border: 4px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #007f33;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(27, 36, 48, 0.18);
+  transition: transform 0.15s ease;
+  position: relative;
+}
+.node-bubble .material-symbols-outlined {
+  font-size: 28px;
+}
+.map-node:active .node-bubble {
+  transform: scale(0.95);
+}
+.map-node.is-active {
+  z-index: 20;
+}
+.map-node.is-active .node-bubble {
+  width: 62px;
+  height: 62px;
+  background: #2563eb;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+  transform: scale(1.04);
+}
+.map-node.is-locked .node-bubble {
+  background: #fff;
+  color: #94a3b8;
+  border-color: #e2e8f0;
+  box-shadow: 0 3px 8px rgba(27, 36, 48, 0.08);
+}
+.node-badge {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  width: 23px;
+  height: 23px;
+  border-radius: 999px;
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+.node-badge .material-symbols-outlined {
+  font-size: 13px;
+}
+.node-badge.is-check {
+  background: #10b981;
+  color: #fff;
+}
+.node-badge.is-lock {
+  background: #e2e8f0;
+  color: #64748b;
+}
+.node-badge.is-star {
+  background: #ffc53d;
+  color: #5a3e00;
+}
+.node-label {
+  margin-top: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #eadfcf;
+  border-radius: 999px;
+  padding: 3px 8px;
+  box-shadow: 0 2px 5px rgba(27, 36, 48, 0.08);
+  white-space: nowrap;
+}
+.node-title {
+  font-family: "Baloo 2", "Nunito", system-ui, sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #1b2430;
+}
+.node-label.is-blue {
+  background: #1d4ed8;
+  border-color: #dbe1ff;
+}
+.node-label.is-blue .node-title {
+  color: #fff;
+}
+.node-stars {
+  display: inline-flex;
+  align-items: center;
+  color: #f59e0b;
+  letter-spacing: -1px;
+}
+.node-new {
+  margin-top: 3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: #ffdea0;
+  color: #7a4a00;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 999px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
+}
+.node-new .material-symbols-outlined {
+  font-size: 11px;
+}
+.ping-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #f2a33c;
+  animation: ping 1.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  flex: 0 0 auto;
+}
+.pulse-ring {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 999px;
+  background: #2563eb;
+  opacity: 0.35;
+  animation: pulseAura 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  z-index: 0;
+}
+.walker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+  pointer-events: none;
+}
+.walker-bob {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: avatarHop 2.8s ease-in-out infinite;
+}
+.walker-bubble {
+  background: #fff;
+  border: 2px solid #2563eb;
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-size: 9.5px;
+  font-weight: 800;
+  color: #2563eb;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  margin-bottom: 4px;
+  animation: bubbleBounce 2s ease-in-out infinite;
+}
+.walker img {
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+  outline: 3px solid rgba(255, 197, 61, 0.7);
+}
+.walker-shadow {
+  width: 26px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.22);
+  border-radius: 999px;
+  filter: blur(2px);
+  margin-top: 3px;
+}
+.sparkle-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  overflow: hidden;
+}
+.sparkle {
+  position: absolute;
+  font-size: 16px;
+  animation: sparkleUp 0.9s ease-out forwards;
+}
+.cloud {
+  position: absolute;
+  color: #fff;
+  opacity: 0.9;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+  pointer-events: none;
+}
+.cloud-1 {
+  left: 14px;
+  top: 12px;
+  font-size: 36px;
+  animation: floatCloud 7s ease-in-out infinite;
+}
+.cloud-2 {
+  right: 16px;
+  top: 48px;
+  font-size: 28px;
+  animation: floatCloud 9s ease-in-out infinite reverse;
+}
+.map-deco {
+  position: absolute;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+@keyframes avatarHop {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  30% {
+    transform: translateY(-10px) scale(1.06, 0.94) rotate(-4deg);
+  }
+  60% {
+    transform: translateY(-14px) scale(0.96, 1.04) rotate(4deg);
+  }
+  85% {
+    transform: translateY(-3px) scale(1.02, 0.98) rotate(-1deg);
+  }
+}
+@keyframes pulseAura {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.15;
+  }
+}
+@keyframes floatCloud {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(12px);
+  }
+}
+@keyframes bubbleBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+@keyframes ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  75%,
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+@keyframes sparkleUp {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-40px) scale(1.2);
+    opacity: 0;
+  }
+}
+@keyframes dashFlow {
+  to {
+    stroke-dashoffset: -36;
+  }
+}
+.trail-future {
+  animation: dashFlow 1.6s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .walker-bob,
+  .pulse-ring,
+  .cloud,
+  .node-new,
+  .ping-dot,
+  .trail-future,
+  .sparkle {
+    animation: none !important;
+  }
+}
